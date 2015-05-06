@@ -1,9 +1,11 @@
-package com.arles.swissmanager;
+package com.arles.swissmanager.ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.arles.swissmanager.R;
 
 
 public class MainActivity extends Activity {
