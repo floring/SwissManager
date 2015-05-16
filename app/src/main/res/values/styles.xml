@@ -9,7 +9,15 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryColorDark</item>
         <item name="colorAccent">@color/accentColor</item>
+    </style>
 
+    <style name="FloatingActionButtonTheme">
+        <item name="android:layout_width">@dimen/fab_width</item>
+        <item name="android:layout_height">@dimen/fab_height</item>
+        <item name="android:elevation">@dimen/fab_elevation</item>
+        <item name="android:tint">@android:color/white</item>
+        <item name="android:layout_marginBottom">@dimen/fab_margin</item>
+        <item name="android:layout_marginRight">@dimen/fab_margin</item>
     </style>
 
 </resources>

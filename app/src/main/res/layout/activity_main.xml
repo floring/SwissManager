@@ -13,22 +13,24 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <!--
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+<!--
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recycler_view_players"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
+                        -->
 
                     <include
                         android:id="@+id/fab_add"
                         layout="@layout/fab_container" />
 
                 </RelativeLayout>
-                -->
+
 
         <fragment
             android:id="@+id/fragment_navigation_drawer"
