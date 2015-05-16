@@ -18,9 +18,6 @@ import dagger.Provides;
  */
 
 @Module(
-        includes = {
-
-        },
         injects = {
                 SwissManagerApplication.class
         }, library = true)

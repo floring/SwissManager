@@ -2,7 +2,9 @@ package com.arles.swissmanager.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 
+import com.arles.swissmanager.R;
 import com.arles.swissmanager.SwissManagerApplication;
 import com.arles.swissmanager.di.ActivityModule;
 
@@ -24,6 +26,8 @@ public abstract class BaseActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         injectDependencies();
+
+
 
     }
 
@@ -55,7 +59,7 @@ public abstract class BaseActivity extends ActionBarActivity {
         SwissManagerApplication swissApp = (SwissManagerApplication) getApplication();
         List<Object> modulesList = getModules();
         modulesList.add(new ActivityModule(this));
-        objectGraph = objectGraph.plus(modulesList);
+        objectGraph = swissApp.plus(modulesList);
         inject(this);
     }
 
