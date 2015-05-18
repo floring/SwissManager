@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 import com.arles.swissmanager.ui.activity.BaseActivity;
 
+import butterknife.ButterKnife;
+
 /**
  * Base fragment created to be extended by every fragment in this application. This class provides
  * dependency injection configuration, ButterKnife Android library configuration and some methods
@@ -58,7 +60,7 @@ public abstract class BaseFragment extends Fragment {
      * @param view to extract each widget injected in the fragment.
      */
     private void injectViews(final View view) {
-        //ButterKnife.inject(this, view);
+        ButterKnife.inject(this, view);
     }
 
 }

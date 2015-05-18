@@ -59,7 +59,7 @@ public class NavigationDrawerFragment extends BaseFragment implements Navigation
                 super.onDrawerSlide(drawerView, slideOffset);
             }
         };
-        drawerLayout.openDrawer(navigationView);
+        //drawerLayout.openDrawer(navigationView);
         drawerLayout.setDrawerListener(drawerToggle);
         drawerLayout.post(new Runnable() {
             @Override

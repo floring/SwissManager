@@ -3,6 +3,7 @@ package com.arles.swissmanager.ui.activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.SwissManagerApplication;
@@ -10,6 +11,7 @@ import com.arles.swissmanager.di.ActivityModule;
 
 import java.util.List;
 
+import butterknife.ButterKnife;
 import dagger.ObjectGraph;
 
 /**
@@ -26,9 +28,6 @@ public abstract class BaseActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         injectDependencies();
-
-
-
     }
 
     /**
@@ -67,8 +66,8 @@ public abstract class BaseActivity extends ActionBarActivity {
      * Replace every field annotated with ButterKnife annotations like @InjectView with the proper
      * value.
      */
-    private void injectViews() {
-        //ButterKnife.inject(this);
+    protected void injectViews() {
+        ButterKnife.inject(this);
     }
 
 

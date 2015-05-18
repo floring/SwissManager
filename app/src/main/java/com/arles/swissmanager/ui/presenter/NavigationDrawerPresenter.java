@@ -22,9 +22,7 @@ public class NavigationDrawerPresenter extends Presenter {
     private INavigationView mView;
 
     @Inject
-    public NavigationDrawerPresenter() {
-
-    }
+    public NavigationDrawerPresenter() { }
 
     @Override public void initialize() { }
 

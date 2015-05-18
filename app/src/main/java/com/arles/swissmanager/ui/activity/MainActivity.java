@@ -6,6 +6,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
@@ -14,24 +15,30 @@ import com.arles.swissmanager.ui.presenter.UIModule;
 import java.util.LinkedList;
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.Optional;
+
 
 public class MainActivity extends BaseActivity {
 
+    @InjectView(R.id.toolbar) Toolbar mToolbar;
+
     private NavigationDrawerFragment mNavDrawerFragment;
-    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        injectViews();
         initializeNavigationDrawerFragment();
-        initializeToolbar();
+        //initializeToolbar();
         setUpNavDrawerFragment();
     }
 
     @Override
     protected List<Object> getModules() {
-        // TODO:
+        // TODO: FIX IT!!
         LinkedList<Object> modules = new LinkedList<>();
         modules.add(new UIModule());
         return modules;
@@ -47,6 +54,7 @@ public class MainActivity extends BaseActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
 
     private void setUpNavDrawerFragment() {
         mNavDrawerFragment.setUp(
