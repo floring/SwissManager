@@ -24,12 +24,6 @@ public class NavigationDrawerPresenter extends Presenter {
     @Inject
     public NavigationDrawerPresenter() { }
 
-    @Override public void initialize() { }
-
-    @Override public void resume() { }
-
-    @Override public void pause() { }
-
     public void setView(INavigationView view) {
         mView = view;
     }

@@ -7,13 +7,14 @@ package com.arles.swissmanager.ui.presenter;
  */
 
 import com.arles.swissmanager.ui.activity.MainActivity;
+import com.arles.swissmanager.ui.activity.NewPlayerActivity;
 import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
 
 import dagger.Module;
 
 @Module(complete = false,
         injects = {
-                MainActivity.class, NavigationDrawerFragment.class
+                MainActivity.class, NewPlayerActivity.class, NavigationDrawerFragment.class
         })
 public final class UIModule {
 }

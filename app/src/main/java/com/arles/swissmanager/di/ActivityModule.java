@@ -23,7 +23,7 @@ public final class ActivityModule {
         this.activity = activity;
     }
 
-    @Provides
+    @ActivityContext @Provides
     Context provideActivityContext() {
         return activity;
     }

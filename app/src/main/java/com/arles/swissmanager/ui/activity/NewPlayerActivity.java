@@ -1,46 +1,35 @@
 package com.arles.swissmanager.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageButton;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
-import com.arles.swissmanager.ui.presenter.MainPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import butterknife.InjectView;
-import butterknife.OnClick;
 
+public class NewPlayerActivity extends BaseActivity {
 
-public class MainActivity extends BaseActivity implements MainPresenter.IView {
-
-    @InjectView(R.id.toolbar) Toolbar mToolbar;
-    @InjectView(R.id.fab_add) ImageButton mFAButton;
-
-    @Inject MainPresenter mMainPresenter;
+    @InjectView(R.id.toolbar)
+    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_new_player);
         injectViews();
-
-        setUpNavDrawerFragment();
-        mMainPresenter.setView(this);
     }
 
     @Override
     protected List<Object> getModules() {
-        // TODO: FIX IT!!
         LinkedList<Object> modules = new LinkedList<>();
         modules.add(new UIModule());
         return modules;
@@ -49,7 +38,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_new_player, menu);
         return true;
     }
 
@@ -68,16 +57,11 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick(R.id.fab_add)
-    public void faButtonCreateNew() {
-        mMainPresenter.createNew();
-    }
-
-    private void setUpNavDrawerFragment() {
-        NavigationDrawerFragment navDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        navDrawerFragment.setUp(
-                findViewById(R.id.fragment_navigation_drawer),
-                (DrawerLayout) findViewById(R.id.drawer_layout),
-                mToolbar);
+    /**
+     * Generates the intent needed by the client code to launch this activity.
+     */
+    public static Intent getLaunchIntent(final Context context) {
+        Intent intent = new Intent(context, NewPlayerActivity.class);
+        return intent;
     }
 }
