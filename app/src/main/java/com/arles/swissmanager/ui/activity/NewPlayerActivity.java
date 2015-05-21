@@ -1,31 +1,42 @@
 package com.arles.swissmanager.ui.activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 import com.arles.swissmanager.R;
+import com.arles.swissmanager.ui.presenter.NewPlayerPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
+import com.arles.swissmanager.utils.KeyExtra;
 
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.InjectView;
 
-public class NewPlayerActivity extends BaseActivity {
+public class NewPlayerActivity extends BaseActivity implements NewPlayerPresenter.IView {
+
+    public static final String ACTIVITY_TITLE = "Add new player";
+
 
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
+    @Inject
+    NewPlayerPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_player);
         injectViews();
+        setToolbarView();
+        mPresenter.setView(this);
     }
 
     @Override
@@ -57,11 +68,30 @@ public class NewPlayerActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Generates the intent needed by the client code to launch this activity.
-     */
-    public static Intent getLaunchIntent(final Context context) {
-        Intent intent = new Intent(context, NewPlayerActivity.class);
-        return intent;
+    private void setToolbarView() {
+        mToolbar.setTitle(ACTIVITY_TITLE);
+        mToolbar.setNavigationIcon(R.drawable.ic_done);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onNavigationIconClick();
+            }
+        });
+
+    }
+
+    private void onNavigationIconClick() {
+        CharSequence playerName = ((EditText) findViewById(R.id.editText_new_player_name)).getText();
+        mPresenter.bundleData(playerName);
+    }
+
+    @Override
+    public void sendDataToLaunchActivity(Intent intent) {
+        setResult(RESULT_OK, intent);
+    }
+
+    @Override
+    public void close() {
+        finish();
     }
 }

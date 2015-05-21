@@ -1,5 +1,6 @@
 package com.arles.swissmanager.ui.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -16,15 +17,23 @@ import javax.inject.Inject;
  */
 public class Navigator {
 
-    private final Context mContext;
+    private final Activity mActivityContext;
 
     @Inject
     public Navigator(@ActivityContext Context context) {
-        mContext = context;
+        mActivityContext = (Activity) context;
     }
 
-    public void openNewPlayerActivity() {
-        Intent intent = NewPlayerActivity.getLaunchIntent(mContext);
-        mContext.startActivity(intent);
+    public void startNewPlayerActivityForResult(int requestCode) {
+        Intent intent = getLaunchIntent(NewPlayerActivity.class);
+        mActivityContext.startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * Generates the intent needed by the client code to launch this activity.
+     */
+    private Intent getLaunchIntent(Class activityClass) {
+        Intent intent = new Intent(mActivityContext, activityClass);
+        return intent;
     }
 }

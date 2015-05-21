@@ -1,18 +1,16 @@
 package com.arles.swissmanager.ui.presenter;
 
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.Toast;
+import android.content.Intent;
 
-        import com.arles.swissmanager.ui.activity.MainActivity;
-        import com.arles.swissmanager.ui.activity.Navigator;
+import com.arles.swissmanager.ui.activity.Navigator;
+import com.arles.swissmanager.utils.KeyExtra;
 
-        import javax.inject.Inject;
-        import javax.inject.Singleton;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  * MainPresenter created to show MainActivity.
- *
+ * <p/>
  * Created by Admin on 18.05.2015.
  */
 @Singleton
@@ -30,8 +28,12 @@ public class MainPresenter extends Presenter {
         this.view = view;
     }
 
-    public void createNew() {
-        mNavigator.openNewPlayerActivity();
+    public void createNew(int requestCode) {
+        mNavigator.startNewPlayerActivityForResult(requestCode);
+    }
+
+    public void add(Intent data) {
+        data.getStringExtra(KeyExtra.NEW_PLAYER_NAME);
     }
 
     /**

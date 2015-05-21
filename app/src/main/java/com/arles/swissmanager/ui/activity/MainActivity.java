@@ -1,5 +1,6 @@
 package com.arles.swissmanager.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
@@ -23,10 +24,14 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements MainPresenter.IView {
 
-    @InjectView(R.id.toolbar) Toolbar mToolbar;
-    @InjectView(R.id.fab_add) ImageButton mFAButton;
+    @InjectView(R.id.toolbar)
+    Toolbar mToolbar;
+    @InjectView(R.id.fab_add)
+    ImageButton mFAButton;
+    @Inject
+    MainPresenter mMainPresenter;
 
-    @Inject MainPresenter mMainPresenter;
+    private static final int REQUEST_CODE_CREATE_NEW = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +75,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView {
 
     @OnClick(R.id.fab_add)
     public void faButtonCreateNew() {
-        mMainPresenter.createNew();
+        mMainPresenter.createNew(REQUEST_CODE_CREATE_NEW);
     }
 
     private void setUpNavDrawerFragment() {
@@ -79,5 +84,13 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView {
                 findViewById(R.id.fragment_navigation_drawer),
                 (DrawerLayout) findViewById(R.id.drawer_layout),
                 mToolbar);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_CREATE_NEW) {
+            mMainPresenter.add(data);
+        }
     }
 }
