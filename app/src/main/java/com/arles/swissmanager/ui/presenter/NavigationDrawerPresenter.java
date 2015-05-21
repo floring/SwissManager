@@ -28,6 +28,11 @@ public class NavigationDrawerPresenter extends Presenter {
         mView = view;
     }
 
+    @Override
+    public void initializeViewComponent() {
+        // Empty
+    }
+
     /**
      * View interface created to abstract the view implementation used in this presenter.
      */

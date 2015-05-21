@@ -24,10 +24,15 @@ public class NewPlayerPresenter extends Presenter {
 
     public void bundleData(CharSequence name) {
         if (!TextUtils.isEmpty(name)) {
-            Intent intent = new Intent().putExtra(KeyExtra.NEW_PLAYER_NAME, name);
+            Intent intent = new Intent().putExtra(KeyExtra.NEW_PLAYER_NAME, name.toString());
             mView.sendDataToLaunchActivity(intent);
-            mView.close();
         }
+        mView.close();
+    }
+
+    @Override
+    public void initializeViewComponent() {
+        // Empty
     }
 
     /**

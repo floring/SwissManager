@@ -16,7 +16,7 @@ import javax.inject.Singleton;
 @Singleton
 public class MainPresenter extends Presenter {
 
-    private IView view;
+    private IView mView;
     private Navigator mNavigator;
 
     @Inject
@@ -25,7 +25,7 @@ public class MainPresenter extends Presenter {
     }
 
     public void setView(IView view) {
-        this.view = view;
+        mView = view;
     }
 
     public void createNew(int requestCode) {
@@ -33,14 +33,22 @@ public class MainPresenter extends Presenter {
     }
 
     public void add(Intent data) {
-        data.getStringExtra(KeyExtra.NEW_PLAYER_NAME);
+        String str = data.getStringExtra(KeyExtra.NEW_PLAYER_NAME);
+        mView.addRecyclerItem(str);
+    }
+
+    @Override
+    public void initializeViewComponent() {
+        mView.setViewComponent();
     }
 
     /**
      * View interface created to abstract the view implementation used in this presenter.
      */
     public interface IView {
-
+        public void setViewComponent();
+        public void addRecyclerItem(String itemTitle);
+        public void removeRecyclerItem();
     }
 
 }

@@ -24,4 +24,9 @@ public abstract class Presenter {
      * Called when the presenter is paused.
      */
     //public abstract void pause();
+
+    /**
+     * Called when activity/fragment (view) must be initialized.
+     */
+    public abstract void initializeViewComponent();
 }

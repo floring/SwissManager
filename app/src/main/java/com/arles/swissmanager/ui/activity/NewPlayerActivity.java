@@ -22,13 +22,10 @@ import butterknife.InjectView;
 
 public class NewPlayerActivity extends BaseActivity implements NewPlayerPresenter.IView {
 
-    public static final String ACTIVITY_TITLE = "Add new player";
+    public static final int ACTIVITY_TITLE = R.string.title_activity_new_player;
 
-
-    @InjectView(R.id.toolbar)
-    Toolbar mToolbar;
-    @Inject
-    NewPlayerPresenter mPresenter;
+    @InjectView(R.id.toolbar) Toolbar mToolbar;
+    @Inject NewPlayerPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

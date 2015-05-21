@@ -3,12 +3,15 @@ package com.arles.swissmanager.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageButton;
+import android.view.View;
 
 import com.arles.swissmanager.R;
+import com.arles.swissmanager.ui.adapter.RecyclerViewAdapter;
 import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
 import com.arles.swissmanager.ui.presenter.MainPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
@@ -22,14 +25,15 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 
-public class MainActivity extends BaseActivity implements MainPresenter.IView {
+public class MainActivity extends BaseActivity implements MainPresenter.IView, RecyclerViewAdapter.OnRecyclerViewClickListener {
 
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
-    @InjectView(R.id.fab_add)
-    ImageButton mFAButton;
+    @InjectView(R.id.recycler_view_players) RecyclerView mRecyclerView;
     @Inject
     MainPresenter mMainPresenter;
+
+    private RecyclerViewAdapter mAdapter;
 
     private static final int REQUEST_CODE_CREATE_NEW = 1;
 
@@ -38,9 +42,8 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         injectViews();
-
-        setUpNavDrawerFragment();
         mMainPresenter.setView(this);
+        mMainPresenter.initializeViewComponent();
     }
 
     @Override
@@ -92,5 +95,32 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView {
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_CREATE_NEW) {
             mMainPresenter.add(data);
         }
+    }
+
+    @Override
+    public void onRecyclerItemClick(View view, int position) {
+        //Player player = mAdapter.getItem(position);
+    }
+
+    private void setRecyclerView() {
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new RecyclerViewAdapter();
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void setViewComponent() {
+        setUpNavDrawerFragment();
+        setRecyclerView();
+    }
+
+    @Override
+    public void addRecyclerItem(String itemTitle) {
+        mAdapter.addPlayer(itemTitle);
+    }
+
+    @Override
+    public void removeRecyclerItem() {
+
     }
 }
