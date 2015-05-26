@@ -6,9 +6,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.ui.adapter.RecyclerViewAdapter;
@@ -23,6 +25,8 @@ import javax.inject.Inject;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
+import butterknife.OnItemClick;
+import butterknife.OnTouch;
 
 
 public class MainActivity extends BaseActivity implements MainPresenter.IView, RecyclerViewAdapter.OnRecyclerViewClickListener {
@@ -77,7 +81,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, R
     }
 
     @OnClick(R.id.fab_add)
-    public void faButtonCreateNew() {
+    public void onFaButtonClick() {
         mMainPresenter.createNew(REQUEST_CODE_CREATE_NEW);
     }
 
@@ -100,12 +104,15 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, R
     @Override
     public void onRecyclerItemClick(View view, int position) {
         //Player player = mAdapter.getItem(position);
+        Log.i("TTTT", "lalal");
+        Toast.makeText(getApplicationContext(), "lalal", Toast.LENGTH_SHORT).show();
     }
 
     private void setRecyclerView() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new RecyclerViewAdapter();
         mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setClickListener(this);
     }
 
     @Override

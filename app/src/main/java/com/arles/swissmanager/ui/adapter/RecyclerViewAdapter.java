@@ -78,7 +78,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
 
-    public void setClickListener(OnRecyclerViewClickListener listener) {
+    public void setClickListener(final OnRecyclerViewClickListener listener) {
         mListener = listener;
     }
 
@@ -90,6 +90,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public ViewHolder(View view) {
             super(view);
             ButterKnife.inject(this, view);
+            view.setOnClickListener(this);
         }
 
         @Override
@@ -100,7 +101,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    public static interface OnRecyclerViewClickListener {
+    public interface OnRecyclerViewClickListener {
         public void onRecyclerItemClick(View view, int position);
     }
 }
