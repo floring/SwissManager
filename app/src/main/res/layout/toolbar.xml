@@ -7,6 +7,7 @@
     android:background="@color/primaryColor"
     app:theme="@style/ThemeOverlay.AppCompat.Dark"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+    android:elevation="8dp"
     android:paddingTop="@dimen/app_bar_top_padding"    >
 
 </android.support.v7.widget.Toolbar>

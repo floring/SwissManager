@@ -5,7 +5,7 @@
     <color name="accentColor">#FF4081</color>
     <color name="primaryLightColor">#C5CAE9</color>
     <color name="primaryTextColor">#212121</color>
-    <color name="secondaryTextColor">#727272</color>
+    <color name="secondaryTextColor">#767676</color>
     <color name="iconsColor">#FFFFFF</color>
-    <color name="dividerColor">#B6B6B6</color>
+    <color name="dividerColor">#e5e5e5</color>
 </resources>

@@ -77,11 +77,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }, NOTIFY_DELAY);
     }
 
-
-    public void setClickListener(final OnRecyclerViewClickListener listener) {
-        mListener = listener;
-    }
-
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @InjectView(R.id.text_view_player_name_item) TextView mTextView;

@@ -3,6 +3,7 @@ package com.arles.swissmanager.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +18,7 @@ import com.arles.swissmanager.ui.adapter.RecyclerViewAdapter;
 import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
 import com.arles.swissmanager.ui.presenter.MainPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
+import com.arles.swissmanager.utils.DividerItemDecoration;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -110,10 +112,12 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, R
 
     private void setRecyclerView() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this));
         mAdapter = new RecyclerViewAdapter();
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setClickListener(this);
     }
+
+
 
     @Override
     public void setViewComponent() {
