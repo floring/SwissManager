@@ -1,5 +1,7 @@
 package com.arles.swissmanager.ui.adapter;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +12,8 @@ import android.widget.TextView;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.ui.model.Player;
+import com.arles.swissmanager.utils.CircleIconDrawable;
+import com.arles.swissmanager.utils.ColorGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.mTextView.setText(mPlayers.get(position).getName());
-        holder.mImageView.setImageResource(R.drawable.ic_launcher);
+        holder.setImageDrawable();
     }
 
     @Override
@@ -86,6 +90,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(view);
             ButterKnife.inject(this, view);
             view.setOnClickListener(this);
+        }
+
+        public void setImageDrawable() {
+            final int imgSize = 40;
+            CircleIconDrawable drawable = CircleIconDrawable.builder()
+                    .beginConfig()
+                    .width(imgSize)
+                    .height(imgSize)
+                    .endConfig()
+                    .buildRound(getIconTitle(), ColorGenerator.MATERIAL.getRandomColor());
+            mImageView.setImageDrawable(drawable);
+        }
+
+        private String getIconTitle() {
+            return String.valueOf(mTextView.getText().charAt(0));
         }
 
         @Override
