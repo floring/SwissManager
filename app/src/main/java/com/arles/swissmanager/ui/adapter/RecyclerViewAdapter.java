@@ -1,7 +1,5 @@
 package com.arles.swissmanager.ui.adapter;
 
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -95,10 +93,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public void setImageDrawable() {
             final int imgSize = 40;
             CircleIconDrawable drawable = CircleIconDrawable.builder()
-                    .beginConfig()
+                    .startConfiguration()
                     .width(imgSize)
                     .height(imgSize)
-                    .endConfig()
+                    .endConfiguration()
                     .buildRound(getIconTitle(), ColorGenerator.MATERIAL.getRandomColor());
             mImageView.setImageDrawable(drawable);
         }

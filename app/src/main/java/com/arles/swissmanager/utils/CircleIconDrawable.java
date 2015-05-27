@@ -14,54 +14,54 @@ import android.graphics.drawable.ShapeDrawable;
  */
 public class CircleIconDrawable extends ShapeDrawable {
 
-    private final Paint textPaint;
-    private final Paint borderPaint;
     private static final float SHADE_FACTOR = 0.9f;
-    private final String text;
-    private final int color;
-    private final RectShape shape;
-    private final int height;
-    private final int width;
-    private final int fontSize;
-    private final float radius;
-    private final int borderThickness;
+
+    private final Paint mTextPaint;
+    private final Paint mBorderPaint;
+    private final String mText;
+    private final int mColor;
+    private final RectShape mShape;
+    private final int mHeight;
+    private final int mWidth;
+    private final int mFontSize;
+    private final float mRadius;
+    private final int mBorderThickness;
 
     private CircleIconDrawable(Builder builder) {
-        super(builder.shape);
+        super(builder.mShape);
 
-        // shape properties
-        shape = builder.shape;
-        height = builder.height;
-        width = builder.width;
-        radius = builder.radius;
+        // mShape properties
+        mShape = builder.mShape;
+        mHeight = builder.mHeight;
+        mWidth = builder.mWidth;
+        mRadius = builder.radius;
 
-        // text and color
-        text = builder.toUpperCase ? builder.text.toUpperCase() : builder.text;
-        color = builder.color;
+        // mText and mColor
+        mText = builder.toUpperCase ? builder.mText.toUpperCase() : builder.mText;
+        mColor = builder.mColor;
 
-        // text paint settings
-        fontSize = builder.fontSize;
-        textPaint = new Paint();
-        textPaint.setColor(builder.textColor);
-        textPaint.setAntiAlias(true);
-        textPaint.setFakeBoldText(builder.isBold);
-        textPaint.setStyle(Paint.Style.FILL);
-        textPaint.setTypeface(builder.font);
-        textPaint.setTextAlign(Paint.Align.CENTER);
-        textPaint.setStrokeWidth(builder.borderThickness);
+        // mText paint settings
+        mFontSize = builder.mFontSize;
+        mTextPaint = new Paint();
+        mTextPaint.setColor(builder.mTextColor);
+        mTextPaint.setAntiAlias(true);
+        mTextPaint.setFakeBoldText(builder.isBold);
+        mTextPaint.setStyle(Paint.Style.FILL);
+        mTextPaint.setTypeface(builder.mFont);
+        mTextPaint.setTextAlign(Paint.Align.CENTER);
+        mTextPaint.setStrokeWidth(builder.mBorderThickness);
 
         // border paint settings
-        borderThickness = builder.borderThickness;
-        borderPaint = new Paint();
-        borderPaint.setColor(getDarkerShade(color));
-        borderPaint.setStyle(Paint.Style.STROKE);
-        borderPaint.setStrokeWidth(borderThickness);
+        mBorderThickness = builder.mBorderThickness;
+        mBorderPaint = new Paint();
+        mBorderPaint.setColor(getDarkerShade(mColor));
+        mBorderPaint.setStyle(Paint.Style.STROKE);
+        mBorderPaint.setStrokeWidth(mBorderThickness);
 
-        // drawable paint color
+        // drawable paint mColor
         Paint paint = getPaint();
-        paint.setColor(color);
+        paint.setColor(mColor);
         paint.setFlags(Paint.ANTI_ALIAS_FLAG);
-
     }
 
     private int getDarkerShade(int color) {
@@ -75,21 +75,20 @@ public class CircleIconDrawable extends ShapeDrawable {
         super.draw(canvas);
         Rect r = getBounds();
 
-
         // draw border
-        if (borderThickness > 0) {
+        if (mBorderThickness > 0) {
             drawBorder(canvas);
         }
 
         int count = canvas.save();
         canvas.translate(r.left, r.top);
 
-        // draw text
-        int width = this.width < 0 ? r.width() : this.width;
-        int height = this.height < 0 ? r.height() : this.height;
-        int fontSize = this.fontSize < 0 ? (Math.min(width, height) / 2) : this.fontSize;
-        textPaint.setTextSize(fontSize);
-        canvas.drawText(text, width / 2, height / 2 - ((textPaint.descent() + textPaint.ascent()) / 2), textPaint);
+        // draw mText
+        int width = mWidth < 0 ? r.width() : mWidth;
+        int height = mHeight < 0 ? r.height() : mHeight;
+        int fontSize = mFontSize < 0 ? (Math.min(width, height) / 2) : mFontSize;
+        mTextPaint.setTextSize(fontSize);
+        canvas.drawText(mText, width / 2, height / 2 - ((mTextPaint.descent() + mTextPaint.ascent()) / 2), mTextPaint);
 
         canvas.restoreToCount(count);
 
@@ -97,27 +96,27 @@ public class CircleIconDrawable extends ShapeDrawable {
 
     private void drawBorder(Canvas canvas) {
         RectF rect = new RectF(getBounds());
-        rect.inset(borderThickness/2, borderThickness/2);
+        rect.inset(mBorderThickness /2, mBorderThickness /2);
 
-        if (shape instanceof OvalShape) {
-            canvas.drawOval(rect, borderPaint);
+        if (mShape instanceof OvalShape) {
+            canvas.drawOval(rect, mBorderPaint);
         }
-        else if (shape instanceof RoundRectShape) {
-            canvas.drawRoundRect(rect, radius, radius, borderPaint);
+        else if (mShape instanceof RoundRectShape) {
+            canvas.drawRoundRect(rect, mRadius, mRadius, mBorderPaint);
         }
         else {
-            canvas.drawRect(rect, borderPaint);
+            canvas.drawRect(rect, mBorderPaint);
         }
     }
 
     @Override
     public void setAlpha(int alpha) {
-        textPaint.setAlpha(alpha);
+        mTextPaint.setAlpha(alpha);
     }
 
     @Override
     public void setColorFilter(ColorFilter cf) {
-        textPaint.setColorFilter(cf);
+        mTextPaint.setColorFilter(cf);
     }
 
     @Override
@@ -127,117 +126,108 @@ public class CircleIconDrawable extends ShapeDrawable {
 
     @Override
     public int getIntrinsicWidth() {
-        return width;
+        return mWidth;
     }
 
     @Override
     public int getIntrinsicHeight() {
-        return height;
+        return mHeight;
     }
 
     public static IShapeBuilder builder() {
         return new Builder();
     }
 
-    public static class Builder implements IConfigBuilder, IShapeBuilder, IBuilder {
+    public static class Builder implements IConfigurationBuilder, IShapeBuilder, IBuilder {
 
-        private String text;
-
-        private int color;
-
-        private int borderThickness;
-
-        private int width;
-
-        private int height;
-
-        private Typeface font;
-
-        private RectShape shape;
-
-        public int textColor;
-
-        private int fontSize;
-
+        private String mText;
+        private int mColor;
+        private int mBorderThickness;
+        private int mWidth;
+        private int mHeight;
+        private Typeface mFont;
+        private RectShape mShape;
+        public int mTextColor;
+        private int mFontSize;
         private boolean isBold;
-
         private boolean toUpperCase;
+        private static final String FONT = "sans-serif-light";
 
         public float radius;
 
         private Builder() {
-            text = "";
-            color = Color.GRAY;
-            textColor = Color.WHITE;
-            borderThickness = 0;
-            width = -1;
-            height = -1;
-            shape = new RectShape();
-            font = Typeface.create("sans-serif-light", Typeface.NORMAL);
-            fontSize = -1;
+            mText = "";
+            mColor = Color.GRAY;
+            mTextColor = Color.WHITE;
+            mBorderThickness = 0;
+            mWidth = -1;
+            mHeight = -1;
+            mShape = new RectShape();
+            mFont = Typeface.create(FONT, Typeface.NORMAL);
+            mFontSize = -1;
             isBold = false;
             toUpperCase = false;
         }
 
-        public IConfigBuilder width(int width) {
-            this.width = width;
+        public IConfigurationBuilder width(int width) {
+            mWidth = width;
             return this;
         }
 
-        public IConfigBuilder height(int height) {
-            this.height = height;
+        public IConfigurationBuilder height(int height) {
+            mHeight = height;
             return this;
         }
 
-        public IConfigBuilder textColor(int color) {
-            this.textColor = color;
+        public IConfigurationBuilder textColor(int color) {
+            mTextColor = color;
             return this;
         }
 
-        public IConfigBuilder withBorder(int thickness) {
-            this.borderThickness = thickness;
+        public IConfigurationBuilder withBorder(int thickness) {
+            mBorderThickness = thickness;
             return this;
         }
 
-        public IConfigBuilder useFont(Typeface font) {
-            this.font = font;
+        public IConfigurationBuilder useFont(Typeface font) {
+            mFont = font;
             return this;
         }
 
-        public IConfigBuilder fontSize(int size) {
-            this.fontSize = size;
+        public IConfigurationBuilder fontSize(int size) {
+            mFontSize = size;
             return this;
         }
 
-        public IConfigBuilder bold() {
-            this.isBold = true;
+        public IConfigurationBuilder bold() {
+            isBold = true;
             return this;
         }
 
-        public IConfigBuilder toUpperCase() {
-            this.toUpperCase = true;
-            return this;
-        }
-
-        @Override
-        public IConfigBuilder beginConfig() {
+        public IConfigurationBuilder toUpperCase() {
+            toUpperCase = true;
             return this;
         }
 
         @Override
-        public IShapeBuilder endConfig() {
+        public IConfigurationBuilder startConfiguration() {
+            return this;
+        }
+
+        @Override
+        public IShapeBuilder endConfiguration() {
             return this;
         }
 
         @Override
         public IBuilder rect() {
-            this.shape = new RectShape();
+            mShape = new RectShape();
             return this;
         }
 
         @Override
         public IBuilder round() {
-            this.shape = new OvalShape();
+            mShape = new OvalShape();
             return this;
         }
 
@@ -245,7 +235,7 @@ public class CircleIconDrawable extends ShapeDrawable {
         public IBuilder roundRect(int radius) {
             this.radius = radius;
             float[] radii = {radius, radius, radius, radius, radius, radius, radius, radius};
-            this.shape = new RoundRectShape(radii, null, null);
+            mShape = new RoundRectShape(radii, null, null);
             return this;
         }
 
@@ -269,30 +259,30 @@ public class CircleIconDrawable extends ShapeDrawable {
 
         @Override
         public CircleIconDrawable build(String text, int color) {
-            this.color = color;
-            this.text = text;
+            mColor = color;
+            mText = text;
             return new CircleIconDrawable(this);
         }
     }
 
-    public interface IConfigBuilder {
-        public IConfigBuilder width(int width);
+    public interface IConfigurationBuilder {
+        public IConfigurationBuilder width(int width);
 
-        public IConfigBuilder height(int height);
+        public IConfigurationBuilder height(int height);
 
-        public IConfigBuilder textColor(int color);
+        public IConfigurationBuilder textColor(int color);
 
-        public IConfigBuilder withBorder(int thickness);
+        public IConfigurationBuilder withBorder(int thickness);
 
-        public IConfigBuilder useFont(Typeface font);
+        public IConfigurationBuilder useFont(Typeface font);
 
-        public IConfigBuilder fontSize(int size);
+        public IConfigurationBuilder fontSize(int size);
 
-        public IConfigBuilder bold();
+        public IConfigurationBuilder bold();
 
-        public IConfigBuilder toUpperCase();
+        public IConfigurationBuilder toUpperCase();
 
-        public IShapeBuilder endConfig();
+        public IShapeBuilder endConfiguration();
     }
 
     public static interface IBuilder {
@@ -302,7 +292,7 @@ public class CircleIconDrawable extends ShapeDrawable {
 
     public static interface IShapeBuilder {
 
-        public IConfigBuilder beginConfig();
+        public IConfigurationBuilder startConfiguration();
 
         public IBuilder rect();
 
