@@ -2,6 +2,7 @@ package com.arles.swissmanager.ui.adapter;
 
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private final int NOTIFY_DELAY = 500;
 
     private List<Player> mPlayers = new ArrayList<>();
-    private OnRecyclerViewClickListener mListener;
+    private SparseBooleanArray mSelectedItems = new SparseBooleanArray();
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -42,6 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.mTextView.setText(mPlayers.get(position).getName());
         holder.setImageDrawable();
+        holder.itemView.setActivated(mSelectedItems.get(position, false));
     }
 
     @Override
@@ -79,41 +81,59 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }, NOTIFY_DELAY);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public void toggleSelection(int position) {
+        if(mSelectedItems.get(position, false)) {
+            mSelectedItems.delete(position);
+        } else {
+            mSelectedItems.put(position, true);
+        }
+        notifyItemChanged(position);
+    }
+
+    public void clearSelection() {
+        mSelectedItems.clear();
+        notifyDataSetChanged();
+    }
+
+    public int getSelectedItemCount() {
+        return mSelectedItems.size();
+    }
+
+    public List<Integer> getSelectedItems() {
+        List<Integer> items = new ArrayList<Integer>(mSelectedItems.size());
+        for(int i = 0; i < mSelectedItems.size(); ++i) {
+            items.add(mSelectedItems.keyAt(i));
+        }
+        return items;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         @InjectView(R.id.text_view_player_name_item) TextView mTextView;
         @InjectView(R.id.image_view_player_item) ImageView mImageView;
+        private Integer color = null;
 
         public ViewHolder(View view) {
             super(view);
             ButterKnife.inject(this, view);
-            view.setOnClickListener(this);
         }
 
         public void setImageDrawable() {
             final int imgSize = 40;
+            if(color == null) {
+                color = ColorGenerator.MATERIAL.getRandomColor();
+            }
             CircleIconDrawable drawable = CircleIconDrawable.builder()
                     .startConfiguration()
                     .width(imgSize)
                     .height(imgSize)
                     .endConfiguration()
-                    .buildRound(getIconTitle(), ColorGenerator.MATERIAL.getRandomColor());
+                    .buildRound(getIconTitle(), color);
             mImageView.setImageDrawable(drawable);
         }
 
         private String getIconTitle() {
             return String.valueOf(mTextView.getText().charAt(0));
         }
-
-        @Override
-        public void onClick(View v) {
-            if (mListener != null) {
-                mListener.onRecyclerItemClick(v, getPosition());
-            }
-        }
-    }
-
-    public interface OnRecyclerViewClickListener {
-        public void onRecyclerItemClick(View view, int position);
     }
 }

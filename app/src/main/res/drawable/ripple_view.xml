@@ -10,4 +10,5 @@
             <solid android:color="@android:color/white"/>
         </shape>
     </item>
+    <item android:drawable="@drawable/statelist_item_background"></item>
 </selector>

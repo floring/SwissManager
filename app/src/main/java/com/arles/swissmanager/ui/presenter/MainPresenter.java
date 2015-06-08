@@ -37,6 +37,10 @@ public class MainPresenter extends Presenter {
         mView.addRecyclerItem(str);
     }
 
+    public void remove() {
+        mView.removeRecyclerItem();
+    }
+
     @Override
     public void initializeViewComponent() {
         mView.setViewComponent();

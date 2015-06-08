@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.arles.swissmanager.R;
@@ -20,6 +21,8 @@ import javax.inject.Inject;
  *
  */
 public class NavigationDrawerFragment extends BaseFragment implements NavigationDrawerPresenter.INavigationView {
+
+    private ActionBarDrawerToggle mDrawerToggle;
 
     @Inject
     NavigationDrawerPresenter navDrawerPresenter;
@@ -40,7 +43,7 @@ public class NavigationDrawerFragment extends BaseFragment implements Navigation
     }
 
     public void setUp(View navigationView, DrawerLayout drawerLayout, final Toolbar toolbar) {
-        final ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
+        mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
 
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -60,13 +63,14 @@ public class NavigationDrawerFragment extends BaseFragment implements Navigation
             }
         };
         //drawerLayout.openDrawer(navigationView);
-        drawerLayout.setDrawerListener(drawerToggle);
+        drawerLayout.setDrawerListener(mDrawerToggle);
         drawerLayout.post(new Runnable() {
             @Override
             public void run() {
-                drawerToggle.syncState();
+                mDrawerToggle.syncState();
             }
         });
 
     }
+
 }

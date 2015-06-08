@@ -8,4 +8,6 @@
     <color name="secondaryTextColor">#767676</color>
     <color name="iconsColor">#FFFFFF</color>
     <color name="dividerColor">#e5e5e5</color>
+    <color name="activatedColorDark">#757575</color>
+    <color name="activatedColor">#ececec</color>
 </resources>

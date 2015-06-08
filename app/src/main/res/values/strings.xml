@@ -9,4 +9,8 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="title_activity_new_player">Add new player</string>
+
+    <string name="action_remove">Remove</string>
+
+    <string name="selected_count">%1$s</string>
 </resources>
