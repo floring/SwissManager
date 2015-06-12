@@ -17,8 +17,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.arles.swissmanager.R;
+import com.arles.swissmanager.SwissManagerApplication;
+import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.ui.adapter.RecyclerViewAdapter;
 import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
+import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.ui.presenter.MainPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
 import com.arles.swissmanager.utils.DividerItemDecoration;
@@ -34,11 +37,12 @@ import butterknife.OnItemClick;
 import butterknife.OnTouch;
 
 
-public class MainActivity extends BaseActivity implements MainPresenter.IView, ActionMode.Callback, RecyclerView.OnItemTouchListener {
+public class MainActivity extends BaseActivity implements MainPresenter.IView, ActionMode.Callback, RecyclerView.OnItemTouchListener, NavigationDrawerFragment.INavigationDrawerListener {
 
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
-    @InjectView(R.id.recycler_view_players) RecyclerView mRecyclerView;
+    @InjectView(R.id.recycler_view_players)
+    RecyclerView mRecyclerView;
     @Inject
     MainPresenter mMainPresenter;
 
@@ -110,7 +114,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, A
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this));
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.addOnItemTouchListener(this);
-        mAdapter = new RecyclerViewAdapter();
+        mAdapter = new RecyclerViewAdapter(SwissManagerApplication.getTestData());
         mRecyclerView.setAdapter(mAdapter);
         mGestureDetector = new GestureDetector(this, new RecyclerViewGestureListener());
     }
@@ -145,14 +149,15 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, A
 
     public void onRecyclerItemTap(View view) {
         int id = mRecyclerView.getChildPosition(view);
-        if(mActionMode != null) {
+        if (mActionMode != null) {
             toggleItem(id);
             return;
         }
         // really tap
     }
 
-    /** Inflate a ContextActionMode menu
+    /**
+     * Inflate a ContextActionMode menu
      */
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -196,13 +201,22 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, A
 
     @Override
     public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-
     }
 
     private void toggleItem(int id) {
         mAdapter.toggleSelection(id);
         String title = getString(R.string.selected_count, mAdapter.getSelectedItemCount());
         mActionMode.setTitle(title);
+    }
+
+    @Override
+    public List<Player> getPlayersDataListener() {
+        return mAdapter.getPlayers();
+    }
+
+    @Override
+    public void sendPlayerDataListener(List<Player> list) {
+        mAdapter.setPlayers(list);
     }
 
     private class RecyclerViewGestureListener extends GestureDetector.SimpleOnGestureListener {
@@ -217,7 +231,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, A
         @Override
         public void onLongPress(MotionEvent e) {
             View view = mRecyclerView.findChildViewUnder(e.getX(), e.getY());
-            if(mActionMode == null) {
+            if (mActionMode == null) {
                 mActionMode = startActionMode(MainActivity.this);
                 toggleItem(mRecyclerView.getChildPosition(view));
                 super.onLongPress(e);

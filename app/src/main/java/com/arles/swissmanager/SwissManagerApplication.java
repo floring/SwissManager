@@ -4,7 +4,9 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.arles.swissmanager.di.RootModule;
+import com.arles.swissmanager.ui.model.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dagger.ObjectGraph;
@@ -22,10 +24,15 @@ public class SwissManagerApplication extends Application {
 
     private ObjectGraph objectGraph;
 
+    private static List<Player> mDataList;
+    private static final String[] NAMES_LIST = new String[] {"John", "Alex", "David", "Martin", "Brian", "Alan", "Sam", "Peter", "Richard"};
+
     @Override
     public void onCreate() {
         super.onCreate();
         initializeDependencyInjector();
+
+        setTestData();
     }
 
     /**
@@ -56,5 +63,16 @@ public class SwissManagerApplication extends Application {
         objectGraph = ObjectGraph.create(new RootModule(this));
         objectGraph.inject(this);
         objectGraph.injectStatics();
+    }
+
+    private void setTestData() {
+        mDataList = new ArrayList<>();
+        for(int i = 0; i < NAMES_LIST.length; ++i) {
+            mDataList.add(new Player(NAMES_LIST[i]));
+        }
+    }
+
+    public static final List<Player> getTestData() {
+        return new ArrayList<Player>(mDataList);
     }
 }

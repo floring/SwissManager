@@ -1,10 +1,10 @@
 package com.arles.swissmanager.ui.presenter;
 
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
+import com.arles.swissmanager.algorithm.Match;
+import com.arles.swissmanager.algorithm.Sorter;
+import com.arles.swissmanager.ui.model.Player;
 
-import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -22,7 +22,8 @@ public class NavigationDrawerPresenter extends Presenter {
     private INavigationView mView;
 
     @Inject
-    public NavigationDrawerPresenter() { }
+    public NavigationDrawerPresenter() {
+    }
 
     public void setView(INavigationView view) {
         mView = view;
@@ -30,13 +31,28 @@ public class NavigationDrawerPresenter extends Presenter {
 
     @Override
     public void initializeViewComponent() {
-        // Empty
+    }
+
+    public void sortByPrestige() {
+        Sorter sorter = initializeSorter();
+        mView.sendDataToActivity(sorter.sort());
+    }
+
+    public void makePlayerPairs() {
+        Sorter sorter = initializeSorter();
+        mView.sendDataToActivity(sorter.doPairsBySwiss());
+    }
+
+    private Sorter initializeSorter() {
+        List<Player> list = mView.getDataFromActivity();
+        return new Sorter(list);
     }
 
     /**
      * View interface created to abstract the view implementation used in this presenter.
      */
     public interface INavigationView {
-
+        List<Player> getDataFromActivity();
+        void sendDataToActivity(List<Player> list);
     }
 }

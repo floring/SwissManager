@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arles.swissmanager.R;
+import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.utils.CircleIconDrawable;
 import com.arles.swissmanager.utils.ColorGenerator;
@@ -29,6 +30,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private List<Player> mPlayers = new ArrayList<>();
     private SparseBooleanArray mSelectedItems = new SparseBooleanArray();
+
+    public RecyclerViewAdapter(List<Player> list) {
+        mPlayers = list;
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -79,6 +84,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 notifyItemRemoved(position);
             }
         }, NOTIFY_DELAY);
+    }
+
+    public List<Player> getPlayers() {
+        return mPlayers;
+    }
+
+    public void setPlayers(List<Player> playersList) {
+        mPlayers = playersList;
     }
 
     public void toggleSelection(int position) {

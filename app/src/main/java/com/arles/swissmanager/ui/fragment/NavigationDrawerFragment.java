@@ -4,37 +4,52 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
+import android.app.Activity;
 
 import com.arles.swissmanager.R;
+import com.arles.swissmanager.algorithm.Match;
+import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.ui.presenter.NavigationDrawerPresenter;
 
+import java.util.List;
+
 import javax.inject.Inject;
+
+import butterknife.OnClick;
 
 /**
  * Fragment created to implement navigation draggable panel.
  * This Fragment uses Model View Presenter implementation to implement all the presentation logic.
  * Review NavigationDrawerPresenter to get more info about implementation.
- *
+ * <p/>
  * Created by Admin on 06.05.2015.
- *
  */
 public class NavigationDrawerFragment extends BaseFragment implements NavigationDrawerPresenter.INavigationView {
 
-    private ActionBarDrawerToggle mDrawerToggle;
-
     @Inject
-    NavigationDrawerPresenter navDrawerPresenter;
+    NavigationDrawerPresenter mNavDrawerPresenter;
+    private INavigationDrawerListener mCallback;
 
     public NavigationDrawerFragment() {
         // Required empty public constructor
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mCallback = (INavigationDrawerListener) activity;
+
+        } catch (ClassCastException ex) {
+            throw new ClassCastException(activity.toString() + "must implement INavigationDrawerListener");
+        }
+    }
+
+    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        navDrawerPresenter.setView(this);
+        mNavDrawerPresenter.setView(this);
     }
 
     @Override
@@ -43,7 +58,7 @@ public class NavigationDrawerFragment extends BaseFragment implements Navigation
     }
 
     public void setUp(View navigationView, DrawerLayout drawerLayout, final Toolbar toolbar) {
-        mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
+        final ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
 
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -63,14 +78,40 @@ public class NavigationDrawerFragment extends BaseFragment implements Navigation
             }
         };
         //drawerLayout.openDrawer(navigationView);
-        drawerLayout.setDrawerListener(mDrawerToggle);
+        drawerLayout.setDrawerListener(drawerToggle);
         drawerLayout.post(new Runnable() {
             @Override
             public void run() {
-                mDrawerToggle.syncState();
+                drawerToggle.syncState();
             }
         });
-
     }
 
+    @OnClick(R.id.ll_sort_by_prestige)
+    public void onSortItemClick() {
+        mNavDrawerPresenter.sortByPrestige();
+    }
+
+    @OnClick(R.id.ll_make_pairs)
+    public void onMakePairsItemClick() {
+        mNavDrawerPresenter.makePlayerPairs();
+    }
+
+    @Override
+    public List<Player> getDataFromActivity() {
+        return mCallback.getPlayersDataListener();
+    }
+
+    @Override
+    public void sendDataToActivity(List<Player> list) {
+        mCallback.sendPlayerDataListener(list);
+    }
+
+    /**
+     * INavigationDrawerListener created to allow a Fragment to communicate up to its Activity.
+     */
+    public interface INavigationDrawerListener {
+        List<Player> getPlayersDataListener();
+        void sendPlayerDataListener(List<Player> list);
+    }
 }
