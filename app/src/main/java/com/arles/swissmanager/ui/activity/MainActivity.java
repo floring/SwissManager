@@ -3,22 +3,18 @@ package com.arles.swissmanager.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.ActionMode;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.SwissManagerApplication;
-import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.ui.adapter.RecyclerViewAdapter;
 import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
 import com.arles.swissmanager.ui.model.Player;
@@ -33,14 +29,13 @@ import javax.inject.Inject;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
-import butterknife.OnItemClick;
-import butterknife.OnTouch;
 
 
-public class MainActivity extends BaseActivity implements MainPresenter.IView, ActionMode.Callback, RecyclerView.OnItemTouchListener, NavigationDrawerFragment.INavigationDrawerListener {
+public class MainActivity extends BaseActivity implements MainPresenter.IView, ActionMode.Callback, RecyclerView.OnItemTouchListener {
 
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
+
     @InjectView(R.id.recycler_view_players)
     RecyclerView mRecyclerView;
     @Inject
@@ -84,7 +79,6 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, A
             case R.id.action_settings:
                 break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -207,16 +201,6 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, A
         mAdapter.toggleSelection(id);
         String title = getString(R.string.selected_count, mAdapter.getSelectedItemCount());
         mActionMode.setTitle(title);
-    }
-
-    @Override
-    public List<Player> getPlayersDataListener() {
-        return mAdapter.getPlayers();
-    }
-
-    @Override
-    public void sendPlayerDataListener(List<Player> list) {
-        mAdapter.setPlayers(list);
     }
 
     private class RecyclerViewGestureListener extends GestureDetector.SimpleOnGestureListener {

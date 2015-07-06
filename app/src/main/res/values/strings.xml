@@ -13,4 +13,9 @@
     <string name="action_remove">Remove</string>
 
     <string name="selected_count">%1$s</string>
+
+    <string-array name="tabs">
+        <item>Player</item>
+        <item>Round</item>
+    </string-array>
 </resources>

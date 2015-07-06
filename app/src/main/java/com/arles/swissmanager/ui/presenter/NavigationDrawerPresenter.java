@@ -1,7 +1,7 @@
 package com.arles.swissmanager.ui.presenter;
 
-import com.arles.swissmanager.algorithm.Match;
-import com.arles.swissmanager.algorithm.Sorter;
+import com.arles.swissmanager.algorithm.MatchesCreator;
+import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
 import com.arles.swissmanager.ui.model.Player;
 
 import java.util.List;
@@ -19,13 +19,13 @@ import javax.inject.Singleton;
 @Singleton
 public class NavigationDrawerPresenter extends Presenter {
 
-    private INavigationView mView;
+    private NavigationDrawerFragment mView;
 
     @Inject
     public NavigationDrawerPresenter() {
     }
 
-    public void setView(INavigationView view) {
+    public void setView(NavigationDrawerFragment view) {
         mView = view;
     }
 
@@ -34,18 +34,19 @@ public class NavigationDrawerPresenter extends Presenter {
     }
 
     public void sortByPrestige() {
-        Sorter sorter = initializeSorter();
-        mView.sendDataToActivity(sorter.sort());
+        MatchesCreator sorter = initializeSorter();
+       // mView.sendDataToActivity(sorter.sort());
     }
 
     public void makePlayerPairs() {
-        Sorter sorter = initializeSorter();
-        mView.sendDataToActivity(sorter.doPairsBySwiss());
+        MatchesCreator sorter = initializeSorter();
+       // mView.sendDataToActivity(sorter.doPairsBySwiss());
     }
 
-    private Sorter initializeSorter() {
-        List<Player> list = mView.getDataFromActivity();
-        return new Sorter(list);
+    private MatchesCreator initializeSorter() {
+        //List<Player> list = mView.getDataFromActivity();
+        //return new MatchesCreator(list);
+        return null;
     }
 
     /**

@@ -3,6 +3,7 @@ package com.arles.swissmanager;
 import android.app.Application;
 import android.os.Bundle;
 
+import com.arles.swissmanager.algorithm.Test;
 import com.arles.swissmanager.di.RootModule;
 import com.arles.swissmanager.ui.model.Player;
 
@@ -25,7 +26,7 @@ public class SwissManagerApplication extends Application {
     private ObjectGraph objectGraph;
 
     private static List<Player> mDataList;
-    private static final String[] NAMES_LIST = new String[] {"John", "Alex", "David", "Martin", "Brian", "Alan", "Sam", "Peter", "Richard"};
+    private static final String[] NAMES_LIST = new String[] {"John", "Alex", "David", "Martin", "Brian", "Harry"};
 
     @Override
     public void onCreate() {
@@ -33,6 +34,7 @@ public class SwissManagerApplication extends Application {
         initializeDependencyInjector();
 
         setTestData();
+        //Test.main();
     }
 
     /**
@@ -72,7 +74,7 @@ public class SwissManagerApplication extends Application {
         }
     }
 
-    public static final List<Player> getTestData() {
-        return new ArrayList<Player>(mDataList);
+    public static List<Player> getTestData() {
+        return new ArrayList<>(mDataList);
     }
 }

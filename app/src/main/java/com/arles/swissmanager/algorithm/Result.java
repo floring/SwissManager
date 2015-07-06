@@ -10,6 +10,5 @@ public enum Result {
     DRAW_DRAW,
     LOSE_LOSE,
     DRAW_LOSE,
-    lOSE_DRAW,
-    NONE
+    LOSE_DRAW
 }

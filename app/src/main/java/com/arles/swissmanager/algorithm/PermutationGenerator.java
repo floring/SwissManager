@@ -66,7 +66,7 @@ public class PermutationGenerator {
      *
      * @return
      */
-    public int[] getNext() {
+    public int[] getNextPermutation() {
         if (mNumRemain.equals(mTotal)) {
             mNumRemain = mNumRemain.subtract(BigInteger.ONE);
             return a;

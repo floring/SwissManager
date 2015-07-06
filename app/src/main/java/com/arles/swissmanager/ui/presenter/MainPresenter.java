@@ -50,9 +50,9 @@ public class MainPresenter extends Presenter {
      * View interface created to abstract the view implementation used in this presenter.
      */
     public interface IView {
-        public void setViewComponent();
-        public void addRecyclerItem(String itemTitle);
-        public void removeRecyclerItem();
+        void setViewComponent();
+        void addRecyclerItem(String itemTitle);
+        void removeRecyclerItem();
     }
 
 }

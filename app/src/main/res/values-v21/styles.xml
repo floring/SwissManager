@@ -9,7 +9,7 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:textColorPrimary">@color/primaryTextColor</item>
         <item name="android:textColorSecondary">@color/secondaryTextColor</item>
-        <item name="android:icon">@color/iconsColor</item>
+        <item name="android:icon">@color/secondaryAccentColor</item>
         <item name="android:divider">@color/dividerColor</item>
     </style>
 

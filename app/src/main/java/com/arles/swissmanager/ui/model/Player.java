@@ -1,6 +1,11 @@
 package com.arles.swissmanager.ui.model;
 
+import android.support.annotation.NonNull;
+
+import com.arles.swissmanager.algorithm.Points;
+
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.UUID;
 
 /**
@@ -8,16 +13,12 @@ import java.util.UUID;
  */
 public class Player implements Comparable<Player> {
 
-    public static final int WIN_POINTS = 2;
-    public static final int DRAW_POINTS = 1;
-    public static final int BYE_POINTS = 4;
-    public static final int LOSE_POINTS = 0;
 
     private UUID mUuid;
     private String mName;
     private int mPrestige;
     private boolean mHasBye;
-    private ArrayList<Player> mRivals = new ArrayList<Player>();
+    private LinkedHashSet<Player> mRivals = new LinkedHashSet<>();
 
     private int mSheduledForRound = 1;
     private int mGamesFor;
@@ -54,21 +55,21 @@ public class Player implements Comparable<Player> {
     }
 
     public void won() {
-        mPrestige += WIN_POINTS;
+        mPrestige += Points.WIN;
     }
 
-    public void loss() {
-        mPrestige += LOSE_POINTS;
+    public void lost() {
+        mPrestige += Points.LOSE;
     }
 
     public void draw() {
-        mPrestige += DRAW_POINTS;
+        mPrestige += Points.MODIFIED_WIN;
     }
 
     public void bye() {
         mSheduledForRound++;
         mHasBye = true;
-        mPrestige += BYE_POINTS;
+        mPrestige += Points.BYE;
     }
 
     public boolean hadBye() {
@@ -84,15 +85,8 @@ public class Player implements Comparable<Player> {
         mRivals.add(player);
     }
 
-    public boolean scheduled(int i) {
-        if (i < mSheduledForRound) {
-            return true;
-        }
-        return false;
-    }
-
     @Override
-    public int compareTo(Player another) {
+    public int compareTo(@NonNull Player another) {
         return (mPrestige == another.getPrestige()) ? (another.getGamesFor() - mGamesFor) : (another.getPrestige() - mPrestige);
     }
 }

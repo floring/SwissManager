@@ -25,8 +25,56 @@ import butterknife.OnClick;
  * <p/>
  * Created by Admin on 06.05.2015.
  */
-public class NavigationDrawerFragment extends BaseFragment implements NavigationDrawerPresenter.INavigationView {
+public class NavigationDrawerFragment extends BaseFragment  {
 
+    @Inject
+    NavigationDrawerPresenter mNavDrawerPresenter;
+
+    public NavigationDrawerFragment() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mNavDrawerPresenter.setView(this);
+    }
+
+    @Override
+    protected int getFragmentLayout() {
+        return R.layout.fragment_navigation_drawer;
+    }
+
+    public void setUp(View navigationView, DrawerLayout drawerLayout, final Toolbar toolbar) {
+        final ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getActivity().invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                getActivity().invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView, slideOffset);
+            }
+        };
+        //drawerLayout.openDrawer(navigationView);
+        drawerLayout.setDrawerListener(drawerToggle);
+        drawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                drawerToggle.syncState();
+            }
+        });
+    }
+/*
     @Inject
     NavigationDrawerPresenter mNavDrawerPresenter;
     private INavigationDrawerListener mCallback;
@@ -107,11 +155,11 @@ public class NavigationDrawerFragment extends BaseFragment implements Navigation
         mCallback.sendPlayerDataListener(list);
     }
 
-    /**
-     * INavigationDrawerListener created to allow a Fragment to communicate up to its Activity.
-     */
+
+     /// INavigationDrawerListener created to allow a Fragment to communicate up to its Activity.
+
     public interface INavigationDrawerListener {
         List<Player> getPlayersDataListener();
         void sendPlayerDataListener(List<Player> list);
-    }
+    }*/
 }
