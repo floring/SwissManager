@@ -4,8 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.arles.swissmanager.ui.fragment.Tab1;
-import com.arles.swissmanager.ui.fragment.Tab2;
+import com.arles.swissmanager.ui.fragment.PlayerTabFragment;
+import com.arles.swissmanager.ui.fragment.RoundTabFragment;
 
 /**
  * Created by Admin on 06.07.2015.
@@ -27,12 +27,12 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
         if (position == 0) // if the position is 0 we are returning the First tab
         {
-            Tab1 tab1 = new Tab1();
-            return tab1;
+            PlayerTabFragment playerTabFragment = new PlayerTabFragment();
+            return playerTabFragment;
         } else             // As we are having 2 tabs if the position is now 0 it must be 1 so we are returning second tab
         {
-            Tab2 tab2 = new Tab2();
-            return tab2;
+            RoundTabFragment roundTabFragment = new RoundTabFragment();
+            return roundTabFragment;
         }
     }
 

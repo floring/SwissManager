@@ -132,7 +132,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 
         public void setImageDrawable() {
-            final int imgSize = 40;
+            final int imgSize = 24;
             if(color == null) {
                 color = ColorGenerator.MATERIAL.getRandomColor();
             }
