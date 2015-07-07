@@ -2,36 +2,38 @@ package com.arles.swissmanager.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.GestureDetector;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.SwissManagerApplication;
 import com.arles.swissmanager.ui.adapter.RecyclerViewAdapter;
+import com.arles.swissmanager.ui.presenter.PlayerTabPresenter;
 import com.arles.swissmanager.utils.DividerItemDecoration;
 
+import javax.inject.Inject;
+
 import butterknife.InjectView;
-import butterknife.Optional;
 
 
 /**
  * Created by Admin on 06.07.2015.
  */
-public class PlayerTabFragment extends BaseFragment {
+public class PlayerTabFragment extends BaseFragment implements PlayerTabPresenter.IView {
 
-     @InjectView(R.id.recycler_view_players) RecyclerView mRecyclerView;
+    @InjectView(R.id.recycler_view_players)
+    RecyclerView mRecyclerView;
+    @Inject
+    PlayerTabPresenter mPresenter;
+
     private RecyclerViewAdapter mAdapter;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        injectViews(view);
-        setRecyclerView();
+        mPresenter.setView(this);
+        mPresenter.initializeViewComponent();
     }
 
     @Override
@@ -46,5 +48,10 @@ public class PlayerTabFragment extends BaseFragment {
         mRecyclerView.setHasFixedSize(true);
         mAdapter = new RecyclerViewAdapter(SwissManagerApplication.getTestData());
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void setViewComponent() {
+        setRecyclerView();
     }
 }
