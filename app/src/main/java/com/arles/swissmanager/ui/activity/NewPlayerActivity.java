@@ -11,7 +11,6 @@ import android.widget.EditText;
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.ui.presenter.NewPlayerPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
-import com.arles.swissmanager.utils.KeyExtra;
 
 import java.util.LinkedList;
 import java.util.List;

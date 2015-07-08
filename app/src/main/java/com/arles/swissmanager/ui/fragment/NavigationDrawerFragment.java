@@ -5,18 +5,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.app.Activity;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.algorithm.Match;
-import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.ui.presenter.NavigationDrawerPresenter;
 
-import java.util.List;
-
 import javax.inject.Inject;
-
-import butterknife.OnClick;
 
 /**
  * Fragment created to implement navigation draggable panel.

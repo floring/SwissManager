@@ -2,20 +2,30 @@
     <string name="app_name">SwissManager</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     // Necessary constants for the Drawer
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+
+    // Activity titles
     <string name="title_activity_new_player">Add new player</string>
 
-    <string name="action_remove">Remove</string>
-
+    // Title of contextual action bar in Action Mode
     <string name="selected_count">%1$s</string>
 
+    // Sliding tab strings
+    <string name="tab_player">Player</string>
+    <string name="tab_round">Round</string>
     <string-array name="tabs">
-        <item>Player</item>
-        <item>Round</item>
+        <item>@string/tab_player</item>
+        <item>@string/tab_round</item>
     </string-array>
+
+    // Action name
+    <string name="action_settings">Settings</string>
+    <string name="action_start_round">Start round</string>
+    <string name="action_end_round">End round</string>
+    <string name="action_remove">Remove</string>
+
 </resources>

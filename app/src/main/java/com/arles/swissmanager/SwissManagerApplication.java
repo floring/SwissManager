@@ -1,9 +1,7 @@
 package com.arles.swissmanager;
 
 import android.app.Application;
-import android.os.Bundle;
 
-import com.arles.swissmanager.algorithm.Test;
 import com.arles.swissmanager.di.RootModule;
 import com.arles.swissmanager.ui.model.Player;
 

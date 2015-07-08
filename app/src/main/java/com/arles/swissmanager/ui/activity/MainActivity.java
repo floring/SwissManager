@@ -17,7 +17,6 @@ import com.arles.swissmanager.R;
 import com.arles.swissmanager.SwissManagerApplication;
 import com.arles.swissmanager.ui.adapter.RecyclerViewAdapter;
 import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
-import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.ui.presenter.MainPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
 import com.arles.swissmanager.utils.DividerItemDecoration;
@@ -155,7 +154,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, A
      */
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-        mode.getMenuInflater().inflate(R.menu.menu_main_cam, menu);
+        mode.getMenuInflater().inflate(R.menu.menu_main_action_mode, menu);
         findViewById(R.id.fab_add).setVisibility(View.GONE);
         return true;
     }

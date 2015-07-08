@@ -1,9 +1,10 @@
 package com.arles.swissmanager.di;
 
 import java.lang.annotation.Retention;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 import javax.inject.Qualifier;
+
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * Annotation created to improve Context injection. This annotation is used with @Inject for

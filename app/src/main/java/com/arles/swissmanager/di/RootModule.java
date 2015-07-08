@@ -1,7 +1,6 @@
 package com.arles.swissmanager.di;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 
 import com.arles.swissmanager.SwissManagerApplication;

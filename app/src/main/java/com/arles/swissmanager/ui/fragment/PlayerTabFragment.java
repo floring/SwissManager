@@ -16,7 +16,6 @@ import javax.inject.Inject;
 
 import butterknife.InjectView;
 
-
 /**
  * Created by Admin on 06.07.2015.
  */

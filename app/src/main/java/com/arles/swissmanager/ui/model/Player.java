@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 
 import com.arles.swissmanager.algorithm.Points;
 
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.UUID;
 
