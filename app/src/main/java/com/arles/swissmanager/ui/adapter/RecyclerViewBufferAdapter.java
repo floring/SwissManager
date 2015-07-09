@@ -76,8 +76,10 @@ public class RecyclerViewBufferAdapter extends RecyclerView.Adapter<RecyclerView
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.text_view_buffer_player_name) TextView mTextItem;
-        @InjectView(R.id.button_delete_buffer_player)ImageButton mButtonDelete;
+        @InjectView(R.id.text_view_buffer_player_name)
+        TextView mTextItem;
+        @InjectView(R.id.button_delete_buffer_player)
+        ImageButton mButtonDelete;
 
         public ViewHolder(View itemView) {
             super(itemView);

@@ -2,7 +2,6 @@ package com.arles.swissmanager.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -24,10 +23,12 @@ import javax.inject.Inject;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
+import jp.wasabeef.recyclerview.animators.ScaleInBottomAnimator;
 
 public class NewPlayerActivity extends BaseActivity implements NewPlayerPresenter.IView {
 
     public static final int ACTIVITY_TITLE = R.string.title_activity_new_player;
+    public static final int ANIMATION_DURATION = 2000;
 
     @InjectView(R.id.toolbar) Toolbar mToolbar;
     @InjectView(R.id.edit_text_new_player_name) EditText mInput;
@@ -100,10 +101,12 @@ public class NewPlayerActivity extends BaseActivity implements NewPlayerPresente
 
     private void setRecyclerView() {
         mAdapter = new RecyclerViewBufferAdapter();
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        ScaleInBottomAnimator animator = new ScaleInBottomAnimator();
+        animator.setAddDuration(ANIMATION_DURATION);
+        animator.setRemoveDuration(ANIMATION_DURATION);
+        mRecyclerView.setItemAnimator(animator);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter);
-        // TODO: set some animation
     }
 
     @OnClick(R.id.btn_add_item)
