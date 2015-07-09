@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
- * RecyclerViewAdapter manages Players data model and adapts it to RecyclerView, which is in MainActivity.
+ * RecyclerViewAdapter manages Players data model and adapts it to RecyclerView, which is in TourneyActivity.
  * Created by Admin on 21.05.2015.
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {

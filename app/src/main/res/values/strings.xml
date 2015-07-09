@@ -9,7 +9,7 @@
     <string name="drawer_close">Close</string>
 
     // Activity titles
-    <string name="title_activity_new_player">Add new player</string>
+    <string name="title_activity_new_player">Add new</string>
 
     // Title of contextual action bar in Action Mode
     <string name="selected_count">%1$s</string>

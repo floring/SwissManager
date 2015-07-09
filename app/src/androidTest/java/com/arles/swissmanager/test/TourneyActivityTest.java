@@ -1,13 +1,14 @@
 package com.arles.swissmanager.test;
 
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
+import com.arles.swissmanager.ui.activity.NewPlayerActivity;
 import com.arles.swissmanager.ui.activity.TourneyActivity;
 
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,13 +17,22 @@ import com.arles.swissmanager.R;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeLeft;
 import static android.support.test.espresso.action.ViewActions.swipeRight;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.intent.Intents.intended;
+import static android.support.test.espresso.intent.matcher.BundleMatchers.hasEntry;
+import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
+import static android.support.test.espresso.intent.matcher.IntentMatchers.hasExtras;
+import static android.support.test.espresso.intent.matcher.IntentMatchers.toPackage;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
+
 
 /**
  * Created by Admin on 07.07.2015.
@@ -31,8 +41,11 @@ import static org.hamcrest.Matchers.not;
 @LargeTest
 public class TourneyActivityTest {
 
+    Class<NewPlayerActivity> activityClass = NewPlayerActivity.class;
+    String activityPackage = "com.arles.swissmanager.ui.activity";
+
     @Rule
-    public ActivityTestRule<TourneyActivity> mActivityRule = new ActivityTestRule<>(TourneyActivity.class);
+    public IntentsTestRule<TourneyActivity> mActivityRule = new IntentsTestRule<>(TourneyActivity.class);
 
     /**
      * Tests that action bar item has required actions options
@@ -70,6 +83,19 @@ public class TourneyActivityTest {
         onView(withId(R.id.view_pager)).perform(swipeLeft());
         onView(withId(R.id.fab_add)).check(matches(not(isDisplayed())));
         /*The above approach works if the view is still part of the hierarchy. If it is not, you will get a NoMatchingViewException and you need to use ViewAssertions.doesNotExist*/
+    }
+
+    /**
+     * Tests that floating button launches activity, e.g. sends correct intent
+     */
+    @Test
+    public void testFloatingButtonClick() {
+        onView(withId(R.id.fab_add)).perform(click());
+        intended(
+                hasExtras(allOf(
+                        hasEntry(equalTo("key1"), equalTo("value1")),
+                        hasEntry(equalTo("key2"), equalTo("value2"))))
+                );
     }
 
 }

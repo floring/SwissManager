@@ -32,15 +32,16 @@ public class NewPlayerPresenter extends Presenter {
 
     @Override
     public void initializeViewComponent() {
-        // Empty
+        mView.setViewComponent();
     }
 
     /**
      * View interface created to abstract the view implementation used in this presenter.
      */
     public interface IView {
-        public void sendDataToLaunchActivity(Intent intent);
+        void setViewComponent();
+        void sendDataToLaunchActivity(Intent intent);
 
-        public void close();
+        void close();
     }
 }
