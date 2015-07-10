@@ -1,4 +1,4 @@
-package com.arles.swissmanager.test;
+package com.arles.swissmanager.test.ui;
 
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
@@ -9,6 +9,7 @@ import com.arles.swissmanager.R;
 import com.arles.swissmanager.ui.activity.NewPlayerActivity;
 import com.arles.swissmanager.ui.activity.TourneyActivity;
 
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +34,7 @@ import static org.hamcrest.Matchers.not;
 /**
  * Created by Admin on 07.07.2015.
  */
+@Ignore
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class TourneyActivityTest {

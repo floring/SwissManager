@@ -35,11 +35,11 @@ dependencies {
     provided 'com.squareup.dagger:dagger-compiler:1.2.+'
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'jp.wasabeef:recyclerview-animators:1.2.1@aar'
-
     compile 'com.android.support:support-annotations:22.2.0'
     androidTestCompile 'com.android.support.test:runner:0.3'
     androidTestCompile 'com.android.support.test:rules:0.3'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
     androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.1'
     androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2'
+    compile project(':google-collections-0.8')
 }

@@ -14,7 +14,6 @@ import com.arles.swissmanager.R;
 import com.arles.swissmanager.ui.adapter.RecyclerViewBufferAdapter;
 import com.arles.swissmanager.ui.presenter.NewPlayerPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
-import com.arles.swissmanager.utils.TextUtil;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -85,7 +84,6 @@ public class NewPlayerActivity extends BaseActivity implements NewPlayerPresente
                 onNavigationIconClick();
             }
         });
-
     }
 
     private void onNavigationIconClick() {
@@ -109,15 +107,10 @@ public class NewPlayerActivity extends BaseActivity implements NewPlayerPresente
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    @OnClick(R.id.btn_add_item)
+    @OnClick(R.id.button_add_item)
     public void onAddItemClick() {
-        String text = mInput.getText().toString();
-        if (TextUtil.isValidContent(text)) {
-            mAdapter.addItem(text);
-            mInput.setText("");
-        }
+        mPresenter.add(mInput.getText().toString());
     }
-
 
     @Override
     public void sendDataToLaunchActivity(Intent intent) {
@@ -127,5 +120,15 @@ public class NewPlayerActivity extends BaseActivity implements NewPlayerPresente
     @Override
     public void close() {
         finish();
+    }
+
+    @Override
+    public void addToBufferList(String str) {
+        mAdapter.addItem(str);
+    }
+
+    @Override
+    public void clearInputs() {
+        mInput.setText("");
     }
 }

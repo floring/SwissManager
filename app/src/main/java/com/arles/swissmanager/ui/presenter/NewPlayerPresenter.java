@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 
 import com.arles.swissmanager.utils.KeyExtra;
+import com.arles.swissmanager.utils.TextUtil;
 
 import javax.inject.Inject;
 
@@ -20,6 +21,13 @@ public class NewPlayerPresenter extends Presenter {
 
     public void setView(IView view) {
         mView = view;
+    }
+
+    public void add(String text) {
+        if (TextUtil.isValidContent(text)) {
+            mView.addToBufferList(text);
+            mView.clearInputs();
+        }
     }
 
     public void bundleData(CharSequence name) {
@@ -40,8 +48,13 @@ public class NewPlayerPresenter extends Presenter {
      */
     public interface IView {
         void setViewComponent();
+
         void sendDataToLaunchActivity(Intent intent);
 
         void close();
+
+        void addToBufferList(String str);
+
+        void clearInputs();
     }
 }
