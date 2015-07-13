@@ -23,6 +23,7 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.BundleMatchers.hasEntry;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasExtras;
+import static android.support.test.espresso.intent.matcher.IntentMatchers.toPackage;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -93,7 +94,8 @@ public class TourneyActivityTest {
                 hasExtras(allOf(
                         hasEntry(equalTo("key1"), equalTo("value1")),
                         hasEntry(equalTo("key2"), equalTo("value2"))))
-                );
+        );
+        intended(toPackage(""));
     }
 
 }

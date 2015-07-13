@@ -24,6 +24,8 @@ import butterknife.OnClick;
  */
 public class PlayerTabFragment extends BaseFragment implements PlayerTabPresenter.IView {
 
+    private static final int REQUEST_CODE_CREATE_NEW = 1;
+
     @InjectView(R.id.recycler_view_players)
     RecyclerView mRecyclerView;
     @Inject
@@ -62,6 +64,6 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
         Intent in = new Intent(getActivity().getApplicationContext(), NewPlayerActivity.class);
         in.putExtra("key1", "value1");
         in.putExtra("key2", "value2");
-        startActivity(in);
+        startActivityForResult(in, REQUEST_CODE_CREATE_NEW);
     }
 }

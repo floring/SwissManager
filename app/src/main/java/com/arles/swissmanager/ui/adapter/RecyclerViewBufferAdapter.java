@@ -29,8 +29,7 @@ public class RecyclerViewBufferAdapter extends RecyclerView.Adapter<RecyclerView
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_buffer_adapter_item, parent, false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -44,6 +43,7 @@ public class RecyclerViewBufferAdapter extends RecyclerView.Adapter<RecyclerView
             }
         });
     }
+
 
     @Override
     public int getItemCount() {

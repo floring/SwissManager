@@ -20,8 +20,7 @@ public class AdapterViewMatcher {
 
             @Override
             public void describeTo(Description description) {
-                description.appendText("with class name: ");
-                dataMatcher.describeTo(description);
+                description.appendText("Error");
             }
 
             @Override
