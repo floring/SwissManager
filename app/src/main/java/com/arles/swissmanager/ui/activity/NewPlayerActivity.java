@@ -87,9 +87,7 @@ public class NewPlayerActivity extends BaseActivity implements NewPlayerPresente
     }
 
     private void onNavigationIconClick() {
-        CharSequence playerName = ((EditText) findViewById(R.id.edit_text_new_player_name)).getText();
-        mPresenter.bundleData(playerName);
-
+        mPresenter.bundleData(mAdapter.getDataList());
     }
 
     @Override

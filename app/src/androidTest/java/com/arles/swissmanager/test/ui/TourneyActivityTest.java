@@ -1,5 +1,6 @@
 package com.arles.swissmanager.test.ui;
 
+import android.content.ComponentName;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -22,6 +23,9 @@ import static android.support.test.espresso.action.ViewActions.swipeRight;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.BundleMatchers.hasEntry;
+import static android.support.test.espresso.intent.matcher.ComponentNameMatchers.hasClassName;
+import static android.support.test.espresso.intent.matcher.ComponentNameMatchers.hasShortClassName;
+import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasExtras;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.toPackage;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -35,13 +39,12 @@ import static org.hamcrest.Matchers.not;
 /**
  * Created by Admin on 07.07.2015.
  */
-@Ignore
+
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class TourneyActivityTest {
 
     Class<NewPlayerActivity> activityClass = NewPlayerActivity.class;
-    String activityPackage = "com.arles.swissmanager.ui.activity";
 
     @Rule
     public IntentsTestRule<TourneyActivity> mActivityRule = new IntentsTestRule<>(TourneyActivity.class);
@@ -88,14 +91,10 @@ public class TourneyActivityTest {
      * Tests that floating button launches activity, e.g. sends correct intent
      */
     @Test
-    public void testFloatingButtonClick() {
+    public void testFloatingButtonClick_LaunchActivity() {
         onView(withId(R.id.fab_add)).perform(click());
-        intended(
-                hasExtras(allOf(
-                        hasEntry(equalTo("key1"), equalTo("value1")),
-                        hasEntry(equalTo("key2"), equalTo("value2"))))
-        );
-        intended(toPackage(""));
+        intended(hasComponent("com.arles.swissmanager.ui.activity.NewPlayerActivity"));
+        //intended(hasComponent(hasShortClassName("NewPlayerActivity")));
     }
 
 }

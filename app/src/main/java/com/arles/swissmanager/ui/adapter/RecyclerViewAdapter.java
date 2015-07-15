@@ -38,9 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(
                 R.layout.recyclerview_adapter_item, parent, false);
-        ViewHolder viewHolder = new ViewHolder(itemView);
-
-        return viewHolder;
+        return new ViewHolder(itemView);
     }
 
     @Override
@@ -55,7 +53,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return mPlayers.size();
     }
 
-    public void addPlayer(final String playerName) {
+    private void addPlayer(final String playerName) {
         final Player player = new Player(playerName);
 
         // notify of the insertion with a delay, so there is a brief pause after returning
@@ -71,7 +69,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }, NOTIFY_DELAY);
     }
 
-    public void removePlayer(final int position) {
+    private void removePlayer(final int position) {
         mPlayers.remove(position);
 
         // notify of the removal with a delay so there is a brief pause after returning
@@ -91,6 +89,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public void setPlayers(List<Player> playersList) {
         mPlayers = playersList;
+    }
+
+    public void addNewPlayers(ArrayList<String> nameList) {
+        for(int i = 0; i < nameList.size(); ++i) {
+            addPlayer(nameList.get(i));
+        }
     }
 
     public void toggleSelection(int position) {

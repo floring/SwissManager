@@ -44,6 +44,10 @@ public class RecyclerViewBufferAdapter extends RecyclerView.Adapter<RecyclerView
         });
     }
 
+    public ArrayList<String> getDataList() {
+        return mDataList;
+    }
+
 
     @Override
     public int getItemCount() {

@@ -1,5 +1,6 @@
 package com.arles.swissmanager.ui.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import com.arles.swissmanager.ui.adapter.RecyclerViewAdapter;
 import com.arles.swissmanager.ui.presenter.PlayerTabPresenter;
 import com.arles.swissmanager.utils.DividerItemDecoration;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import butterknife.InjectView;
@@ -24,7 +27,7 @@ import butterknife.OnClick;
  */
 public class PlayerTabFragment extends BaseFragment implements PlayerTabPresenter.IView {
 
-    private static final int REQUEST_CODE_CREATE_NEW = 1;
+    private static final int REQUEST_CODE_START_ACTIVITY = 1;
 
     @InjectView(R.id.recycler_view_players)
     RecyclerView mRecyclerView;
@@ -45,25 +48,36 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
         return R.layout.tab_player;
     }
 
-    private void setRecyclerView() {
-        Context context = getActivity().getApplicationContext();
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(context));
-        mRecyclerView.setHasFixedSize(true);
-        mAdapter = new RecyclerViewAdapter(SwissManagerApplication.getTestData());
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
     @Override
     public void setViewComponent() {
         setRecyclerView();
     }
 
+    @Override
+    public void addToAdapter(ArrayList<String> namesList) {
+        mAdapter.addNewPlayers(namesList);
+    }
+
     @OnClick(R.id.fab_add)
     public void onFloatingButtonClick() {
-        Intent in = new Intent(getActivity().getApplicationContext(), NewPlayerActivity.class);
-        in.putExtra("key1", "value1");
-        in.putExtra("key2", "value2");
-        startActivityForResult(in, REQUEST_CODE_CREATE_NEW);
+        //mPresenter.launchActivity(REQUEST_CODE_START_ACTIVITY);
+        Intent intent = new Intent(getActivity().getApplicationContext(), NewPlayerActivity.class);
+        startActivityForResult(intent, REQUEST_CODE_START_ACTIVITY);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_START_ACTIVITY) {
+            mPresenter.parseActivityResult(data);
+        }
+    }
+
+    private void setRecyclerView() {
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext()));
+        mRecyclerView.setHasFixedSize(true);
+        mAdapter = new RecyclerViewAdapter(SwissManagerApplication.getTestData());
+        mRecyclerView.setAdapter(mAdapter);
     }
 }

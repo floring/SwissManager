@@ -127,7 +127,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, A
 
     @Override
     public void addRecyclerItem(String itemTitle) {
-        mAdapter.addPlayer(itemTitle);
+        //mAdapter.addPlayer(itemTitle);
     }
 
     @Override
@@ -136,7 +136,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, A
         int currPos;
         for (int i = selectedItemPositions.size() - 1; i >= 0; i--) {
             currPos = selectedItemPositions.get(i);
-            mAdapter.removePlayer(currPos);
+            //mAdapter.removePlayer(currPos);
         }
     }
 

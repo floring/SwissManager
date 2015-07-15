@@ -15,12 +15,12 @@ import javax.inject.Inject;
  *
  * Created by Admin on 19.05.2015.
  */
-public class Navigator {
+public class NavigatorActivity {
 
-    private final Activity mActivityContext;
+    private Activity mActivityContext;
 
     @Inject
-    public Navigator(@ActivityContext Context context) {
+     public NavigatorActivity(@ActivityContext Context context) {
         mActivityContext = (Activity) context;
     }
 

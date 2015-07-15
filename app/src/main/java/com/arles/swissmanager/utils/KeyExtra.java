@@ -5,5 +5,5 @@ package com.arles.swissmanager.utils;
  * Created by Admin on 20.05.2015.
  */
 public class KeyExtra {
-    public static final String NEW_PLAYER_NAME = "name";
+    public static final String KEY_BUFFER_PLAYERS_NAME_LIST = "buffer_players_name";
 }

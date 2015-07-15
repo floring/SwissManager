@@ -16,15 +16,17 @@
         <activity
             android:name=".ui.activity.NewPlayerActivity"
             android:label="@string/title_activity_new_player">
+
+        </activity>
+        <activity
+            android:name=".ui.activity.TourneyActivity"
+            android:label="Tourney">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.activity.TourneyActivity"
-            android:label="Tourney"></activity>
     </application>
 
 </manifest>

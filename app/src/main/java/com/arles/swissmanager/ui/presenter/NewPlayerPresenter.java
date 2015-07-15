@@ -1,10 +1,13 @@
 package com.arles.swissmanager.ui.presenter;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.arles.swissmanager.utils.KeyExtra;
 import com.arles.swissmanager.utils.TextUtil;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -30,9 +33,11 @@ public class NewPlayerPresenter extends Presenter {
         }
     }
 
-    public void bundleData(CharSequence name) {
-        if (!TextUtils.isEmpty(name)) {
-            Intent intent = new Intent().putExtra(KeyExtra.NEW_PLAYER_NAME, name.toString());
+    public void bundleData(ArrayList<String> list) {
+        if(list.size() > 0) {
+            Bundle bundle = new Bundle(list.size());
+            bundle.putStringArrayList(KeyExtra.KEY_BUFFER_PLAYERS_NAME_LIST, list);
+            Intent intent = new Intent().putExtras(bundle);
             mView.sendDataToLaunchActivity(intent);
         }
         mView.close();
