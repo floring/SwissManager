@@ -3,6 +3,7 @@ package com.arles.swissmanager.test.ui;
 import android.content.ComponentName;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
+import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
@@ -35,7 +36,6 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 
-
 /**
  * Created by Admin on 07.07.2015.
  */
@@ -44,10 +44,8 @@ import static org.hamcrest.Matchers.not;
 @LargeTest
 public class TourneyActivityTest {
 
-    Class<NewPlayerActivity> activityClass = NewPlayerActivity.class;
-
     @Rule
-    public IntentsTestRule<TourneyActivity> mActivityRule = new IntentsTestRule<>(TourneyActivity.class);
+    public ActivityTestRule<TourneyActivity> mActivityRule = new ActivityTestRule<>(TourneyActivity.class);
 
     /**
      * Tests that action bar item has required actions options
@@ -59,42 +57,4 @@ public class TourneyActivityTest {
         onView(withText(R.string.action_end_round)).check(matches(isDisplayed()));
         onView(withText(R.string.action_settings)).check(matches(isDisplayed()));
     }
-
-    /**
-     * Tests that a view pager can be swiped in both directions.
-     * Tests that trying to swipe beyond the start of a view pager has no effect.
-     * Tests that trying to swipe beyond the end of a view pager has no effect.
-     */
-    @Test
-    public void testSwipeLeftRight() {
-        onView(withText(R.string.tab_player)).check(matches(isDisplayed()));
-        onView(withId(R.id.view_pager)).perform(swipeLeft());
-        onView(withText(R.string.tab_round)).check(matches(isDisplayed()));
-        onView(withId(R.id.view_pager)).perform(swipeLeft());
-        onView(withText(R.string.tab_round)).check(matches(isDisplayed()));
-        onView(withId(R.id.view_pager)).perform(swipeRight());
-        onView(withText(R.string.tab_player)).check(matches(isDisplayed()));
-    }
-
-    /**
-     * Tests that swiping across tab displays correct views
-     */
-    @Test
-    public void testSwipeThroughView() {
-        onView(withId(R.id.fab_add)).check(matches(isDisplayed()));
-        onView(withId(R.id.view_pager)).perform(swipeLeft());
-        onView(withId(R.id.fab_add)).check(matches(not(isDisplayed())));
-        /*The above approach works if the view is still part of the hierarchy. If it is not, you will get a NoMatchingViewException and you need to use ViewAssertions.doesNotExist*/
-    }
-
-    /**
-     * Tests that floating button launches activity, e.g. sends correct intent
-     */
-    @Test
-    public void testFloatingButtonClick_LaunchActivity() {
-        onView(withId(R.id.fab_add)).perform(click());
-        intended(hasComponent("com.arles.swissmanager.ui.activity.NewPlayerActivity"));
-        //intended(hasComponent(hasShortClassName("NewPlayerActivity")));
-    }
-
 }

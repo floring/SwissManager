@@ -40,3 +40,13 @@
     -->
 
 </LinearLayout>
+
+<!--
+<DrawerLayout>
+<RelativeLayout>
+<include tooolbar>
+<some content>
+</RelativeLayout>
+<fragemnt drawer/>
+</DrawerLayout>
+-->

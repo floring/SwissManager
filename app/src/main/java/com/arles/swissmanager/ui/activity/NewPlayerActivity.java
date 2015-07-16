@@ -2,6 +2,7 @@ package com.arles.swissmanager.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.VisibleForTesting;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -14,7 +15,9 @@ import com.arles.swissmanager.R;
 import com.arles.swissmanager.ui.adapter.RecyclerViewBufferAdapter;
 import com.arles.swissmanager.ui.presenter.NewPlayerPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
+import com.arles.swissmanager.utils.KeyExtra;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -129,5 +132,14 @@ public class NewPlayerActivity extends BaseActivity implements NewPlayerPresente
     @Override
     public void clearInputs() {
         mInput.setText("");
+    }
+
+    @VisibleForTesting
+    public static Intent createResultData(ArrayList<String> playerNames) {
+        final Intent resultData = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList(KeyExtra.KEY_BUFFER_PLAYERS_NAME_LIST, playerNames);
+        resultData.putExtras(bundle);
+        return resultData;
     }
 }

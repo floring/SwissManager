@@ -37,7 +37,6 @@ import static org.hamcrest.Matchers.not;
 /**
  * Created by Admin on 09.07.2015.
  */
-@Ignore
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class NewPlayerActivityTest {

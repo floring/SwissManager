@@ -27,7 +27,7 @@ import butterknife.OnClick;
  */
 public class PlayerTabFragment extends BaseFragment implements PlayerTabPresenter.IView {
 
-    private static final int REQUEST_CODE_START_ACTIVITY = 1;
+    private static final int REQUEST_CODE_START_ACTIVITY = 16;
 
     @InjectView(R.id.recycler_view_players)
     RecyclerView mRecyclerView;
@@ -68,8 +68,10 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_START_ACTIVITY) {
-            mPresenter.parseActivityResult(data);
+        if(requestCode == REQUEST_CODE_START_ACTIVITY) {
+            if(resultCode == Activity.RESULT_OK) {
+                mPresenter.parseActivityResult(data);
+            }
         }
     }
 
