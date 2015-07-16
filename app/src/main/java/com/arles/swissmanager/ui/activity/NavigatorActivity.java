@@ -24,6 +24,11 @@ public class NavigatorActivity {
         mActivityContext = (Activity) context;
     }
 
+    public void startRoundActivity() {
+        Intent intent = getLaunchIntent(RoundActivity.class);
+        mActivityContext.startActivity(intent);
+    }
+
     public void startNewPlayerActivityForResult(int requestCode) {
         Intent intent = getLaunchIntent(NewPlayerActivity.class);
         mActivityContext.startActivityForResult(intent, requestCode);

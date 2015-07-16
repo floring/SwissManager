@@ -1,5 +1,7 @@
 package com.arles.swissmanager.ui.presenter;
 
+import com.arles.swissmanager.ui.activity.NavigatorActivity;
+
 import javax.inject.Inject;
 
 /**
@@ -8,9 +10,10 @@ import javax.inject.Inject;
 public class TourneyPresenter extends Presenter {
 
     private IView mView;
+    private NavigatorActivity mNavigator;
 
     @Inject
-    public TourneyPresenter() {}
+    public TourneyPresenter(NavigatorActivity navigator) {mNavigator = navigator;}
 
     public void setView(IView view) {
         mView = view;
@@ -19,6 +22,13 @@ public class TourneyPresenter extends Presenter {
     @Override
     public void initializeViewComponent() {
         mView.setViewComponent();
+    }
+
+    public void startRound() {
+        // make start round action not visible
+        // start round in tourney
+        // start new activity
+        mNavigator.startRoundActivity();
     }
 
     public interface IView {

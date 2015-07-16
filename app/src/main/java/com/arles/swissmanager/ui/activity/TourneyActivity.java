@@ -62,6 +62,11 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_start_round:
+                mPresenter.startRound();
+                break;
+            case R.id.action_end_round:
+                break;
             case R.id.action_settings:
                 break;
         }
