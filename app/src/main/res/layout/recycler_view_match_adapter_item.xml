@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <TextView
+        android:id="@+id/text_view_match_player_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="John" />
+
+    <Spinner
+        android:id="@+id/spinner_match_result_player_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <Spinner
+        android:id="@+id/spinner_match_result_player_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/text_view_match_player_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Andrea" />
+
+    <Button
+        android:id="@+id/button_send_match_result"
+        android:layout_width="38dp"
+        android:layout_height="wrap_content"
+        android:text="V" />
+
+
+</LinearLayout>

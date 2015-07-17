@@ -10,6 +10,8 @@
 
     // Activity titles
     <string name="title_activity_new_player">Add new</string>
+    <string name="title_activity_tourney">Tourney</string>
+    <string name="title_activity_round_number">Round N</string>
 
     // Title of contextual action bar in Action Mode
     <string name="selected_count">%1$s</string>
@@ -27,5 +29,12 @@
     <string name="action_start_round">Start round</string>
     <string name="action_end_round">End round</string>
     <string name="action_remove">Remove</string>
+
+    // Spinner choices
+    <string-array name="match_outcomes">
+        <item>Lose</item>
+        <item>Win</item>
+        <item>Draw</item>
+    </string-array>
 
 </resources>

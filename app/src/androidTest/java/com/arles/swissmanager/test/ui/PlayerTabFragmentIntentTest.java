@@ -8,6 +8,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
 import com.arles.swissmanager.R;
+import com.arles.swissmanager.test.util.Sleep;
 import com.arles.swissmanager.ui.activity.NewPlayerActivity;
 import com.arles.swissmanager.ui.activity.TourneyActivity;
 
@@ -43,7 +44,6 @@ import static org.hamcrest.Matchers.not;
 @LargeTest
 public class PlayerTabFragmentIntentTest {
 
-    private final int SLEEP_TIME = 5000;
     private final String FULL_CLASS_NAME = "com.arles.swissmanager.ui.activity.NewPlayerActivity";
     private final String SHORT_CLASS_NAME = ".ui.activity.NewPlayerActivity";
     private final ArrayList<String> PLAYERS_NAMES = new ArrayList<String>() {{
@@ -80,17 +80,11 @@ public class PlayerTabFragmentIntentTest {
         // Stub all Intents to NewPlayerActivity to return PLAYERS_NAMES
         intending(hasComponent(hasShortClassName(SHORT_CLASS_NAME))).respondWith(
                 new ActivityResult(Activity.RESULT_OK, NewPlayerActivity.createResultData(PLAYERS_NAMES)));
+
         onView(withId(R.id.fab_add)).perform(click());
-        sleepThread();
+
+        Sleep.sleepThread();
         //check that recycler view now contains player name
         onView(withId(R.id.recycler_view_players)).check(matches(hasDescendant((withText(PLAYERS_NAMES.get(0))))));
     }
-
-    private void sleepThread() {
-        try {
-            Thread.sleep(SLEEP_TIME);
-        } catch (Exception e) {
-        }
-    }
-
 }

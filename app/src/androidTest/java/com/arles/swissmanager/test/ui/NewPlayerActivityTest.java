@@ -6,6 +6,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
 import com.arles.swissmanager.R;
+import com.arles.swissmanager.test.util.Sleep;
 import com.arles.swissmanager.ui.activity.NewPlayerActivity;
 
 import org.junit.Before;
@@ -42,7 +43,6 @@ import static org.hamcrest.Matchers.not;
 public class NewPlayerActivityTest {
 
     private final String TEST_PLAYER_NAME = "Player 1";
-    private final int SLEEP_TIME = 5000;
 
     @Rule
     public ActivityTestRule<NewPlayerActivity> mActivityRule = new ActivityTestRule<>(NewPlayerActivity.class);
@@ -64,7 +64,7 @@ public class NewPlayerActivityTest {
     public void testAddItemToRecyclerView() {
         onView(withId(R.id.edit_text_new_player_name)).check(matches(withText(is(""))));
 
-        sleepThread();
+        Sleep.sleepThread();
         onView(withId(R.id.recycler_view_buffer_items)).check(matches(withRecyclerAdaptedData(withItemContent(TEST_PLAYER_NAME), R.id.text_view_buffer_player_name)));
     }
 
@@ -74,18 +74,11 @@ public class NewPlayerActivityTest {
     @Test
     public void testRemoveItemFromRecyclerView() {
 
-        sleepThread();
+        Sleep.sleepThread();
         onView(withId(R.id.recycler_view_buffer_items)).perform(actionOnItem(hasDescendant(withId(R.id.button_delete_buffer_player)), click()));
 
-        sleepThread();
+        Sleep.sleepThread();
         //onView(withRecyclerView(R.id.recycler_view_buffer_items).atPosition(0)).check(doesNotExist());
         onView(withId(R.id.recycler_view_buffer_items)).check(matches(hasDescendant(not(withText(TEST_PLAYER_NAME)))));
-    }
-
-    private void sleepThread() {
-        try {
-            Thread.sleep(SLEEP_TIME);
-        } catch (Exception e) {
-        }
     }
 }
