@@ -89,6 +89,10 @@ public class Tournament {
         }
     }
 
+    public int getRoundNumber() {
+        return mRoundNumber;
+    }
+
     public Player defineWinner() {
         Player winner = null;
         if (!isRoundsNumberNotOver()) {

@@ -107,7 +107,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, A
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this));
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.addOnItemTouchListener(this);
-        mAdapter = new RecyclerViewAdapter(SwissManagerApplication.getTestData());
+        mAdapter = new RecyclerViewAdapter(SwissManagerApplication.getTestPlayersData());
         mRecyclerView.setAdapter(mAdapter);
         mGestureDetector = new GestureDetector(this, new RecyclerViewGestureListener());
     }

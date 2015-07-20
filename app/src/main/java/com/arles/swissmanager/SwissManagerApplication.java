@@ -2,6 +2,7 @@ package com.arles.swissmanager;
 
 import android.app.Application;
 
+import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.di.RootModule;
 import com.arles.swissmanager.ui.model.Player;
 
@@ -72,7 +73,18 @@ public class SwissManagerApplication extends Application {
         }
     }
 
-    public static List<Player> getTestData() {
+    public static List<Player> getTestPlayersData() {
         return new ArrayList<>(mDataList);
+    }
+
+    public static List<Match> getTestMatchData() {
+        List<Match> list = new ArrayList<>();
+        list.add(new Match(new Player("John"), new Player("Alex")));
+        list.add(new Match(new Player("Alex"), new Player("John")));
+        list.add(new Match(new Player("David"), new Player("Martin")));
+        list.add(new Match(new Player("Martin"), new Player("David")));
+        list.add(new Match(new Player("Brian"), new Player("Harry")));
+        list.add(new Match(new Player("Harry"), new Player("Brian")));
+        return list;
     }
 }

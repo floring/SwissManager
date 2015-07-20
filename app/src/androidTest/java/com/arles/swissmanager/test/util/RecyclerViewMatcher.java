@@ -1,23 +1,13 @@
 package com.arles.swissmanager.test.util;
 
 import android.content.res.Resources;
-import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.AdapterView;
 import android.widget.TextView;
-
-import com.arles.swissmanager.R;
-import com.arles.swissmanager.ui.adapter.RecyclerViewBufferAdapter;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-
-import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Created by Admin on 10.07.2015.

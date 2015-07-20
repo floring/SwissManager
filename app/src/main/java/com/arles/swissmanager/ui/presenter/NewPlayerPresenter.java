@@ -2,7 +2,6 @@ package com.arles.swissmanager.ui.presenter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 
 import com.arles.swissmanager.utils.KeyExtra;
 import com.arles.swissmanager.utils.TextUtil;

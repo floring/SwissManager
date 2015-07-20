@@ -25,9 +25,9 @@ import butterknife.InjectView;
 public class RecyclerViewMatchesAdapter extends RecyclerView.Adapter<RecyclerViewMatchesAdapter.ViewHolder> {
 
     private Context mContext;
-    private ArrayList<Match> mDataList = new ArrayList<>();
+    private List<Match> mDataList = new ArrayList<>();
 
-    public RecyclerViewMatchesAdapter(Context context, ArrayList<Match> list) {
+    public RecyclerViewMatchesAdapter(Context context, List<Match> list) {
         mContext = context;
         mDataList = list;
     }

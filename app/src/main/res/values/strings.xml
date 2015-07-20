@@ -11,7 +11,7 @@
     // Activity titles
     <string name="title_activity_new_player">Add new</string>
     <string name="title_activity_tourney">Tourney</string>
-    <string name="title_activity_round_number">Round N</string>
+    <string name="title_activity_round_number">Round %1$s</string>
 
     // Title of contextual action bar in Action Mode
     <string name="selected_count">%1$s</string>
@@ -36,5 +36,6 @@
         <item>Win</item>
         <item>Draw</item>
     </string-array>
+    <string name="title_activity_round">RoundActivity</string>
 
 </resources>

@@ -1,7 +1,6 @@
 package com.arles.swissmanager.ui.fragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -79,7 +78,7 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext()));
         mRecyclerView.setHasFixedSize(true);
-        mAdapter = new RecyclerViewAdapter(SwissManagerApplication.getTestData());
+        mAdapter = new RecyclerViewAdapter(SwissManagerApplication.getTestPlayersData());
         mRecyclerView.setAdapter(mAdapter);
     }
 }

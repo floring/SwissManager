@@ -3,7 +3,6 @@ package com.arles.swissmanager.ui.presenter;
 import android.content.Intent;
 
 import com.arles.swissmanager.ui.activity.NavigatorActivity;
-import com.arles.swissmanager.utils.KeyExtra;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
