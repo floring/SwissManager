@@ -12,12 +12,14 @@ import android.widget.TextView;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Match;
+import com.arles.swissmanager.algorithm.Points;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by Admin on 16.07.2015.
@@ -40,13 +42,17 @@ public class RecyclerViewMatchesAdapter extends RecyclerView.Adapter<RecyclerVie
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mPlayer1.setText(mDataList.get(position).getPlayer1().getName());
-        holder.mPlayer2.setText(mDataList.get(position).getPlayer2().getName());
+        holder.player1.setText(mDataList.get(position).getPlayer1().getName());
+        holder.player2.setText(mDataList.get(position).getPlayer2().getName());
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mContext,
                 R.array.match_outcomes, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        holder.mSpinnerResultPlayer1.setAdapter(adapter);
-        holder.mSpinnerResultPlayer2.setAdapter(adapter);
+
+        ArrayAdapter<Points> a = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, Points.list());
+
+        holder.resultPlayer1.setAdapter(a);
+        holder.resultPlayer2.setAdapter(a);
+        holder.btnSendResult.setTag(position);
     }
 
     @Override
@@ -57,19 +63,27 @@ public class RecyclerViewMatchesAdapter extends RecyclerView.Adapter<RecyclerVie
     protected class ViewHolder extends RecyclerView.ViewHolder {
 
         @InjectView(R.id.text_view_match_player_1)
-        TextView mPlayer1;
+        TextView player1;
         @InjectView(R.id.text_view_match_player_2)
-        TextView mPlayer2;
+        TextView player2;
         @InjectView(R.id.spinner_match_result_player_1)
-        Spinner mSpinnerResultPlayer1;
+        Spinner resultPlayer1;
         @InjectView(R.id.spinner_match_result_player_2)
-        Spinner mSpinnerResultPlayer2;
+        Spinner resultPlayer2;
         @InjectView(R.id.button_send_match_result)
-        Button mSendMatchResult;
+        Button btnSendResult;
 
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.inject(this, itemView);
+        }
+
+        @OnClick(R.id.button_send_match_result)
+        public void btnSendResultClick() {
+            int rowViewPos = (int) btnSendResult.getTag();
+            Match currMatch = mDataList.get(rowViewPos);
+//            resultPlayer1.getSelectedItem()
+            currMatch.reportResult(0,1);
         }
     }
 }

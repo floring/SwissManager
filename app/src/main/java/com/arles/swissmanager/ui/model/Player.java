@@ -54,21 +54,21 @@ public class Player implements Comparable<Player> {
     }
 
     public void won() {
-        mPrestige += Points.WIN;
+        mPrestige += Points.WIN.get();
     }
 
     public void lost() {
-        mPrestige += Points.LOSE;
+        mPrestige += Points.LOSE.get();
     }
 
     public void draw() {
-        mPrestige += Points.MODIFIED_WIN;
+        mPrestige += Points.DRAW.get();
     }
 
     public void bye() {
         mSheduledForRound++;
         mHasBye = true;
-        mPrestige += Points.BYE;
+        mPrestige += Points.BYE.get();
     }
 
     public boolean hadBye() {

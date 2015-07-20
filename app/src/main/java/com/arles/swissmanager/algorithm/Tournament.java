@@ -84,7 +84,7 @@ public class Tournament {
     private void setUnplayedMatchAsLost(List<Match> matches) {
         for (Match match : matches) {
             if (match.getResult() == null) {
-                match.reportResult(Points.LOSE, Points.LOSE);
+                match.reportResult(Points.LOSE.get(), Points.LOSE.get());
             }
         }
     }

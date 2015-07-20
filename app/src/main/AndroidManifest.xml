@@ -17,11 +17,7 @@
         <activity
             android:name=".ui.activity.TourneyActivity"
             android:label="@string/title_activity_tourney">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.activity.RoundActivity"
@@ -31,7 +27,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.activity.TourneyActivity" />
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
