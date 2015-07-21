@@ -47,4 +47,5 @@ dependencies {
         exclude module: 'recyclerview-v7'
     }
     compile project(':google-collections-0.8')
+    compile 'org.apache.commons:commons-lang3:3.0'
 }

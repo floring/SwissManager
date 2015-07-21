@@ -9,7 +9,7 @@ import com.arles.swissmanager.ui.model.Player;
 public class Match {
     private Player mPlayer1;
     private Player mPlayer2;
-    private Result mResult;
+    private MatchResult mResult;
 
     public Match(Player p1, Player p2) {
         mPlayer1 = p1;
@@ -27,28 +27,34 @@ public class Match {
         return mPlayer2;
     }
 
-    public Result getResult() {
+    public MatchResult getResult() {
         return mResult;
     }
 
     /**
-     * Define winner, calculate reportResult
+     * Set information to players of played match.
+     * Return operation report.
      */
-    public void reportResult(int player1score, int player2score) {
+    public Report reportResult(Points player1score, Points player2score) {
 
-        mPlayer1.setGamesFor(player1score);
-        mPlayer1.setGamesAgainst(player2score);
-        mPlayer2.setGamesFor(player2score);
-        mPlayer2.setGamesAgainst(player1score);
+        if(!MatchResult.isResultCorrect(player1score, player2score)) {
+            return Report.INVALID_RESULT;
+        }
 
-        int currentScore = player1score - player2score;
+        mPlayer1.setGamesFor(player1score.get());
+        mPlayer1.setGamesAgainst(player2score.get());
+        mPlayer2.setGamesFor(player2score.get());
+        mPlayer2.setGamesAgainst(player1score.get());
+
+        int currentScore = player1score.get() - player2score.get();
         if (currentScore > 0) {
             morePoints(currentScore);
         } else if (currentScore < 0) {
             lessPoints(currentScore);
         } else {
-            tiePoints(player1score);
+            tiePoints(player1score.get());
         }
+        return Report.OK;
     }
 
     /*
@@ -57,10 +63,10 @@ public class Match {
     private void morePoints(int score) {
         if (score > 1) {
             mPlayer1.won();
-            mResult = Result.WIN_LOSE;
+            mResult = new MatchResult(Points.WIN, Points.LOSE);
         } else {
             mPlayer1.draw();
-            mResult = Result.DRAW_LOSE;
+            mResult = new MatchResult(Points.DRAW, Points.LOSE);
         }
         mPlayer2.lost();
     }
@@ -71,10 +77,10 @@ public class Match {
     private void lessPoints(int score) {
         if (score < -1) {
             mPlayer2.won();
-            mResult = Result.LOSE_WIN;
+            mResult = new MatchResult(Points.LOSE, Points.WIN);
         } else {
             mPlayer2.draw();
-            mResult = Result.LOSE_DRAW;
+            mResult = new MatchResult(Points.LOSE, Points.DRAW);
         }
         mPlayer1.lost();
     }
@@ -86,11 +92,12 @@ public class Match {
         if (score > 0) {
             mPlayer1.draw();
             mPlayer2.draw();
-            mResult = Result.DRAW_DRAW;
+            mResult = new MatchResult(Points.DRAW, Points.DRAW);
         } else {
             mPlayer1.lost();
             mPlayer2.lost();
-            mResult = Result.LOSE_LOSE;
+            mResult = new MatchResult(Points.LOSE, Points.LOSE);
         }
     }
 }
+

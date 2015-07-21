@@ -31,22 +31,22 @@ public class Test {
             int r = new Random().nextInt(6);
             switch (r) {
                 case 0:
-                    m.reportResult(Points.WIN.get(), Points.LOSE.get());
+                    m.reportResult(Points.WIN, Points.LOSE);
                     break;
                 case 1:
-                    m.reportResult(Points.LOSE.get(), Points.WIN.get());
+                    m.reportResult(Points.LOSE, Points.WIN);
                     break;
                 case 2:
-                    m.reportResult(Points.DRAW.get(), Points.DRAW.get());
+                    m.reportResult(Points.DRAW, Points.DRAW);
                     break;
                 case 3:
-                    m.reportResult(Points.LOSE.get(), Points.LOSE.get());
+                    m.reportResult(Points.LOSE, Points.LOSE);
                     break;
                 case 4:
-                    m.reportResult(Points.DRAW.get(), Points.LOSE.get());
+                    m.reportResult(Points.DRAW, Points.LOSE);
                     break;
                 case 5:
-                    m.reportResult(Points.LOSE.get(), Points.DRAW.get());
+                    m.reportResult(Points.LOSE, Points.DRAW);
                     break;
             }
         }

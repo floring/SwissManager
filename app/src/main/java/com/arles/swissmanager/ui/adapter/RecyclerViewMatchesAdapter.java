@@ -9,10 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.algorithm.Points;
+import com.arles.swissmanager.algorithm.Report;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,14 +46,9 @@ public class RecyclerViewMatchesAdapter extends RecyclerView.Adapter<RecyclerVie
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.player1.setText(mDataList.get(position).getPlayer1().getName());
         holder.player2.setText(mDataList.get(position).getPlayer2().getName());
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mContext,
-                R.array.match_outcomes, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        ArrayAdapter<Points> a = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, Points.list());
-
-        holder.resultPlayer1.setAdapter(a);
-        holder.resultPlayer2.setAdapter(a);
+        ArrayAdapter<Points> adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, Points.getPointsNames());
+        holder.resultPlayer1.setAdapter(adapter);
+        holder.resultPlayer2.setAdapter(adapter);
         holder.btnSendResult.setTag(position);
     }
 
@@ -82,8 +79,17 @@ public class RecyclerViewMatchesAdapter extends RecyclerView.Adapter<RecyclerVie
         public void btnSendResultClick() {
             int rowViewPos = (int) btnSendResult.getTag();
             Match currMatch = mDataList.get(rowViewPos);
-//            resultPlayer1.getSelectedItem()
-            currMatch.reportResult(0,1);
+            Report report = currMatch.reportResult(
+                    (Points) resultPlayer1.getSelectedItem(),
+                    (Points) resultPlayer2.getSelectedItem());
+            if(report == Report.OK)
+            {
+                Toast.makeText(mContext, "OK", Toast.LENGTH_SHORT).show();
+            }
+            else if (report == Report.INVALID_RESULT){
+                Toast.makeText(mContext, "Invalid", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 }
