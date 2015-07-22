@@ -9,12 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.algorithm.Points;
-import com.arles.swissmanager.algorithm.Report;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +27,15 @@ import butterknife.OnClick;
 public class RecyclerViewMatchesAdapter extends RecyclerView.Adapter<RecyclerViewMatchesAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<Match> mDataList = new ArrayList<>();
+    private List<Match> mDataList;
+    private OnItemClickListener onItemClickListener;
 
     public RecyclerViewMatchesAdapter(Context context, List<Match> list) {
         mContext = context;
+        mDataList = list;
+    }
+
+    public void setData(List<Match> list) {
         mDataList = list;
     }
 
@@ -57,6 +60,10 @@ public class RecyclerViewMatchesAdapter extends RecyclerView.Adapter<RecyclerVie
         return mDataList.size();
     }
 
+    public void setOnItemClickListener (OnItemClickListener listener) {
+        onItemClickListener = listener;
+    }
+
     protected class ViewHolder extends RecyclerView.ViewHolder {
 
         @InjectView(R.id.text_view_match_player_1)
@@ -79,17 +86,19 @@ public class RecyclerViewMatchesAdapter extends RecyclerView.Adapter<RecyclerVie
         public void btnSendResultClick() {
             int rowViewPos = (int) btnSendResult.getTag();
             Match currMatch = mDataList.get(rowViewPos);
-            Report report = currMatch.reportResult(
-                    (Points) resultPlayer1.getSelectedItem(),
-                    (Points) resultPlayer2.getSelectedItem());
-            if(report == Report.OK)
-            {
-                Toast.makeText(mContext, "OK", Toast.LENGTH_SHORT).show();
-            }
-            else if (report == Report.INVALID_RESULT){
-                Toast.makeText(mContext, "Invalid", Toast.LENGTH_SHORT).show();
-            }
 
+            if (RecyclerViewMatchesAdapter.this.onItemClickListener != null) {
+                RecyclerViewMatchesAdapter.this.onItemClickListener.onButtonClicked(currMatch,
+                        (Points) resultPlayer1.getSelectedItem(),
+                        (Points) resultPlayer2.getSelectedItem());
+            }
         }
+    }
+
+    /**
+     * Interface for listening match list events.
+     */
+    public interface OnItemClickListener {
+        void onButtonClicked(Match match, Points resPlayer1, Points resPlayer2);
     }
 }

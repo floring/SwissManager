@@ -1,8 +1,14 @@
 package com.arles.swissmanager.ui.presenter;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import com.arles.swissmanager.SwissManagerApplication;
 import com.arles.swissmanager.algorithm.Match;
+import com.arles.swissmanager.algorithm.Points;
+import com.arles.swissmanager.algorithm.Report;
 import com.arles.swissmanager.algorithm.Tournament;
+import com.arles.swissmanager.utils.ToastUtil;
 
 import java.util.List;
 
@@ -38,7 +44,18 @@ public class RoundPresenter extends Presenter {
         return SwissManagerApplication.getTestMatchData();
     }
 
+    public void onMatchClicked(Match match, Points resPlayer1, Points resPlayer2) {
+        Report report = match.reportResult(resPlayer1, resPlayer2);
+        if (report == Report.OK) {
+            mView.showOkMessage();
+        } else if (report == Report.INVALID_RESULT) {
+            mView.showIncorrectResultMessage();
+        }
+    }
+
     public interface IView {
         void setViewComponent();
+        void showIncorrectResultMessage();
+        void showOkMessage();
     }
 }

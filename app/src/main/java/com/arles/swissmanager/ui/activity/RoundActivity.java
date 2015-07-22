@@ -9,12 +9,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.SwissManagerApplication;
+import com.arles.swissmanager.algorithm.Match;
+import com.arles.swissmanager.algorithm.Points;
 import com.arles.swissmanager.ui.adapter.RecyclerViewMatchesAdapter;
 import com.arles.swissmanager.ui.presenter.RoundPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
 import com.arles.swissmanager.utils.DividerBoldItemDecoration;
+import com.arles.swissmanager.utils.ToastUtil;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,7 +26,7 @@ import javax.inject.Inject;
 import butterknife.InjectView;
 import jp.wasabeef.recyclerview.animators.adapters.SlideInBottomAnimationAdapter;
 
-public class RoundActivity extends BaseActivity implements RoundPresenter.IView{
+public class RoundActivity extends BaseActivity implements RoundPresenter.IView {
 
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
@@ -74,11 +77,25 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView{
         setToolbar();
     }
 
+    @Override
+    public void showIncorrectResultMessage() {
+        String invalidResult = getString(R.string.result_invalid);
+        ToastUtil.showShortMessage(invalidResult, this);
+    }
+
+    @Override
+    public void showOkMessage() {
+        String okResult = getString(R.string.result_ok);
+        ToastUtil.showShortMessage(okResult, this);
+    }
+
     private void setRecyclerView() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.addItemDecoration(new DividerBoldItemDecoration(this));
         mRecyclerView.setHasFixedSize(true);
-        mAdapter = new RecyclerViewMatchesAdapter(this, mPresenter.getMatchesData());
+        mAdapter = new RecyclerViewMatchesAdapter(this, new ArrayList<Match>());
+        mAdapter.setData(mPresenter.getMatchesData());
+        mAdapter.setOnItemClickListener(onItemClickListener);
         mRecyclerView.setAdapter(new SlideInBottomAnimationAdapter(mAdapter));
     }
 
@@ -88,4 +105,14 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView{
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    private RecyclerViewMatchesAdapter.OnItemClickListener onItemClickListener =
+            new RecyclerViewMatchesAdapter.OnItemClickListener() {
+                @Override
+                public void onButtonClicked(Match match, Points resPlayer1, Points resPlayer2) {
+                    if (mPresenter != null && match != null) {
+                        mPresenter.onMatchClicked(match, resPlayer1, resPlayer2);
+                    }
+                }
+            };
 }
