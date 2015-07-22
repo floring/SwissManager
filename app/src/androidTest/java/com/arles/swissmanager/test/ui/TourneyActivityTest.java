@@ -32,7 +32,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 public class TourneyActivityTest {
 
     private final String SHORT_CLASS_NAME = ".ui.activity.RoundActivity";
-    private String TAG = RoundActivity.class.getSimpleName();
 
     @Rule
     public IntentsTestRule<TourneyActivity> mActivityRule = new IntentsTestRule<>(TourneyActivity.class);
