@@ -10,7 +10,7 @@ import android.view.View;
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.SwissManagerApplication;
 import com.arles.swissmanager.ui.activity.NewPlayerActivity;
-import com.arles.swissmanager.ui.adapter.RecyclerViewAdapter;
+import com.arles.swissmanager.ui.adapter.PlayersAdapter;
 import com.arles.swissmanager.ui.presenter.PlayerTabPresenter;
 import com.arles.swissmanager.utils.DividerItemDecoration;
 
@@ -33,7 +33,7 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
     @Inject
     PlayerTabPresenter mPresenter;
 
-    private RecyclerViewAdapter mAdapter;
+    private PlayersAdapter mAdapter;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -78,7 +78,7 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext()));
         mRecyclerView.setHasFixedSize(true);
-        mAdapter = new RecyclerViewAdapter(SwissManagerApplication.getTestPlayersData());
+        mAdapter = new PlayersAdapter(SwissManagerApplication.getTestPlayersData());
         mRecyclerView.setAdapter(mAdapter);
     }
 }

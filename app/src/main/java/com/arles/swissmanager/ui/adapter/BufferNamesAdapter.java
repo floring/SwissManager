@@ -20,7 +20,7 @@ import butterknife.InjectView;
  * This recycler view contains buffer list of new players names which have not added to Players List yet.
  * Created by Admin on 08.07.2015.
  */
-public class RecyclerViewBufferAdapter extends RecyclerView.Adapter<RecyclerViewBufferAdapter.ViewHolder> {
+public class BufferNamesAdapter extends RecyclerView.Adapter<BufferNamesAdapter.ViewHolder> {
 
     private final int NOTIFY_DELAY = 500;
 

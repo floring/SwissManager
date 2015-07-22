@@ -48,6 +48,7 @@ public class RoundPresenter extends Presenter {
         Report report = match.reportResult(resPlayer1, resPlayer2);
         if (report == Report.OK) {
             mView.showOkMessage();
+            mView.setBtn();
         } else if (report == Report.INVALID_RESULT) {
             mView.showIncorrectResultMessage();
         }
@@ -57,5 +58,6 @@ public class RoundPresenter extends Presenter {
         void setViewComponent();
         void showIncorrectResultMessage();
         void showOkMessage();
+        void setBtn();
     }
 }

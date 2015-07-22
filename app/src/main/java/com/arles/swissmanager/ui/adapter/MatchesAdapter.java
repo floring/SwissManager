@@ -14,7 +14,6 @@ import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.algorithm.Points;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -24,13 +23,13 @@ import butterknife.OnClick;
 /**
  * Created by Admin on 16.07.2015.
  */
-public class RecyclerViewMatchesAdapter extends RecyclerView.Adapter<RecyclerViewMatchesAdapter.ViewHolder> {
+public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHolder> {
 
     private Context mContext;
     private List<Match> mDataList;
     private OnItemClickListener onItemClickListener;
 
-    public RecyclerViewMatchesAdapter(Context context, List<Match> list) {
+    public MatchesAdapter(Context context, List<Match> list) {
         mContext = context;
         mDataList = list;
     }
@@ -87,8 +86,8 @@ public class RecyclerViewMatchesAdapter extends RecyclerView.Adapter<RecyclerVie
             int rowViewPos = (int) btnSendResult.getTag();
             Match currMatch = mDataList.get(rowViewPos);
 
-            if (RecyclerViewMatchesAdapter.this.onItemClickListener != null) {
-                RecyclerViewMatchesAdapter.this.onItemClickListener.onButtonClicked(currMatch,
+            if (MatchesAdapter.this.onItemClickListener != null) {
+                MatchesAdapter.this.onItemClickListener.onButtonClicked(currMatch,
                         (Points) resultPlayer1.getSelectedItem(),
                         (Points) resultPlayer2.getSelectedItem());
             }

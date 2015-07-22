@@ -24,13 +24,13 @@ import butterknife.InjectView;
  * RecyclerViewAdapter manages Players data model and adapts it to RecyclerView, which is in TourneyActivity.
  * Created by Admin on 21.05.2015.
  */
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHolder> {
     private final int NOTIFY_DELAY = 500;
 
     private List<Player> mPlayers = new ArrayList<>();
     private SparseBooleanArray mSelectedItems = new SparseBooleanArray();
 
-    public RecyclerViewAdapter(List<Player> list) {
+    public PlayersAdapter(List<Player> list) {
         mPlayers = list;
     }
 

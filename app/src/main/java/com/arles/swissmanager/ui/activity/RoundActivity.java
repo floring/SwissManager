@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.algorithm.Points;
-import com.arles.swissmanager.ui.adapter.RecyclerViewMatchesAdapter;
+import com.arles.swissmanager.ui.adapter.MatchesAdapter;
 import com.arles.swissmanager.ui.presenter.RoundPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
 import com.arles.swissmanager.utils.DividerBoldItemDecoration;
@@ -34,7 +34,7 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
     RecyclerView mRecyclerView;
     @Inject
     RoundPresenter mPresenter;
-    private RecyclerViewMatchesAdapter mAdapter;
+    private MatchesAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,11 +89,16 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
         ToastUtil.showShortMessage(okResult, this);
     }
 
+    @Override
+    public void setBtn() {
+
+    }
+
     private void setRecyclerView() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.addItemDecoration(new DividerBoldItemDecoration(this));
         mRecyclerView.setHasFixedSize(true);
-        mAdapter = new RecyclerViewMatchesAdapter(this, new ArrayList<Match>());
+        mAdapter = new MatchesAdapter(this, new ArrayList<Match>());
         mAdapter.setData(mPresenter.getMatchesData());
         mAdapter.setOnItemClickListener(onItemClickListener);
         mRecyclerView.setAdapter(new SlideInBottomAnimationAdapter(mAdapter));
@@ -106,8 +111,8 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private RecyclerViewMatchesAdapter.OnItemClickListener onItemClickListener =
-            new RecyclerViewMatchesAdapter.OnItemClickListener() {
+    private MatchesAdapter.OnItemClickListener onItemClickListener =
+            new MatchesAdapter.OnItemClickListener() {
                 @Override
                 public void onButtonClicked(Match match, Points resPlayer1, Points resPlayer2) {
                     if (mPresenter != null && match != null) {

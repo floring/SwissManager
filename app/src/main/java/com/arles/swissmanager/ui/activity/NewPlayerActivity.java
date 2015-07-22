@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.ui.adapter.RecyclerViewBufferAdapter;
+import com.arles.swissmanager.ui.adapter.BufferNamesAdapter;
 import com.arles.swissmanager.ui.presenter.NewPlayerPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
 import com.arles.swissmanager.utils.KeyExtra;
@@ -38,7 +38,7 @@ public class NewPlayerActivity extends BaseActivity implements NewPlayerPresente
     RecyclerView mRecyclerView;
     @Inject NewPlayerPresenter mPresenter;
 
-    private RecyclerViewBufferAdapter mAdapter;
+    private BufferNamesAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +100,7 @@ public class NewPlayerActivity extends BaseActivity implements NewPlayerPresente
     }
 
     private void setRecyclerView() {
-        mAdapter = new RecyclerViewBufferAdapter();
+        mAdapter = new BufferNamesAdapter();
         ScaleInBottomAnimator animator = new ScaleInBottomAnimator();
         animator.setAddDuration(ANIMATION_DURATION);
         animator.setRemoveDuration(ANIMATION_DURATION);

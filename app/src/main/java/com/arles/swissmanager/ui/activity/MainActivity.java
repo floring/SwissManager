@@ -15,7 +15,7 @@ import android.view.View;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.SwissManagerApplication;
-import com.arles.swissmanager.ui.adapter.RecyclerViewAdapter;
+import com.arles.swissmanager.ui.adapter.PlayersAdapter;
 import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
 import com.arles.swissmanager.ui.presenter.MainPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
@@ -40,7 +40,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, A
     @Inject
     MainPresenter mMainPresenter;
 
-    private RecyclerViewAdapter mAdapter;
+    private PlayersAdapter mAdapter;
     private ActionMode mActionMode;
     private GestureDetector mGestureDetector;
     private static final int REQUEST_CODE_CREATE_NEW = 1;
@@ -107,7 +107,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, A
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this));
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.addOnItemTouchListener(this);
-        mAdapter = new RecyclerViewAdapter(SwissManagerApplication.getTestPlayersData());
+        mAdapter = new PlayersAdapter(SwissManagerApplication.getTestPlayersData());
         mRecyclerView.setAdapter(mAdapter);
         mGestureDetector = new GestureDetector(this, new RecyclerViewGestureListener());
     }
