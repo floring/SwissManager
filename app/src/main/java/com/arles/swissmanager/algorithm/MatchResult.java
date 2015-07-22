@@ -32,14 +32,6 @@ public class MatchResult {
         mPlayer2score = score2;
     }
 
-    public Points getPlayer1score() {
-        return mPlayer1score;
-    }
-
-    public Points getPlayer2score() {
-        return mPlayer2score;
-    }
-
     /**
      * Check if obtained result is correct, e.g. it can not be two winner results
      */
@@ -49,18 +41,6 @@ public class MatchResult {
 
     @Override
     public boolean equals(Object obj) {
-//        if (obj == this) {
-//            return true;
-//        }
-//        if (obj == null || obj.getClass() != this.getClass()) {
-//            return false;
-//        }
-//
-//        MatchResult other = (MatchResult) obj;
-//        return (mPlayer1score == other.mPlayer1score
-//                || (mPlayer1score != null && mPlayer1score.equals(other.getPlayer1score())))
-//                && (mPlayer2score == other.mPlayer2score
-//                || (mPlayer2score != null && mPlayer2score.equals(other.getPlayer2score())));
         if (!(obj instanceof MatchResult))
             return false;
         if (obj == this)
@@ -75,11 +55,6 @@ public class MatchResult {
 
     @Override
     public int hashCode() {
-//        final int prime = 31;
-//        int result = 1;
-//        result = prime * result + ((mPlayer1score == null) ? 0 : mPlayer1score.hashCode());
-//        result = prime * result + ((mPlayer2score == null) ? 0 : mPlayer2score.hashCode());
-//        return result;
         return new HashCodeBuilder(17, 31)
                 .append(mPlayer1score)
                 .append(mPlayer2score)
