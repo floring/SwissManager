@@ -46,6 +46,18 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        // get matches from algorithm class and set it to adapter
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // get matches from adapter and set it to tourney
+    }
+
+    @Override
     protected List<Object> getModules() {
         LinkedList<Object> modules = new LinkedList<>();
         modules.add(new UIModule());

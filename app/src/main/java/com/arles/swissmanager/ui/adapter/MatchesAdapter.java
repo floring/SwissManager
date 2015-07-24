@@ -21,6 +21,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
+ * MatchesAdapter manages Match data model and adapts it to RecyclerView, which is in RoundActivity.
  * Created by Admin on 16.07.2015.
  */
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHolder> {
@@ -36,6 +37,10 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
 
     public void setData(List<Match> list) {
         mDataList = list;
+    }
+
+    public List<Match> getData() {
+        return mDataList;
     }
 
     @Override

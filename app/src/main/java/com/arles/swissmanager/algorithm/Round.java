@@ -20,4 +20,8 @@ public class Round {
     public List<Match> getMatches() {
         return mMatches;
     }
+
+    public void updateMatches(List<Match> list) {
+        mMatches = list;
+    }
 }

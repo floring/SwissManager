@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 
 /**
+ * PlayerTabPresenter created to show PlayerTabFragment.
  * Created by Admin on 06.07.2015.
  */
 public class PlayerTabPresenter extends Presenter {

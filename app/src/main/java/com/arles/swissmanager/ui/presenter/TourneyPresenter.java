@@ -7,6 +7,7 @@ import com.arles.swissmanager.ui.activity.NavigatorActivity;
 import javax.inject.Inject;
 
 /**
+ * TourneyPresenter created to show TourneyActivity.
  * Created by Admin on 02.07.2015.
  */
 public class TourneyPresenter extends Presenter {
@@ -36,6 +37,10 @@ public class TourneyPresenter extends Presenter {
         // start new activity
         Round r = mTournament.startRound();
         mNavigator.startRoundActivity();
+    }
+
+    public void endRound() {
+
     }
 
     public interface IView {

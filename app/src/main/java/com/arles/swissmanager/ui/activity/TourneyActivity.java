@@ -64,6 +64,7 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
         switch (item.getItemId()) {
             case R.id.action_start_round:
                 mPresenter.startRound();
+                item.setEnabled(false);
                 break;
             case R.id.action_end_round:
                 break;

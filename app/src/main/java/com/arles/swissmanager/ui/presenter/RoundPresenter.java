@@ -15,6 +15,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
+ * RoundPresenter created to show RoundActivity.
  * Created by Admin on 16.07.2015.
  */
 public class RoundPresenter extends Presenter {

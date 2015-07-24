@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 
 /**
+ * NewPlayerPresenter created to show NewPlayerActivity.
  * Created by Admin on 20.05.2015.
  */
 public class NewPlayerPresenter extends Presenter {
