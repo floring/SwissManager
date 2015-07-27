@@ -48,4 +48,5 @@ dependencies {
     }
     compile project(':google-collections-0.8')
     compile 'org.apache.commons:commons-lang3:3.0'
+    compile 'com.android.support:design:22.2.0'
 }

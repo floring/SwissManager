@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.algorithm.Round;
 import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.utils.CircleIconDrawable;
 import com.arles.swissmanager.utils.CollectionValidator;
@@ -45,14 +44,14 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.recyclerview_adapter_item, parent, false);
+                R.layout.recyclerview_player_adapter_item, parent, false);
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.mTextView.setText(mPlayers.get(position).getName());
-        //holder.setImageDrawable();
+        holder.setImageDrawable();
         holder.itemView.setActivated(mSelectedItems.get(position, false));
     }
 

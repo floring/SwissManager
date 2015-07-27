@@ -4,20 +4,13 @@ package com.arles.swissmanager.ui.fragment;
  * Created by Admin on 06.07.2015.
  */
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.SwissManagerApplication;
 import com.arles.swissmanager.algorithm.Round;
-import com.arles.swissmanager.ui.adapter.PlayersAdapter;
 import com.arles.swissmanager.ui.adapter.RoundsAdapter;
-import com.arles.swissmanager.ui.presenter.PlayerTabPresenter;
 import com.arles.swissmanager.ui.presenter.RoundTabPresenter;
 import com.arles.swissmanager.utils.DividerItemDecoration;
 
@@ -27,7 +20,7 @@ import javax.inject.Inject;
 
 import butterknife.InjectView;
 
-public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.IView {
+public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.IView, FragmentSwitchListener {
 
     @InjectView(R.id.recycler_view_rounds)
     RecyclerView mRecyclerView;
@@ -40,13 +33,6 @@ public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.
         super.onViewCreated(view, savedInstanceState);
         mPresenter.setView(this);
         mPresenter.initializeViewComponent();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mAdapter.setData(mPresenter.getRoundList());
-        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
@@ -64,6 +50,12 @@ public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext()));
         mRecyclerView.setHasFixedSize(true);
         mAdapter = new RoundsAdapter(new ArrayList<Round>());
+        mAdapter.setData(mPresenter.getRoundList());
+        mRecyclerView.setAdapter(mAdapter);
+    }
 
+    @Override
+    public void onVisible() {
+        mAdapter.setData(mPresenter.getRoundList());
     }
 }

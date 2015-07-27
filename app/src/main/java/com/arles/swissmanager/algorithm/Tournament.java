@@ -52,7 +52,7 @@ public class Tournament {
         if (ok) {
             MatchesCreator creator = new MatchesCreator();
             List<Match> matches = creator.createMatchList(mPlayers);
-            round = new Round(matches);
+            round = createRound(matches);
         } else {
             // notifyAboutError();
         }
@@ -76,9 +76,15 @@ public class Tournament {
         mRoundNumber++;
     }
 
+    private Round createRound(List<Match> matches) {
+        Round round = new Round(matches);
+        mRounds.add(round);
+        return round;
+    }
+
     public void endRound(Round round) {
         setUnplayedMatchAsLost(round.getMatches());
-        mRounds.add(round);
+        //mRounds.add(round);
     }
 
     private void setUnplayedMatchAsLost(List<Match> matches) {

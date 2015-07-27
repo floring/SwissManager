@@ -2,7 +2,6 @@ package com.arles.swissmanager.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,8 +10,7 @@ import com.arles.swissmanager.R;
 import com.arles.swissmanager.SwissManagerApplication;
 import com.arles.swissmanager.algorithm.Tournament;
 import com.arles.swissmanager.ui.adapter.ViewPagerAdapter;
-import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
-import com.arles.swissmanager.ui.model.Player;
+import com.arles.swissmanager.ui.fragment.FragmentSwitchListener;
 import com.arles.swissmanager.ui.presenter.TourneyPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
 import com.arles.swissmanager.ui.tab.SlidingTabLayout;
@@ -71,7 +69,7 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
         switch (item.getItemId()) {
             case R.id.action_start_round:
                 mPresenter.startRound();
-                item.setEnabled(false);
+                //item.setEnabled(false);
                 break;
             case R.id.action_end_round:
                 break;
@@ -85,6 +83,29 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
     public void setViewComponent() {
         setToolbar();
         setSlidingTabLayout();
+    }
+
+    private void setViewPagerListener() {
+        mTabLayout.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                FragmentSwitchListener fragment = (FragmentSwitchListener) mPagerAdapter.instantiateItem(mPager, position);
+                if (fragment != null) {
+                    fragment.onVisible();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
@@ -107,6 +128,7 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
         });
         // Setting the ViewPager For the SlidingTabsLayout
         mTabLayout.setViewPager(mPager);
+        setViewPagerListener();
     }
 
     private void setToolbar() {

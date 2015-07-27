@@ -3,19 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Tab 2 says Hello :D"
-        android:id="@+id/textView"
-        android:textColor="@color/primaryTextColor"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_rounds"
         android:layout_width="match_parent"

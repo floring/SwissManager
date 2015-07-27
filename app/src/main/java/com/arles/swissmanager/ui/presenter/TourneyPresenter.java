@@ -35,7 +35,7 @@ public class TourneyPresenter extends Presenter {
         // make start round action not visible
         // start round in tourney
         // start new activity
-        Round r = mTournament.startRound();
+        mTournament.startRound();
         mView.showRoundAddedMessage();
     }
 
