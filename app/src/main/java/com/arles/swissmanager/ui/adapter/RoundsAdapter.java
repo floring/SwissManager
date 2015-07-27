@@ -46,7 +46,8 @@ public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(RoundsAdapter.ViewHolder holder, int position) {
-        holder.mRoundName.setText("Round ".concat(mList.get(position).toString()));
+        int number = mList.get(position).getNumber();
+        holder.mRoundName.setText("Round ".concat(Integer.toString(number)));
     }
 
     @Override

@@ -77,7 +77,7 @@ public class Tournament {
     }
 
     private Round createRound(List<Match> matches) {
-        Round round = new Round(matches);
+        Round round = new Round(mRoundNumber, matches);
         mRounds.add(round);
         return round;
     }
