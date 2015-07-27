@@ -3,9 +3,13 @@ package com.arles.swissmanager.ui.presenter;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.arles.swissmanager.algorithm.Round;
+import com.arles.swissmanager.algorithm.Tournament;
+import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.utils.KeyExtra;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -16,10 +20,11 @@ import javax.inject.Inject;
 public class PlayerTabPresenter extends Presenter {
 
     private IView mView;
+    private Tournament mTournament;
 
     @Inject
     public PlayerTabPresenter() {
-
+        mTournament = Tournament.getInstance();
     }
 
     public void setView(IView view) {
@@ -33,6 +38,14 @@ public class PlayerTabPresenter extends Presenter {
 
     public void launchActivity(int requestCode) {
 
+    }
+
+    public List<Player> getPlayerList() {
+        return mTournament.getPlayerCollection();
+    }
+
+    public void setPlayerList(List<Player> playerList) {
+        mTournament.setPlayers(playerList);
     }
 
     public void parseActivityResult(Intent data) {

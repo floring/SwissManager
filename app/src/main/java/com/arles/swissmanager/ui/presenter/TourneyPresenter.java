@@ -36,7 +36,7 @@ public class TourneyPresenter extends Presenter {
         // start round in tourney
         // start new activity
         Round r = mTournament.startRound();
-        mNavigator.startRoundActivity();
+        mView.showRoundAddedMessage();
     }
 
     public void endRound() {
@@ -45,5 +45,6 @@ public class TourneyPresenter extends Presenter {
 
     public interface IView {
         void setViewComponent();
+        void showRoundAddedMessage();
     }
 }

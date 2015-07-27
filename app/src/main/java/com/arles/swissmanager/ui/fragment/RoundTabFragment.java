@@ -43,6 +43,13 @@ public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mAdapter.setData(mPresenter.getRoundList());
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
     protected int getFragmentLayout() {
         return R.layout.tab_round;
     }
@@ -56,8 +63,7 @@ public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext()));
         mRecyclerView.setHasFixedSize(true);
-        mAdapter = new RoundsAdapter();
-        mAdapter.setData(new ArrayList<Round>());
-        mRecyclerView.setAdapter(mAdapter);
+        mAdapter = new RoundsAdapter(new ArrayList<Round>());
+
     }
 }

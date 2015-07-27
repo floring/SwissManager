@@ -41,5 +41,6 @@
     // Toast messages
     <string name="result_ok">OK</string>
     <string name="result_invalid">Invalid match result</string>
+    <string name="result_round_added">Round added</string>
 
 </resources>

@@ -10,8 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arles.swissmanager.R;
+import com.arles.swissmanager.algorithm.Round;
 import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.utils.CircleIconDrawable;
+import com.arles.swissmanager.utils.CollectionValidator;
 import com.arles.swissmanager.utils.ColorGenerator;
 
 import java.util.ArrayList;
@@ -32,6 +34,12 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
 
     public PlayersAdapter(List<Player> list) {
         mPlayers = list;
+    }
+
+    public void setData(List<Player> list) {
+        CollectionValidator.validateOnNull(list);
+        mPlayers = list;
+        notifyDataSetChanged();
     }
 
     @Override

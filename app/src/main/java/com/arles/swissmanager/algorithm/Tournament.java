@@ -101,4 +101,12 @@ public class Tournament {
         }
         return winner;
     }
+
+    public List<Round> getRoundCollection() {
+        return mRounds;
+    }
+
+    public List<Player> getPlayerCollection() {
+        return mPlayers;
+    }
 }

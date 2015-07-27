@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.algorithm.Round;
+import com.arles.swissmanager.utils.CollectionValidator;
 
 import java.util.List;
 
@@ -23,11 +24,14 @@ public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder
 
     private List<Round> mList;
 
-    public RoundsAdapter() {
+    public RoundsAdapter(List<Round> list) {
+        mList = list;
     }
 
     public void setData(List<Round> list) {
+        CollectionValidator.validateOnNull(list);
         mList = list;
+        notifyDataSetChanged();
     }
 
     public List<Round> getData() {
@@ -47,7 +51,13 @@ public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return mList.size();
+        return (mList != null) ? mList.size() : 0;
+    }
+
+    private void validateUsersCollection(List<Round> roundList) {
+        if (roundList == null) {
+            throw new IllegalArgumentException("The list cannot be null");
+        }
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder {

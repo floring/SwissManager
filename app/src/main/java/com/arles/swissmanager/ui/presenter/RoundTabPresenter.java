@@ -1,6 +1,10 @@
 package com.arles.swissmanager.ui.presenter;
 
+import com.arles.swissmanager.algorithm.Round;
+import com.arles.swissmanager.algorithm.Tournament;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -11,9 +15,13 @@ import javax.inject.Inject;
 public class RoundTabPresenter extends Presenter {
 
     private IView mView;
+    private Tournament mTournament;
 
     @Inject
-    public RoundTabPresenter() { }
+
+    public RoundTabPresenter() {
+        mTournament = Tournament.getInstance();
+    }
 
     public void setView(IView view) {
         mView = view;
@@ -22,6 +30,10 @@ public class RoundTabPresenter extends Presenter {
     @Override
     public void initializeViewComponent() {
         mView.setViewComponent();
+    }
+
+    public List<Round> getRoundList() {
+        return mTournament.getRoundCollection();
     }
 
     public interface IView {

@@ -8,11 +8,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.arles.swissmanager.R;
+import com.arles.swissmanager.SwissManagerApplication;
+import com.arles.swissmanager.algorithm.Tournament;
 import com.arles.swissmanager.ui.adapter.ViewPagerAdapter;
 import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
+import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.ui.presenter.TourneyPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
 import com.arles.swissmanager.ui.tab.SlidingTabLayout;
+import com.arles.swissmanager.utils.ToastUtil;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -43,6 +47,9 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
         injectViews();
         mPresenter.setView(this);
         mPresenter.initializeViewComponent();
+
+        Tournament tournament = Tournament.getInstance();
+        tournament.setPlayers(SwissManagerApplication.getTestPlayersData());
     }
 
     @Override
@@ -77,8 +84,13 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
     @Override
     public void setViewComponent() {
         setToolbar();
-        //setUpNavDrawerFragment();
         setSlidingTabLayout();
+    }
+
+    @Override
+    public void showRoundAddedMessage() {
+        String result = getString(R.string.result_round_added);
+        ToastUtil.showShortMessage(result, this);
     }
 
     private void setSlidingTabLayout() {
@@ -95,14 +107,6 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
         });
         // Setting the ViewPager For the SlidingTabsLayout
         mTabLayout.setViewPager(mPager);
-    }
-
-    private void setUpNavDrawerFragment() {
-        NavigationDrawerFragment navDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        navDrawerFragment.setUp(
-                findViewById(R.id.fragment_navigation_drawer),
-                (DrawerLayout) findViewById(R.id.drawer_layout),
-                mToolbar);
     }
 
     private void setToolbar() {

@@ -11,6 +11,7 @@ import com.arles.swissmanager.R;
 import com.arles.swissmanager.SwissManagerApplication;
 import com.arles.swissmanager.ui.activity.NewPlayerActivity;
 import com.arles.swissmanager.ui.adapter.PlayersAdapter;
+import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.ui.presenter.PlayerTabPresenter;
 import com.arles.swissmanager.utils.DividerItemDecoration;
 
@@ -74,11 +75,23 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mAdapter.setData(mPresenter.getPlayerList());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mPresenter.setPlayerList(mAdapter.getPlayers());
+    }
+
     private void setRecyclerView() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext()));
         mRecyclerView.setHasFixedSize(true);
-        mAdapter = new PlayersAdapter(SwissManagerApplication.getTestPlayersData());
+        mAdapter = new PlayersAdapter(new ArrayList<Player>());
         mRecyclerView.setAdapter(mAdapter);
     }
 }
