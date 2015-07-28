@@ -1,11 +1,14 @@
 package com.arles.swissmanager.ui.presenter;
 
+import android.content.Context;
 import android.content.Intent;
 
+import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.algorithm.Points;
 import com.arles.swissmanager.algorithm.Report;
 import com.arles.swissmanager.algorithm.Round;
+import com.arles.swissmanager.algorithm.State;
 import com.arles.swissmanager.algorithm.Tournament;
 import com.arles.swissmanager.utils.KeyExtra;
 
@@ -23,10 +26,12 @@ public class RoundPresenter extends Presenter {
     private Tournament mTournament;
     private final int DEFAULT_ROUND_NUMBER_TO_DISPLAY = 0;
     private Round mRound;
+    private Context mContext;
 
     @Inject
-    public RoundPresenter() {
+    public RoundPresenter(Context context) {
         mTournament = Tournament.getInstance();
+        mContext = context;
     }
 
     public void setView(IView view) {
@@ -47,27 +52,45 @@ public class RoundPresenter extends Presenter {
     }
 
     public void getPassedExtrasFrom(Intent intent) {
-        if(intent != null) {
+        if (intent != null) {
             int listNum = intent.getIntExtra(KeyExtra.KEY_ROUND_LIST_POSITION, DEFAULT_ROUND_NUMBER_TO_DISPLAY);
             mRound = mTournament.getRoundCollection().get(listNum);
         }
-
     }
 
     public void onMatchClicked(Match match, Points resPlayer1, Points resPlayer2) {
         Report report = match.reportResult(resPlayer1, resPlayer2);
         if (report == Report.OK) {
-            mView.showOkMessage();
+            mView.showReportResultMessage(mContext.getString(R.string.result_ok));
             mView.setBtn();
         } else if (report == Report.INVALID_RESULT) {
-            mView.showIncorrectResultMessage();
+            mView.showReportResultMessage(mContext.getString(R.string.result_invalid));
+        }
+    }
+
+    public void startRoundAction() {
+        toggleRoundState(null, State.RUNNING);
+    }
+
+    public void endRoundAction() {
+        mTournament.endRound(mRound);
+        mView.showRoundMessage(mContext.getString(R.string.result_round_ended));
+        toggleRoundState(State.RUNNING, State.COMPLETED);
+    }
+
+    private void toggleRoundState(State currentState, State newState) {
+        if (mRound.state == currentState) {
+            mRound.state = newState;
         }
     }
 
     public interface IView {
         void setViewComponent();
-        void showIncorrectResultMessage();
-        void showOkMessage();
+
+        void showReportResultMessage(String msg);
+
+        void showRoundMessage(String msg);
+
         void setBtn();
     }
 }

@@ -34,36 +34,43 @@ public class TourneyPresenter extends Presenter {
         mView.setViewComponent();
     }
 
-    public void startRoundAction(MenuItem item) {
-        if(item.isEnabled()) {
-            Round round = startRound();
-            if (round != null) {
-                mView.showRoundMessage(mContext.getString(R.string.result_round_added));
-                //mView.setMenuItemEnabled(item, false);
-            }
-        } else {
-            mView.showWarningRoundMessage(mContext.getString(R.string.result_warning_round_started));
+    public void createNewRoundAction() {
+        Round round = createRound();
+        if (round != null) {
+            mView.showRoundMessage(mContext.getString(R.string.result_round_added));
         }
     }
 
-    private Round startRound() {
+    private Round createRound() {
         return mTournament.startRound();
     }
 
-    public void endRoundAction(MenuItem item) {
-        if(item.isEnabled()) {
-            endRound();
-            mView.showRoundMessage(mContext.getString(R.string.result_round_ended));
-            //mView.setMenuItemEnabled(item, false);
-        }
-        else {
-            mView.showWarningRoundMessage(mContext.getString(R.string.result_warning_round_ended));
-        }
-    }
-
-    private void endRound() {
-        //mTournament.endRound();
-    }
+//    public void startRoundAction(MenuItem item) {
+//        if(item.isEnabled()) {
+//            Round round = createRound();
+//            if (round != null) {
+//                mView.showRoundMessage(mContext.getString(R.string.result_round_added));
+//                //mView.setMenuItemEnabled(item, false);
+//            }
+//        } else {
+//            mView.showWarningRoundMessage(mContext.getString(R.string.result_warning_round_started));
+//        }
+//    }
+//
+//    public void endRoundAction(MenuItem item) {
+//        if(item.isEnabled()) {
+//            endRound();
+//            mView.showRoundMessage(mContext.getString(R.string.result_round_ended));
+//            //mView.setMenuItemEnabled(item, false);
+//        }
+//        else {
+//            mView.showWarningRoundMessage(mContext.getString(R.string.result_warning_round_ended));
+//        }
+//    }
+//
+//    private void endRound() {
+//        //mTournament.endRound();
+//    }
 
     public interface IView {
         void setViewComponent();

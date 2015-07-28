@@ -30,6 +30,7 @@
     <string name="action_start_round">Start round</string>
     <string name="action_end_round">End round</string>
     <string name="action_remove">Remove</string>
+    <string name="action_create_new_round">New round</string>
 
     // Spinner choices
     <string-array name="match_outcomes">

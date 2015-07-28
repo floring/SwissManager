@@ -11,6 +11,7 @@ public class Round {
 
     private int mNumber;
     private List<Match> mMatches = new ArrayList<>();
+    public State state;
 
     public Round(int number, List<Match> list) {
         mNumber = number;

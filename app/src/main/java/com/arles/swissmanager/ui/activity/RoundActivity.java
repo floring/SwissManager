@@ -77,6 +77,12 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_start_round:
+                mPresenter.startRoundAction();
+                break;
+            case R.id.action_end_round:
+                mPresenter.endRoundAction();
+                break;
             case R.id.action_settings:
                 return true;
             case android.R.id.home:
@@ -93,15 +99,14 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
     }
 
     @Override
-    public void showIncorrectResultMessage() {
-        String invalidResult = getString(R.string.result_invalid);
-        ToastUtil.showShortMessage(invalidResult, this);
+    public void showReportResultMessage(String msg) {
+        ToastUtil.showShortMessage(msg, this);
     }
 
+
     @Override
-    public void showOkMessage() {
-        String okResult = getString(R.string.result_ok);
-        ToastUtil.showShortMessage(okResult, this);
+    public void showRoundMessage(String msg) {
+        ToastUtil.showShortMessage(msg, this);
     }
 
     @Override

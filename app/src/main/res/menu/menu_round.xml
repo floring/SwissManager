@@ -3,6 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.arles.swissmanager.ui.activity.RoundActivity">
     <item
+        android:id="@+id/action_start_round"
+        android:orderInCategory="100"
+        android:title="@string/action_start_round"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_end_round"
+        android:orderInCategory="100"
+        android:title="@string/action_end_round"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
