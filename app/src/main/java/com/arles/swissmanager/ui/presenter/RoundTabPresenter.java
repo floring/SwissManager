@@ -2,6 +2,7 @@ package com.arles.swissmanager.ui.presenter;
 
 import com.arles.swissmanager.algorithm.Round;
 import com.arles.swissmanager.algorithm.Tournament;
+import com.arles.swissmanager.ui.activity.NavigatorActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +17,11 @@ public class RoundTabPresenter extends Presenter {
 
     private IView mView;
     private Tournament mTournament;
+    private NavigatorActivity mNavigator;
 
     @Inject
-
-    public RoundTabPresenter() {
+    public RoundTabPresenter(NavigatorActivity navigator) {
+        mNavigator = navigator;
         mTournament = Tournament.getInstance();
     }
 
@@ -34,6 +36,10 @@ public class RoundTabPresenter extends Presenter {
 
     public List<Round> getRoundList() {
         return mTournament.getRoundCollection();
+    }
+
+    public void onRoundItemClick(int position) {
+        mNavigator.startRoundActivity(position);
     }
 
     public interface IView {

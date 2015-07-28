@@ -51,7 +51,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.mTextView.setText(mPlayers.get(position).getName());
-        holder.setImageDrawable();
+        //holder.setImageDrawable();
         holder.itemView.setActivated(mSelectedItems.get(position, false));
     }
 

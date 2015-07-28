@@ -1,13 +1,16 @@
 package com.arles.swissmanager.ui.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Match;
+import com.arles.swissmanager.algorithm.Points;
 import com.arles.swissmanager.algorithm.Round;
 import com.arles.swissmanager.utils.CollectionValidator;
 
@@ -15,6 +18,8 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
+import butterknife.OnItemClick;
 
 /**
  * RoundsAdapter manages Round data model and adapts it to RecyclerView, which is in RoundTabFragment.
@@ -23,6 +28,7 @@ import butterknife.InjectView;
 public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder> {
 
     private List<Round> mList;
+    private OnItemClickListener onItemClickListener;
 
     public RoundsAdapter(List<Round> list) {
         mList = list;
@@ -48,6 +54,7 @@ public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder
     public void onBindViewHolder(RoundsAdapter.ViewHolder holder, int position) {
         int number = mList.get(position).getNumber();
         holder.mRoundName.setText("Round ".concat(Integer.toString(number)));
+        holder.mRoundName.setTag(position);
     }
 
     @Override
@@ -55,10 +62,8 @@ public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder
         return (mList != null) ? mList.size() : 0;
     }
 
-    private void validateUsersCollection(List<Round> roundList) {
-        if (roundList == null) {
-            throw new IllegalArgumentException("The list cannot be null");
-        }
+    public void setOnItemClickListener (OnItemClickListener listener) {
+        onItemClickListener = listener;
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
@@ -70,5 +75,21 @@ public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder
             super(itemView);
             ButterKnife.inject(this, itemView);
         }
+
+        @OnClick(R.id.text_view_round_name)
+        public void itemClick(View view) {
+            if(RoundsAdapter.this.onItemClickListener != null) {
+                int position = (int) view.getTag();
+                RoundsAdapter.this.onItemClickListener.onItemClicked(position);
+            }
+        }
+
+    }
+
+    /**
+     * Interface for listening round list events.
+     */
+    public interface OnItemClickListener {
+        void onItemClicked(int position);
     }
 }

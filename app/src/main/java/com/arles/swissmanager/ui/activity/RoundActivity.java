@@ -41,6 +41,8 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_round);
         injectViews();
+        mPresenter.getPassedExtrasFrom(getIntent());
+
         mPresenter.setView(this);
         mPresenter.initializeViewComponent();
     }
@@ -49,6 +51,7 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
     protected void onResume() {
         super.onResume();
         // get matches from algorithm class and set it to adapter
+        mAdapter.setData(mPresenter.getMatchesData());
     }
 
     @Override
@@ -111,7 +114,6 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
         mRecyclerView.addItemDecoration(new DividerBoldItemDecoration(this));
         mRecyclerView.setHasFixedSize(true);
         mAdapter = new MatchesAdapter(this, new ArrayList<Match>());
-        mAdapter.setData(mPresenter.getMatchesData());
         mAdapter.setOnItemClickListener(onItemClickListener);
         mRecyclerView.setAdapter(new SlideInBottomAnimationAdapter(mAdapter));
     }

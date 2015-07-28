@@ -68,8 +68,7 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_start_round:
-                mPresenter.startRound();
-                //item.setEnabled(false);
+                mPresenter.startRound(item);
                 break;
             case R.id.action_end_round:
                 break;
@@ -112,6 +111,11 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
     public void showRoundAddedMessage() {
         String result = getString(R.string.result_round_added);
         ToastUtil.showShortMessage(result, this);
+    }
+
+    @Override
+    public void setMenuItemEnabled(MenuItem item, boolean enabled) {
+        item.setEnabled(enabled);
     }
 
     private void setSlidingTabLayout() {

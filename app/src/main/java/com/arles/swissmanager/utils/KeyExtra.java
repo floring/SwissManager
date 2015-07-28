@@ -6,4 +6,5 @@ package com.arles.swissmanager.utils;
  */
 public class KeyExtra {
     public static final String KEY_BUFFER_PLAYERS_NAME_LIST = "buffer_players_name";
+    public static final String KEY_ROUND_LIST_POSITION = "round_list_position";
 }

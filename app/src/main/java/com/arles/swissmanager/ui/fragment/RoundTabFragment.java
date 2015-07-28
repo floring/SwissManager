@@ -9,7 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.arles.swissmanager.R;
+import com.arles.swissmanager.algorithm.Match;
+import com.arles.swissmanager.algorithm.Points;
 import com.arles.swissmanager.algorithm.Round;
+import com.arles.swissmanager.ui.adapter.MatchesAdapter;
 import com.arles.swissmanager.ui.adapter.RoundsAdapter;
 import com.arles.swissmanager.ui.presenter.RoundTabPresenter;
 import com.arles.swissmanager.utils.DividerItemDecoration;
@@ -51,6 +54,7 @@ public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.
         mRecyclerView.setHasFixedSize(true);
         mAdapter = new RoundsAdapter(new ArrayList<Round>());
         mAdapter.setData(mPresenter.getRoundList());
+        mAdapter.setOnItemClickListener(onItemClickListener);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -58,4 +62,12 @@ public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.
     public void onVisible() {
         mAdapter.setData(mPresenter.getRoundList());
     }
+
+    private RoundsAdapter.OnItemClickListener onItemClickListener =
+            new RoundsAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClicked(int position) {
+                    mPresenter.onRoundItemClick(position);
+                }
+            };
 }

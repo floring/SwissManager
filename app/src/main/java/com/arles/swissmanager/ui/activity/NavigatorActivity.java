@@ -3,8 +3,10 @@ package com.arles.swissmanager.ui.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.arles.swissmanager.di.ActivityContext;
+import com.arles.swissmanager.utils.KeyExtra;
 
 import javax.inject.Inject;
 
@@ -24,8 +26,9 @@ public class NavigatorActivity {
         mActivityContext = (Activity) context;
     }
 
-    public void startRoundActivity() {
+    public void startRoundActivity(int roundListPosition) {
         Intent intent = getLaunchIntent(RoundActivity.class);
+        intent.putExtra(KeyExtra.KEY_ROUND_LIST_POSITION, roundListPosition);
         mActivityContext.startActivity(intent);
     }
 
@@ -41,4 +44,5 @@ public class NavigatorActivity {
         Intent intent = new Intent(mActivityContext, activityClass);
         return intent;
     }
+
 }

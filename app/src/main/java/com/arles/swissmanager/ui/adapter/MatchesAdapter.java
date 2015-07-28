@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.algorithm.Points;
+import com.arles.swissmanager.utils.CollectionValidator;
 
 import java.util.List;
 
@@ -36,7 +37,9 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
     }
 
     public void setData(List<Match> list) {
+        CollectionValidator.validateOnNull(list);
         mDataList = list;
+        notifyDataSetChanged();
     }
 
     public List<Match> getData() {
@@ -61,7 +64,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return mDataList.size();
+        return (mDataList != null) ? mDataList.size() : 0;
     }
 
     public void setOnItemClickListener (OnItemClickListener listener) {

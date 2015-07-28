@@ -1,5 +1,7 @@
 package com.arles.swissmanager.ui.presenter;
 
+import android.view.MenuItem;
+
 import com.arles.swissmanager.algorithm.Round;
 import com.arles.swissmanager.algorithm.Tournament;
 import com.arles.swissmanager.ui.activity.NavigatorActivity;
@@ -13,12 +15,10 @@ import javax.inject.Inject;
 public class TourneyPresenter extends Presenter {
 
     private IView mView;
-    private NavigatorActivity mNavigator;
     private Tournament mTournament;
 
     @Inject
-    public TourneyPresenter(NavigatorActivity navigator) {
-        mNavigator = navigator;
+    public TourneyPresenter() {
         mTournament = Tournament.getInstance();
     }
 
@@ -31,12 +31,15 @@ public class TourneyPresenter extends Presenter {
         mView.setViewComponent();
     }
 
-    public void startRound() {
+    public void startRound(MenuItem item) {
         // make start round action not visible
         // start round in tourney
         // start new activity
-        mTournament.startRound();
-        mView.showRoundAddedMessage();
+        Round round = mTournament.startRound();
+        if(round != null) {
+            mView.showRoundAddedMessage();
+            mView.setMenuItemEnabled(item, false);
+        }
     }
 
     public void endRound() {
@@ -46,5 +49,6 @@ public class TourneyPresenter extends Presenter {
     public interface IView {
         void setViewComponent();
         void showRoundAddedMessage();
+        void setMenuItemEnabled(MenuItem item, boolean enabled);
     }
 }
