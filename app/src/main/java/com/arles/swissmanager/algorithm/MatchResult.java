@@ -16,6 +16,14 @@ public class MatchResult {
     private Points mPlayer2score;
     private static final Set<MatchResult> mSet;
 
+    public Points getPlayer1score() {
+        return mPlayer1score;
+    }
+
+    public Points getPlayer2score() {
+        return mPlayer2score;
+    }
+
     static {
         Set<MatchResult> set = new HashSet<>();
         set.add(new MatchResult(Points.WIN, Points.LOSE));

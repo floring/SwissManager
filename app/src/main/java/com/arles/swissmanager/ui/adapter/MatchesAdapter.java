@@ -12,7 +12,9 @@ import android.widget.TextView;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Match;
+import com.arles.swissmanager.algorithm.MatchResult;
 import com.arles.swissmanager.algorithm.Points;
+import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.utils.CollectionValidator;
 
 import java.util.List;
@@ -54,12 +56,21 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.player1.setText(mDataList.get(position).getPlayer1().getName());
-        holder.player2.setText(mDataList.get(position).getPlayer2().getName());
+        Match match = mDataList.get(position);
+        holder.player1.setText(match.getPlayer1().getName());
+        holder.player2.setText(match.getPlayer2().getName());
         ArrayAdapter<Points> adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, Points.getPointsNames());
         holder.resultPlayer1.setAdapter(adapter);
         holder.resultPlayer2.setAdapter(adapter);
         holder.btnSendResult.setTag(position);
+
+        MatchResult matchResult = match.getResult();
+        if(matchResult != null) {
+            int spinnerPosition = adapter.getPosition(matchResult.getPlayer1score());
+            holder.resultPlayer1.setSelection(spinnerPosition);
+            spinnerPosition = adapter.getPosition(matchResult.getPlayer2score());
+            holder.resultPlayer2.setSelection(spinnerPosition);
+        }
     }
 
     @Override

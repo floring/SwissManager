@@ -70,12 +70,13 @@ public class RoundPresenter extends Presenter {
 
     public void startRoundAction() {
         toggleRoundState(null, State.RUNNING);
+        mView.showRoundMessage(mContext.getString(R.string.result_round_started));
     }
 
     public void endRoundAction() {
         mTournament.endRound(mRound);
-        mView.showRoundMessage(mContext.getString(R.string.result_round_ended));
         toggleRoundState(State.RUNNING, State.COMPLETED);
+        mView.showRoundMessage(mContext.getString(R.string.result_round_ended));
     }
 
     private void toggleRoundState(State currentState, State newState) {
