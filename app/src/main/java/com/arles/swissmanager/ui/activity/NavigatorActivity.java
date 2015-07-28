@@ -3,7 +3,6 @@ package com.arles.swissmanager.ui.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 
 import com.arles.swissmanager.di.ActivityContext;
 import com.arles.swissmanager.utils.KeyExtra;

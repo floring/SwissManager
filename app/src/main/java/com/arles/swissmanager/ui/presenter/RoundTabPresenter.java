@@ -4,7 +4,6 @@ import com.arles.swissmanager.algorithm.Round;
 import com.arles.swissmanager.algorithm.Tournament;
 import com.arles.swissmanager.ui.activity.NavigatorActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;

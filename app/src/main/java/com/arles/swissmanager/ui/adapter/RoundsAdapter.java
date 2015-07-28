@@ -1,16 +1,12 @@
 package com.arles.swissmanager.ui.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.algorithm.Match;
-import com.arles.swissmanager.algorithm.Points;
 import com.arles.swissmanager.algorithm.Round;
 import com.arles.swissmanager.utils.CollectionValidator;
 
@@ -19,7 +15,6 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import butterknife.OnItemClick;
 
 /**
  * RoundsAdapter manages Round data model and adapts it to RecyclerView, which is in RoundTabFragment.

@@ -6,7 +6,6 @@ import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.ui.activity.RoundActivity;
 import com.arles.swissmanager.ui.activity.TourneyActivity;
 
 import org.junit.Rule;

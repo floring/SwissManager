@@ -1,17 +1,13 @@
 package com.arles.swissmanager.ui.presenter;
 
 import android.content.Intent;
-import android.util.Log;
-import android.widget.Toast;
 
-import com.arles.swissmanager.SwissManagerApplication;
 import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.algorithm.Points;
 import com.arles.swissmanager.algorithm.Report;
 import com.arles.swissmanager.algorithm.Round;
 import com.arles.swissmanager.algorithm.Tournament;
 import com.arles.swissmanager.utils.KeyExtra;
-import com.arles.swissmanager.utils.ToastUtil;
 
 import java.util.List;
 

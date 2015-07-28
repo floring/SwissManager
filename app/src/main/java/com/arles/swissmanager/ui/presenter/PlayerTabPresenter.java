@@ -3,7 +3,6 @@ package com.arles.swissmanager.ui.presenter;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.arles.swissmanager.algorithm.Round;
 import com.arles.swissmanager.algorithm.Tournament;
 import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.utils.KeyExtra;

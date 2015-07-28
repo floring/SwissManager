@@ -3,16 +3,14 @@ package com.arles.swissmanager.ui.fragment;
 /**
  * Created by Admin on 06.07.2015.
  */
+
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.algorithm.Match;
-import com.arles.swissmanager.algorithm.Points;
 import com.arles.swissmanager.algorithm.Round;
-import com.arles.swissmanager.ui.adapter.MatchesAdapter;
 import com.arles.swissmanager.ui.adapter.RoundsAdapter;
 import com.arles.swissmanager.ui.presenter.RoundTabPresenter;
 import com.arles.swissmanager.utils.DividerItemDecoration;

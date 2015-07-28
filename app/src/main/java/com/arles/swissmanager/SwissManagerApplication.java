@@ -25,7 +25,8 @@ public class SwissManagerApplication extends Application {
     private ObjectGraph objectGraph;
 
     private static List<Player> mDataList;
-    private static final String[] NAMES_LIST = new String[] {"John", "Alex", "David", "Martin", "Brian", "Harry"};
+    //    private static final String[] NAMES_LIST = new String[] {"John", "Alex", "David", "Martin", "Brian", "Harry"};
+    private static final String[] NAMES_LIST = new String[]{"John", "Alex"};
 
     @Override
     public void onCreate() {
@@ -68,7 +69,7 @@ public class SwissManagerApplication extends Application {
 
     private void setTestData() {
         mDataList = new ArrayList<>();
-        for(int i = 0; i < NAMES_LIST.length; ++i) {
+        for (int i = 0; i < NAMES_LIST.length; ++i) {
             mDataList.add(new Player(NAMES_LIST[i]));
         }
     }
