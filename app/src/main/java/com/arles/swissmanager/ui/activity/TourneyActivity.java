@@ -13,7 +13,6 @@ import com.arles.swissmanager.SwissManagerApplication;
 import com.arles.swissmanager.algorithm.Tournament;
 import com.arles.swissmanager.ui.adapter.ViewPagerAdapter;
 import com.arles.swissmanager.ui.fragment.FragmentParentClickListener;
-import com.arles.swissmanager.ui.fragment.FragmentSwitchListener;
 import com.arles.swissmanager.ui.fragment.RoundTabFragment;
 import com.arles.swissmanager.ui.presenter.TourneyPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
@@ -101,29 +100,6 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
         setSlidingTabLayout();
     }
 
-    private void setViewPagerListener() {
-        mTabLayout.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                FragmentSwitchListener fragment = (FragmentSwitchListener) mPagerAdapter.instantiateItem(mPager, position);
-                if (fragment != null) {
-                    fragment.onVisible();
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-    }
-
     @Override
     public void showRoundMessage(String result) {
         ToastUtil.showShortMessage(result, this);
@@ -161,7 +137,6 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
         });
         // Setting the ViewPager For the SlidingTabsLayout
         mTabLayout.setViewPager(mPager);
-        setViewPagerListener();
     }
 
     private void setToolbar() {

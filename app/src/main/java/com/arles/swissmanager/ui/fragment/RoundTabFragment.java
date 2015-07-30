@@ -22,7 +22,7 @@ import javax.inject.Inject;
 
 import butterknife.InjectView;
 
-public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.IView, FragmentSwitchListener, FragmentParentClickListener {
+public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.IView, FragmentParentClickListener {
 
     @InjectView(R.id.recycler_view_rounds)
     RecyclerView mRecyclerView;
@@ -55,11 +55,6 @@ public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.
         mAdapter.setData(mPresenter.getRoundList());
         mAdapter.setOnItemClickListener(onItemClickListener);
         mRecyclerView.setAdapter(mAdapter);
-    }
-
-    @Override
-    public void onVisible() {
-        mAdapter.setData(mPresenter.getRoundList());
     }
 
     private RoundsAdapter.OnItemClickListener onItemClickListener =

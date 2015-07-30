@@ -24,7 +24,7 @@ import butterknife.OnClick;
 /**
  * Created by Admin on 06.07.2015.
  */
-public class PlayerTabFragment extends BaseFragment implements PlayerTabPresenter.IView, FragmentSwitchListener, FragmentParentClickListener {
+public class PlayerTabFragment extends BaseFragment implements PlayerTabPresenter.IView, FragmentParentClickListener {
 
     private static final int REQUEST_CODE_START_ACTIVITY = 16;
 
@@ -87,11 +87,6 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
         mAdapter = new PlayersAdapter(new ArrayList<Player>());
         mAdapter.setData(mPresenter.getPlayerList());
         mRecyclerView.setAdapter(mAdapter);
-    }
-
-    @Override
-    public void onVisible() {
-        mAdapter.setData(mPresenter.getPlayerList());
     }
 
     @Override
