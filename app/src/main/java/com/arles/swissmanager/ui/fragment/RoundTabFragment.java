@@ -66,7 +66,7 @@ public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.
     private RoundsAdapter.OnItemClickListener onItemClickListener =
             new RoundsAdapter.OnItemClickListener() {
                 @Override
-                public void onItemClicked(int position) {
+                public void onItemClicked(View view, int position) {
                     mPresenter.onRoundItemClick(position);
                 }
             };

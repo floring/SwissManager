@@ -49,7 +49,6 @@ public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder
     public void onBindViewHolder(RoundsAdapter.ViewHolder holder, int position) {
         int number = mList.get(position).getNumber();
         holder.mRoundName.setText("Round ".concat(Integer.toString(number)));
-        holder.mRoundName.setTag(position);
     }
 
     @Override
@@ -73,9 +72,8 @@ public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder
 
         @OnClick(R.id.text_view_round_name)
         public void itemClick(View view) {
-            if(RoundsAdapter.this.onItemClickListener != null) {
-                int position = (int) view.getTag();
-                RoundsAdapter.this.onItemClickListener.onItemClicked(position);
+            if(onItemClickListener != null) {
+                onItemClickListener.onItemClicked(view, getPosition());
             }
         }
 
@@ -85,6 +83,6 @@ public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder
      * Interface for listening round list events.
      */
     public interface OnItemClickListener {
-        void onItemClicked(int position);
+        void onItemClicked(View view, int position);
     }
 }

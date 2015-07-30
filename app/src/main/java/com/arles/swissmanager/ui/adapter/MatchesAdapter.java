@@ -105,8 +105,8 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
             int rowViewPos = (int) btnSendResult.getTag();
             Match currMatch = mDataList.get(rowViewPos);
 
-            if (MatchesAdapter.this.onItemClickListener != null) {
-                MatchesAdapter.this.onItemClickListener.onButtonClicked(currMatch,
+            if (onItemClickListener != null) {
+                onItemClickListener.onButtonClicked(currMatch,
                         (Points) resultPlayer1.getSelectedItem(),
                         (Points) resultPlayer2.getSelectedItem());
             }
