@@ -16,18 +16,24 @@ import javax.inject.Inject;
  *
  * Created by Admin on 19.05.2015.
  */
-public class NavigatorActivity {
+public class Navigator {
 
     private Activity mActivityContext;
 
     @Inject
-     public NavigatorActivity(@ActivityContext Context context) {
+     public Navigator(@ActivityContext Context context) {
         mActivityContext = (Activity) context;
     }
 
     public void startRoundActivity(int roundListPosition) {
         Intent intent = getLaunchIntent(RoundActivity.class);
         intent.putExtra(KeyExtra.KEY_ROUND_LIST_POSITION, roundListPosition);
+        mActivityContext.startActivity(intent);
+    }
+
+    public void startPlayerDataActivity(int playerListPosition) {
+        Intent intent = getLaunchIntent(PlayerDataActivity.class);
+        intent.putExtra(KeyExtra.KEY_PLAYER_LIST_POSITION, playerListPosition);
         mActivityContext.startActivity(intent);
     }
 

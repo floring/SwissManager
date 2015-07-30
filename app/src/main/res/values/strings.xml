@@ -50,6 +50,7 @@
     <string name="result_warning_round_started">You should end up the round before starts the new one</string>
     <string name="result_round_ended">Round ended</string>
     <string name="result_warning_round_ended">You should start the round</string>
+    <string name="title_activity_player_data">PlayerDataActivity</string>
 
 
 </resources>

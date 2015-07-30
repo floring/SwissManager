@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.arles.swissmanager.algorithm.Tournament;
+import com.arles.swissmanager.ui.activity.Navigator;
 import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.utils.KeyExtra;
 
@@ -21,9 +22,11 @@ public class PlayerTabPresenter extends Presenter {
 
     private IView mView;
     private Tournament mTournament;
+    private Navigator mNavigator;
 
     @Inject
-    public PlayerTabPresenter() {
+    public PlayerTabPresenter(Navigator navigator) {
+        mNavigator = navigator;
         mTournament = Tournament.getInstance();
     }
 
@@ -59,7 +62,7 @@ public class PlayerTabPresenter extends Presenter {
     }
 
     public void onPlayerItemClick(int position) {
-        
+        mNavigator.startPlayerDataActivity(position);
     }
 
     public interface IView {

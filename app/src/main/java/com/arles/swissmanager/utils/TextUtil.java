@@ -5,6 +5,8 @@ package com.arles.swissmanager.utils;
  */
 public class TextUtil {
 
+    public static final String EMPTY_STRING = "";
+
     public static boolean isValidContent(String text) {
         return (text != null && !text.trim().isEmpty());
     }

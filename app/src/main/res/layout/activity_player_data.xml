@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.arles.swissmanager.ui.activity.PlayerDataActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ratio3x2" />
+
+    <TextView
+        android:id="@+id/text_view_player_data_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="-72dp"
+        android:text="Player Name"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:textSize="36sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="48dp"
+        android:text="Prestige"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_view_player_data_prestige"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="72dp"
+        android:text="0"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="24dp"
+        android:text="Rivals"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="16sp" />
+
+</LinearLayout>

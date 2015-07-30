@@ -24,7 +24,6 @@ public class RoundPresenter extends Presenter {
 
     private IView mView;
     private Tournament mTournament;
-    private final int DEFAULT_ROUND_NUMBER_TO_DISPLAY = 0;
     private Round mRound;
     private Context mContext;
 
@@ -53,7 +52,7 @@ public class RoundPresenter extends Presenter {
 
     public void getPassedExtrasFrom(Intent intent) {
         if (intent != null) {
-            int listNum = intent.getIntExtra(KeyExtra.KEY_ROUND_LIST_POSITION, DEFAULT_ROUND_NUMBER_TO_DISPLAY);
+            int listNum = intent.getIntExtra(KeyExtra.KEY_ROUND_LIST_POSITION, KeyExtra.DEFAULT_LIST_POSITION_TO_DISPLAY);
             mRound = mTournament.getRoundCollection().get(listNum);
         }
     }

@@ -2,7 +2,7 @@ package com.arles.swissmanager.ui.presenter;
 
 import android.content.Intent;
 
-import com.arles.swissmanager.ui.activity.NavigatorActivity;
+import com.arles.swissmanager.ui.activity.Navigator;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -16,10 +16,10 @@ import javax.inject.Singleton;
 public class MainPresenter extends Presenter {
 
     private IView mView;
-    private NavigatorActivity mNavigator;
+    private Navigator mNavigator;
 
     @Inject
-    public MainPresenter(NavigatorActivity navigator) {
+    public MainPresenter(Navigator navigator) {
         mNavigator = navigator;
     }
 
