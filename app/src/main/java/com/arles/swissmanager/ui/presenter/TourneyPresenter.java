@@ -44,6 +44,7 @@ public class TourneyPresenter extends Presenter {
         Round round = createRound();
         if (round != null) {
             mView.showRoundMessage(mContext.getString(R.string.result_round_added));
+            mView.refreshFragmentData(mView.getPagerAdapterRoundTabPosition());
         } else {
             mView.showDialog("Can't start new round. Some rounds may running or rounds number is over");
         }
@@ -87,7 +88,7 @@ public class TourneyPresenter extends Presenter {
 
     public void getTourneyWinner() {
         Player player = mTournament.defineWinner();
-        if(player != null) {
+        if (player != null) {
             mView.showDialog("The winner is " + player.getName());
         } else {
             mView.showDialog("The winner has not been determined");
@@ -95,7 +96,8 @@ public class TourneyPresenter extends Presenter {
     }
 
     public void sortByPrestige() {
-        Collection list = mTournament.sortPlayersByPrestige();
+        mTournament.sortPlayersByPrestige();
+        mView.refreshFragmentData(mView.getPagerAdapterPlayerTabPosition());
     }
 
     public interface IView {
@@ -109,6 +111,11 @@ public class TourneyPresenter extends Presenter {
 
         void setMenuItemEnabled(MenuItem item, boolean enabled);
 
+        void refreshFragmentData(int position);
+
+        int getPagerAdapterPlayerTabPosition();
+
+        int getPagerAdapterRoundTabPosition();
 
     }
 

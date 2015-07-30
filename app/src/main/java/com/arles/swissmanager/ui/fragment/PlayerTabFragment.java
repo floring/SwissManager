@@ -75,6 +75,12 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mAdapter.setData(mPresenter.getPlayerList());
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
         mPresenter.setPlayerList(mAdapter.getPlayers());

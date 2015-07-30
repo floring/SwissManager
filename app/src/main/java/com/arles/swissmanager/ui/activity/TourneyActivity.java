@@ -71,13 +71,7 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_create_new_round:
-                //mPresenter.createNewRoundAction();
-
-                FragmentParentClickListener fragment = (FragmentParentClickListener) mPagerAdapter.getItem(ViewPagerAdapter.ROUND_TAB_POSITION);
-                if(fragment != null) {
-                    fragment.onRefresh();
-                }
-
+                mPresenter.createNewRoundAction();
                 break;
             case R.id.action_settings:
                 break;
@@ -121,6 +115,24 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
     @Override
     public void setMenuItemEnabled(MenuItem item, boolean enabled) {
         item.setEnabled(enabled);
+    }
+
+    @Override
+    public void refreshFragmentData(int position) {
+        FragmentParentClickListener fragment = (FragmentParentClickListener) mPagerAdapter.getItem(position);
+        if(fragment != null) {
+            fragment.onRefresh();
+        }
+    }
+
+    @Override
+    public int getPagerAdapterPlayerTabPosition() {
+        return ViewPagerAdapter.PLAYER_TAB_POSITION;
+    }
+
+    @Override
+    public int getPagerAdapterRoundTabPosition() {
+        return ViewPagerAdapter.ROUND_TAB_POSITION;
     }
 
     private void setSlidingTabLayout() {

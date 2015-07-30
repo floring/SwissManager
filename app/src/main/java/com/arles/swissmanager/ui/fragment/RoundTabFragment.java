@@ -43,6 +43,12 @@ public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mAdapter.setData(mPresenter.getRoundList());
+    }
+
+    @Override
     public void setViewComponent() {
         setRecyclerView();
     }
