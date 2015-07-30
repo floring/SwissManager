@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Round;
+import com.arles.swissmanager.ui.adapter.OnItemClickListener;
 import com.arles.swissmanager.ui.adapter.RoundsAdapter;
 import com.arles.swissmanager.ui.presenter.RoundTabPresenter;
 import com.arles.swissmanager.utils.DividerItemDecoration;
@@ -63,8 +64,8 @@ public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    private RoundsAdapter.OnItemClickListener onItemClickListener =
-            new RoundsAdapter.OnItemClickListener() {
+    private OnItemClickListener onItemClickListener =
+            new OnItemClickListener() {
                 @Override
                 public void onItemClicked(View view, int position) {
                     mPresenter.onRoundItemClick(position);

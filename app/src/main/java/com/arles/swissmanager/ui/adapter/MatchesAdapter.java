@@ -14,7 +14,6 @@ import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.algorithm.MatchResult;
 import com.arles.swissmanager.algorithm.Points;
-import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.utils.CollectionValidator;
 
 import java.util.List;
@@ -31,7 +30,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
 
     private Context mContext;
     private List<Match> mDataList;
-    private OnItemClickListener onItemClickListener;
+    private OnViewClickListener onItemClickListener;
 
     public MatchesAdapter(Context context, List<Match> list) {
         mContext = context;
@@ -78,7 +77,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
         return (mDataList != null) ? mDataList.size() : 0;
     }
 
-    public void setOnItemClickListener (OnItemClickListener listener) {
+    public void setOnItemClickListener (OnViewClickListener listener) {
         onItemClickListener = listener;
     }
 
@@ -116,7 +115,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
     /**
      * Interface for listening match list events.
      */
-    public interface OnItemClickListener {
+    public interface OnViewClickListener {
         void onButtonClicked(Match match, Points resPlayer1, Points resPlayer2);
     }
 }

@@ -119,7 +119,7 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
         mRecyclerView.addItemDecoration(new DividerBoldItemDecoration(this));
         mRecyclerView.setHasFixedSize(true);
         mAdapter = new MatchesAdapter(this, new ArrayList<Match>());
-        mAdapter.setOnItemClickListener(onItemClickListener);
+        mAdapter.setOnItemClickListener(onViewClickListener);
         mRecyclerView.setAdapter(new SlideInBottomAnimationAdapter(mAdapter));
     }
 
@@ -130,8 +130,8 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private MatchesAdapter.OnItemClickListener onItemClickListener =
-            new MatchesAdapter.OnItemClickListener() {
+    private MatchesAdapter.OnViewClickListener onViewClickListener =
+            new MatchesAdapter.OnViewClickListener() {
                 @Override
                 public void onButtonClicked(Match match, Points resPlayer1, Points resPlayer2) {
                     if (mPresenter != null && match != null) {

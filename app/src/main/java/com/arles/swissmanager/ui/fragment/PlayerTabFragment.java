@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.ui.activity.NewPlayerActivity;
+import com.arles.swissmanager.ui.adapter.OnItemClickListener;
 import com.arles.swissmanager.ui.adapter.PlayersAdapter;
 import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.ui.presenter.PlayerTabPresenter;
@@ -92,6 +93,7 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
         mRecyclerView.setHasFixedSize(true);
         mAdapter = new PlayersAdapter(new ArrayList<Player>());
         mAdapter.setData(mPresenter.getPlayerList());
+        mAdapter.setOnItemClickListener(onItemClickListener);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -99,4 +101,12 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
     public void onRefresh() {
         mAdapter.setData(mPresenter.getPlayerList());
     }
+
+    private OnItemClickListener onItemClickListener =
+            new OnItemClickListener() {
+                @Override
+                public void onItemClicked(View view, int position) {
+                    mPresenter.onPlayerItemClick(position);
+                }
+            };
 }

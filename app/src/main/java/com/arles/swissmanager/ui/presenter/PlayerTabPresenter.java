@@ -2,6 +2,7 @@ package com.arles.swissmanager.ui.presenter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.arles.swissmanager.algorithm.Tournament;
 import com.arles.swissmanager.ui.model.Player;
@@ -55,6 +56,10 @@ public class PlayerTabPresenter extends Presenter {
                 mView.addToAdapter(namesList);
             }
         }
+    }
+
+    public void onPlayerItemClick(int position) {
+        
     }
 
     public interface IView {

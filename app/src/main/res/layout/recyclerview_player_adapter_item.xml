@@ -6,7 +6,8 @@
     android:clickable="true"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:id="@+id/layout_item_player">
     
     <ImageView
         android:id="@+id/image_view_player_item"

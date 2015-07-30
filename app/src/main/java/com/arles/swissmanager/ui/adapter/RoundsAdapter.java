@@ -23,7 +23,7 @@ import butterknife.OnClick;
 public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder> {
 
     private List<Round> mList;
-    private OnItemClickListener onItemClickListener;
+    private OnItemClickListener mListener;
 
     public RoundsAdapter(List<Round> list) {
         mList = list;
@@ -57,7 +57,7 @@ public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder
     }
 
     public void setOnItemClickListener (OnItemClickListener listener) {
-        onItemClickListener = listener;
+        mListener = listener;
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
@@ -72,17 +72,10 @@ public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder
 
         @OnClick(R.id.text_view_round_name)
         public void itemClick(View view) {
-            if(onItemClickListener != null) {
-                onItemClickListener.onItemClicked(view, getPosition());
+            if(mListener != null) {
+                mListener.onItemClicked(view, getPosition());
             }
         }
 
-    }
-
-    /**
-     * Interface for listening round list events.
-     */
-    public interface OnItemClickListener {
-        void onItemClicked(View view, int position);
     }
 }
