@@ -50,8 +50,9 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mTextView.setText(mPlayers.get(position).getName());
-        //holder.setImageDrawable();
+        Player playerItem = mPlayers.get(position);
+        holder.mTextView.setText(playerItem.getName());
+        holder.setImageDrawable(Integer.toString(playerItem.getPrestige()));
         holder.itemView.setActivated(mSelectedItems.get(position, false));
     }
 
@@ -123,7 +124,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
     }
 
     public List<Integer> getSelectedItems() {
-        List<Integer> items = new ArrayList<Integer>(mSelectedItems.size());
+        List<Integer> items = new ArrayList<>(mSelectedItems.size());
         for(int i = 0; i < mSelectedItems.size(); ++i) {
             items.add(mSelectedItems.keyAt(i));
         }
@@ -134,24 +135,24 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
 
         @InjectView(R.id.text_view_player_name_item) TextView mTextView;
         @InjectView(R.id.image_view_player_item) ImageView mImageView;
-        private Integer color = null;
+        private Integer mColor = null;
 
         public ViewHolder(View view) {
             super(view);
             ButterKnife.inject(this, view);
         }
 
-        public void setImageDrawable() {
+        public void setImageDrawable(String imageContent) {
             final int imgSize = 24;
-            if(color == null) {
-                color = ColorGenerator.MATERIAL.getRandomColor();
+            if(mColor == null) {
+                mColor = ColorGenerator.MATERIAL.getRandomColor();
             }
             CircleIconDrawable drawable = CircleIconDrawable.builder()
                     .startConfiguration()
                     .width(imgSize)
                     .height(imgSize)
                     .endConfiguration()
-                    .buildRound(getIconTitle(), color);
+                    .buildRound(imageContent, mColor);
             mImageView.setImageDrawable(drawable);
         }
 

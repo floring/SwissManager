@@ -8,6 +8,22 @@
         android:title="@string/action_create_new_round"
         app:showAsAction="never" />
     <item
+        android:id="@+id/action_total_round_number"
+        android:orderInCategory="100"
+        android:title="@string/action_total_round_number"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_define_winner"
+        android:orderInCategory="100"
+        android:title="@string/action_define_winner"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_sort_by_prestige"
+        android:orderInCategory="100"
+        android:title="@string/action_sort_by_prestige"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"

@@ -19,8 +19,11 @@ public class Test {
         int roundNumber = tournament.calculateRoundsNumber();
         for (int i = 0; i < roundNumber; ++i) {
             Round currRound = tournament.startRound();
+            currRound.state = State.RUNNING;
+
             randomiseResults(currRound.getMatches());
             tournament.endRound(currRound);
+            currRound.state = State.COMPLETED;
         }
         Player p = tournament.defineWinner();
 

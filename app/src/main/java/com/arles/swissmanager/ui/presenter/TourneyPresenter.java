@@ -5,7 +5,13 @@ import android.view.MenuItem;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Round;
+import com.arles.swissmanager.algorithm.Sorter;
 import com.arles.swissmanager.algorithm.Tournament;
+import com.arles.swissmanager.ui.model.Player;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -38,6 +44,8 @@ public class TourneyPresenter extends Presenter {
         Round round = createRound();
         if (round != null) {
             mView.showRoundMessage(mContext.getString(R.string.result_round_added));
+        } else {
+            mView.showDialog("Can't start new round. Some rounds may running or rounds number is over");
         }
     }
 
@@ -72,14 +80,36 @@ public class TourneyPresenter extends Presenter {
 //        //mTournament.endRound();
 //    }
 
+    public void getTotalRoundNumber() {
+        int number = mTournament.calculateRoundsNumber();
+        mView.showDialog("The total number of round is " + number);
+    }
+
+    public void getTourneyWinner() {
+        Player player = mTournament.defineWinner();
+        if(player != null) {
+            mView.showDialog("The winner is " + player.getName());
+        } else {
+            mView.showDialog("The winner has not been determined");
+        }
+    }
+
+    public void sortByPrestige() {
+        Collection list = mTournament.sortPlayersByPrestige();
+    }
+
     public interface IView {
         void setViewComponent();
 
         void showRoundMessage(String msg);
 
+        void showDialog(CharSequence content);
+
         void showWarningRoundMessage(String msg);
 
         void setMenuItemEnabled(MenuItem item, boolean enabled);
+
+
     }
 
     /*

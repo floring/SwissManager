@@ -3,6 +3,7 @@ package com.arles.swissmanager.algorithm;
 import com.arles.swissmanager.ui.model.Player;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -34,7 +35,7 @@ public class Tournament {
     }
 
     public int calculateRoundsNumber() {
-        return (int) Math.ceil(Math.log(mPlayers.size() + 1) / Math.log(2.0));
+        return (int) (Math.round(Math.log(mPlayers.size())) + Math.round(Math.log(Math.min(2.0, mPlayers.size() - 1))));
     }
 
     public void createPlayer(String name) {
@@ -60,8 +61,7 @@ public class Tournament {
     }
 
     private boolean ifGameCorrect() {
-        // bool isAllPAirsFinishRound();
-        if (isRoundsNumberNotOver()) {
+        if (isAllRoundsCompleted() && isRoundsNumberNotOver()) {
             nextRound();
             return true;
         }
@@ -70,6 +70,15 @@ public class Tournament {
 
     private boolean isRoundsNumberNotOver() {
         return (mRoundNumber < calculateRoundsNumber());
+    }
+
+    private boolean isAllRoundsCompleted() {
+        for (Round round : mRounds) {
+            if(round.state != State.COMPLETED) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void nextRound() {
@@ -95,7 +104,7 @@ public class Tournament {
         }
     }
 
-    public int getRoundNumber() {
+    public int getCurrentRoundNumber() {
         return mRoundNumber;
     }
 
@@ -106,6 +115,11 @@ public class Tournament {
             winner = mPlayers.get(0);
         }
         return winner;
+    }
+
+    public Collection sortPlayersByPrestige() {
+        Sorter.sortByPrestige(mPlayers);
+        return mPlayers;
     }
 
     public List<Round> getRoundCollection() {

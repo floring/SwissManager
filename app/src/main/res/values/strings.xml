@@ -31,6 +31,9 @@
     <string name="action_end_round">End round</string>
     <string name="action_remove">Remove</string>
     <string name="action_create_new_round">New round</string>
+    <string name="action_total_round_number">Total round number</string>
+    <string name="action_define_winner">Define winner</string>
+    <string name="action_sort_by_prestige">Sort by prestige</string>
 
     // Spinner choices
     <string-array name="match_outcomes">
@@ -47,5 +50,6 @@
     <string name="result_warning_round_started">You should end up the round before starts the new one</string>
     <string name="result_round_ended">Round ended</string>
     <string name="result_warning_round_ended">You should start the round</string>
+
 
 </resources>

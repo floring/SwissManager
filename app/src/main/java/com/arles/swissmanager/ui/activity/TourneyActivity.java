@@ -1,5 +1,6 @@
 package com.arles.swissmanager.ui.activity;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
@@ -72,6 +73,15 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
                 break;
             case R.id.action_settings:
                 break;
+            case R.id.action_total_round_number:
+                mPresenter.getTotalRoundNumber();
+                break;
+            case R.id.action_define_winner:
+                mPresenter.getTourneyWinner();
+                break;
+            case R.id.action_sort_by_prestige:
+                mPresenter.sortByPrestige();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -108,6 +118,14 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
     @Override
     public void showRoundMessage(String result) {
         ToastUtil.showShortMessage(result, this);
+    }
+
+    @Override
+    public void showDialog(CharSequence content) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(content);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     @Override
