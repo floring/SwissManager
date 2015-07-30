@@ -7,13 +7,22 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.arles.swissmanager.ui.fragment.PlayerTabFragment;
 import com.arles.swissmanager.ui.fragment.RoundTabFragment;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
+ * Providing the adapter to populate pages inside of a ViewPager.
  * Created by Admin on 06.07.2015.
  */
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     private CharSequence mTitles[];
     private int mTabsNumber;
+    private List<Fragment> mFragment = new ArrayList<Fragment>(Arrays.asList(new PlayerTabFragment(), new RoundTabFragment()));
+
+    public final static int PLAYER_TAB_POSITION = 0;
+    public final static int ROUND_TAB_POSITION = 1;
 
     public ViewPagerAdapter(FragmentManager fm, CharSequence titles[], int tabNum) {
         super(fm);
@@ -24,16 +33,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     //This method return the fragment for the every position in the View Pager
     @Override
     public Fragment getItem(int position) {
-
-        if (position == 0) // if the position is 0 we are returning the First tab
-        {
-            PlayerTabFragment playerTabFragment = new PlayerTabFragment();
-            return playerTabFragment;
-        } else             // As we are having 2 tabs if the position is now 0 it must be 1 so we are returning second tab
-        {
-            RoundTabFragment roundTabFragment = new RoundTabFragment();
-            return roundTabFragment;
-        }
+        return mFragment.get(position);
     }
 
     // Return the titles for the Tabs in the Tab Strip

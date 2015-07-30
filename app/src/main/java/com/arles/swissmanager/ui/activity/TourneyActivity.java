@@ -1,6 +1,7 @@
 package com.arles.swissmanager.ui.activity;
 
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
@@ -11,7 +12,9 @@ import com.arles.swissmanager.R;
 import com.arles.swissmanager.SwissManagerApplication;
 import com.arles.swissmanager.algorithm.Tournament;
 import com.arles.swissmanager.ui.adapter.ViewPagerAdapter;
+import com.arles.swissmanager.ui.fragment.FragmentParentClickListener;
 import com.arles.swissmanager.ui.fragment.FragmentSwitchListener;
+import com.arles.swissmanager.ui.fragment.RoundTabFragment;
 import com.arles.swissmanager.ui.presenter.TourneyPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
 import com.arles.swissmanager.ui.tab.SlidingTabLayout;
@@ -69,7 +72,13 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_create_new_round:
-                mPresenter.createNewRoundAction();
+                //mPresenter.createNewRoundAction();
+
+                FragmentParentClickListener fragment = (FragmentParentClickListener) mPagerAdapter.getItem(ViewPagerAdapter.ROUND_TAB_POSITION);
+                if(fragment != null) {
+                    fragment.onRefresh();
+                }
+
                 break;
             case R.id.action_settings:
                 break;

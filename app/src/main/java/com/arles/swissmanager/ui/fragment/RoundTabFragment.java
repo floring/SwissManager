@@ -5,6 +5,7 @@ package com.arles.swissmanager.ui.fragment;
  */
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -21,7 +22,7 @@ import javax.inject.Inject;
 
 import butterknife.InjectView;
 
-public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.IView, FragmentSwitchListener {
+public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.IView, FragmentSwitchListener, FragmentParentClickListener {
 
     @InjectView(R.id.recycler_view_rounds)
     RecyclerView mRecyclerView;
@@ -68,4 +69,9 @@ public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.
                     mPresenter.onRoundItemClick(position);
                 }
             };
+
+    @Override
+    public void onRefresh() {
+        mAdapter.setData(mPresenter.getRoundList());
+    }
 }
