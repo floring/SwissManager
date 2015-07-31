@@ -4,7 +4,11 @@ import android.support.annotation.NonNull;
 
 import com.arles.swissmanager.algorithm.Points;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -17,7 +21,7 @@ public class Player implements Comparable<Player> {
     private String mName;
     private int mPrestige;
     private boolean mHasBye;
-    private LinkedHashSet<Player> mRivals = new LinkedHashSet<>();
+    private Set<Player> mRivals = new HashSet<>();
 
     private int mSheduledForRound = 1;
     private int mGamesFor;
@@ -29,12 +33,20 @@ public class Player implements Comparable<Player> {
         mPrestige = 0;
     }
 
+    public UUID getUuid() {
+        return mUuid;
+    }
+
     public String getName() {
         return mName;
     }
 
     public int getPrestige() {
         return mPrestige;
+    }
+
+    public Set<Player> getRivals() {
+        return mRivals;
     }
 
     public void setGamesFor(int games) {
@@ -76,7 +88,14 @@ public class Player implements Comparable<Player> {
     }
 
     public boolean hadPlayed(Player player) {
-        return mRivals.contains(player);
+        //return mRivals.contains(player);
+        UUID uuid = player.getUuid();
+        for(Player rival : mRivals) {
+            if(rival.getUuid() == uuid) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void playWith(Player player) {

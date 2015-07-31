@@ -35,7 +35,8 @@ public class Tournament {
     }
 
     public int calculateRoundsNumber() {
-        return (int) (Math.round(Math.log(mPlayers.size())) + Math.round(Math.log(Math.min(2.0, mPlayers.size() - 1))));
+        return (int) (Math.ceil(Math.log(mPlayers.size())) +
+                Math.ceil(Math.log(Math.min(2.0, mPlayers.size() - 1))));
     }
 
     public void createPlayer(String name) {
@@ -49,8 +50,8 @@ public class Tournament {
 
     public Round startRound() {
         Round round = null;
-        boolean ok = ifGameCorrect();
-        if (ok) {
+        if (isGameCorrect()) {
+            nextRound();
             MatchesCreator creator = new MatchesCreator();
             List<Match> matches = creator.createMatchList(mPlayers);
             round = createRound(matches);
@@ -60,12 +61,8 @@ public class Tournament {
         return round;
     }
 
-    private boolean ifGameCorrect() {
-        if (isAllRoundsCompleted() && isRoundsNumberNotOver()) {
-            nextRound();
-            return true;
-        }
-        return false;
+    private boolean isGameCorrect() {
+        return  (isAllRoundsCompleted() && isRoundsNumberNotOver());
     }
 
     private boolean isRoundsNumberNotOver() {
@@ -93,7 +90,6 @@ public class Tournament {
 
     public void endRound(Round round) {
         setUnplayedMatchAsLost(round.getMatches());
-        //mRounds.add(round);
     }
 
     private void setUnplayedMatchAsLost(List<Match> matches) {

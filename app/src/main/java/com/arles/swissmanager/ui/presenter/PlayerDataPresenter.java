@@ -8,6 +8,9 @@ import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.utils.KeyExtra;
 import com.arles.swissmanager.utils.TextUtil;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.inject.Inject;
 
 /**
@@ -47,6 +50,10 @@ public class PlayerDataPresenter extends Presenter {
 
     public CharSequence getPlayerPrestige() {
         return (mPlayer!= null) ? Integer.toString(mPlayer.getPrestige()) : TextUtil.EMPTY_STRING;
+    }
+
+    public Set<Player> getPlayerRivalsCollection() {
+        return (mPlayer != null) ? mPlayer.getRivals() : null;
     }
 
     public interface IView {

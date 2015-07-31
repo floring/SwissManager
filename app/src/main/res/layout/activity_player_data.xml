@@ -48,4 +48,25 @@
         android:textColor="@color/primaryTextColor"
         android:textSize="16sp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_player_data_rivals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="72dp" />
+
+        <ViewStub
+            android:id="@+id/stub_import"
+            android:inflatedId="@id/recycler_view_player_data_rivals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout="@layout/empty_list" />
+    </LinearLayout>
+
 </LinearLayout>

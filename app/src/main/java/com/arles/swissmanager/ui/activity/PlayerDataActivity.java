@@ -1,21 +1,34 @@
 package com.arles.swissmanager.ui.activity;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewStub;
 import android.widget.TextView;
 
 import com.arles.swissmanager.R;
+import com.arles.swissmanager.algorithm.Match;
+import com.arles.swissmanager.ui.adapter.MatchesAdapter;
+import com.arles.swissmanager.ui.adapter.RivalsAdapter;
+import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.ui.presenter.PlayerDataPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
+import com.arles.swissmanager.utils.DividerBoldItemDecoration;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
 import butterknife.InjectView;
+import jp.wasabeef.recyclerview.animators.adapters.SlideInBottomAnimationAdapter;
 
 public class PlayerDataActivity extends BaseActivity implements PlayerDataPresenter.IView {
 
@@ -23,8 +36,11 @@ public class PlayerDataActivity extends BaseActivity implements PlayerDataPresen
     TextView mNameView;
     @InjectView(R.id.text_view_player_data_prestige)
     TextView mPrestigeView;
+    @InjectView(R.id.recycler_view_player_data_rivals)
+    RecyclerView mRecyclerView;
     @Inject
     PlayerDataPresenter mPresenter;
+    private RivalsAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +80,26 @@ public class PlayerDataActivity extends BaseActivity implements PlayerDataPresen
 
     @Override
     public void setViewComponent() {
+        setRecyclerView();
         setViewFieldValue();
     }
 
     private void setViewFieldValue() {
         mNameView.setText(mPresenter.getPlayerName());
         mPrestigeView.setText(mPresenter.getPlayerPrestige());
+    }
+
+    private void setRecyclerView() {
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setHasFixedSize(true);
+        mAdapter = new RivalsAdapter(new HashSet<Player>());
+
+        Set<Player> l = mPresenter.getPlayerRivalsCollection();
+        if(l.size() == 0) {
+            ((ViewStub) findViewById(R.id.stub_import)).inflate();
+        } else {
+            mAdapter.setDataList(l);
+        }
+        mRecyclerView.setAdapter(new SlideInBottomAnimationAdapter(mAdapter));
     }
 }

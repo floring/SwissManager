@@ -13,4 +13,8 @@ public class CollectionValidator {
             throw new IllegalArgumentException("The collection cannot be null");
         }
     }
+
+    public static boolean isEmpty(Collection collection) {
+        return (collection.size() == 0) ? true : false;
+    }
 }
