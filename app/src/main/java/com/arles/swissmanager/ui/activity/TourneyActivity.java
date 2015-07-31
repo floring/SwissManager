@@ -78,9 +78,6 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
             case R.id.action_total_round_number:
                 mPresenter.getTotalRoundNumber();
                 break;
-            case R.id.action_define_winner:
-                mPresenter.getTourneyWinner();
-                break;
             case R.id.action_sort_by_prestige:
                 mPresenter.sortByPrestige();
                 break;
@@ -105,16 +102,6 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
         builder.setMessage(content);
         AlertDialog dialog = builder.create();
         dialog.show();
-    }
-
-    @Override
-    public void showWarningRoundMessage(String result) {
-        ToastUtil.showError(result, this);
-    }
-
-    @Override
-    public void setMenuItemEnabled(MenuItem item, boolean enabled) {
-        item.setEnabled(enabled);
     }
 
     @Override

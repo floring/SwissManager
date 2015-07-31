@@ -2,6 +2,7 @@ package com.arles.swissmanager.ui.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Match;
@@ -57,11 +58,11 @@ public class RoundPresenter extends Presenter {
         }
     }
 
-    public void onMatchClicked(Match match, Points resPlayer1, Points resPlayer2) {
+    public void onMatchClicked(View v, Match match, Points resPlayer1, Points resPlayer2) {
         Report report = match.reportResult(resPlayer1, resPlayer2);
         if (report == Report.OK) {
             mView.showReportResultMessage(mContext.getString(R.string.result_ok));
-            mView.setBtn();
+            mView.setEnabled(v, false);
         } else if (report == Report.INVALID_RESULT) {
             mView.showReportResultMessage(mContext.getString(R.string.result_invalid));
         }
@@ -91,6 +92,6 @@ public class RoundPresenter extends Presenter {
 
         void showRoundMessage(String msg);
 
-        void setBtn();
+        void setEnabled(View view, boolean enabled);
     }
 }

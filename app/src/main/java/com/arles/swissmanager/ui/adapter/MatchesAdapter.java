@@ -58,7 +58,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
         Match match = mDataList.get(position);
         holder.player1.setText(match.getPlayer1().getName());
         holder.player2.setText(match.getPlayer2().getName());
-        ArrayAdapter<Points> adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, Points.getPointsNames());
+        ArrayAdapter<Points> adapter = new ArrayAdapter<>(mContext, R.layout.spinner_item_dropdown, Points.getPointsNames());
         holder.resultPlayer1.setAdapter(adapter);
         holder.resultPlayer2.setAdapter(adapter);
         holder.btnSendResult.setTag(position);
@@ -69,6 +69,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
             holder.resultPlayer1.setSelection(spinnerPosition);
             spinnerPosition = adapter.getPosition(matchResult.getPlayer2score());
             holder.resultPlayer2.setSelection(spinnerPosition);
+            holder.btnSendResult.setEnabled(false);
         }
     }
 
@@ -100,12 +101,12 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
         }
 
         @OnClick(R.id.button_send_match_result)
-        public void btnSendResultClick() {
+        public void btnSendResultClick(View view) {
             int rowViewPos = (int) btnSendResult.getTag();
             Match currMatch = mDataList.get(rowViewPos);
 
             if (onItemClickListener != null) {
-                onItemClickListener.onButtonClicked(currMatch,
+                onItemClickListener.onButtonClicked(view, currMatch,
                         (Points) resultPlayer1.getSelectedItem(),
                         (Points) resultPlayer2.getSelectedItem());
             }
@@ -116,6 +117,6 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
      * Interface for listening match list events.
      */
     public interface OnViewClickListener {
-        void onButtonClicked(Match match, Points resPlayer1, Points resPlayer2);
+        void onButtonClicked(View view, Match match, Points resPlayer1, Points resPlayer2);
     }
 }

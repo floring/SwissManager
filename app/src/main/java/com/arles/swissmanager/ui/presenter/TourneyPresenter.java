@@ -46,7 +46,7 @@ public class TourneyPresenter extends Presenter {
             mView.showRoundMessage(mContext.getString(R.string.result_round_added));
             mView.refreshFragmentData(mView.getPagerAdapterRoundTabPosition());
         } else {
-            mView.showDialog("Can't start new round. Some rounds may running or rounds number is over");
+            mView.showDialog(mContext.getString(R.string.result_cant_start_new_round));
         }
     }
 
@@ -54,45 +54,9 @@ public class TourneyPresenter extends Presenter {
         return mTournament.startRound();
     }
 
-//    public void startRoundAction(MenuItem item) {
-//        if(item.isEnabled()) {
-//            Round round = createRound();
-//            if (round != null) {
-//                mView.showRoundMessage(mContext.getString(R.string.result_round_added));
-//                //mView.setMenuItemEnabled(item, false);
-//            }
-//        } else {
-//            mView.showWarningRoundMessage(mContext.getString(R.string.result_warning_round_started));
-//        }
-//    }
-//
-//    public void endRoundAction(MenuItem item) {
-//        if(item.isEnabled()) {
-//            endRound();
-//            mView.showRoundMessage(mContext.getString(R.string.result_round_ended));
-//            //mView.setMenuItemEnabled(item, false);
-//        }
-//        else {
-//            mView.showWarningRoundMessage(mContext.getString(R.string.result_warning_round_ended));
-//        }
-//    }
-//
-//    private void endRound() {
-//        //mTournament.endRound();
-//    }
-
     public void getTotalRoundNumber() {
         int number = mTournament.calculateRoundsNumber();
-        mView.showDialog("The total number of round is " + number);
-    }
-
-    public void getTourneyWinner() {
-        Player player = mTournament.defineWinner();
-        if (player != null) {
-            mView.showDialog("The winner is " + player.getName());
-        } else {
-            mView.showDialog("The winner has not been determined");
-        }
+        mView.showDialog(mContext.getString(R.string.result_total_rounds_number).concat(Integer.toString(number)));
     }
 
     public void sortByPrestige() {
@@ -107,16 +71,11 @@ public class TourneyPresenter extends Presenter {
 
         void showDialog(CharSequence content);
 
-        void showWarningRoundMessage(String msg);
-
-        void setMenuItemEnabled(MenuItem item, boolean enabled);
-
         void refreshFragmentData(int position);
 
         int getPagerAdapterPlayerTabPosition();
 
         int getPagerAdapterRoundTabPosition();
-
     }
 
     /*

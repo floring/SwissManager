@@ -1,18 +1,16 @@
 <resources>
     <string name="app_name">SwissManager</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     // Necessary constants for the Drawer
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
     // Activity titles
-    <string name="title_activity_new_player">Add new</string>
+    <string name="title_activity_new_player">Add new players</string>
     <string name="title_activity_tourney">Tourney</string>
     <string name="title_activity_round_number">Round %1$s</string>
     <string name="title_activity_round">RoundActivity</string>
+    <string name="title_activity_player_data">PlayerDataActivity</string>
 
     // Title of contextual action bar in Action Mode
     <string name="selected_count">%1$s</string>
@@ -50,7 +48,9 @@
     <string name="result_warning_round_started">You should end up the round before starts the new one</string>
     <string name="result_round_ended">Round ended</string>
     <string name="result_warning_round_ended">You should start the round</string>
-    <string name="title_activity_player_data">PlayerDataActivity</string>
+    <string name="result_cant_start_new_round">Can\'t start new round. Some rounds may running or rounds number is over</string>
+    <string name="result_total_rounds_number">The total number of rounds is </string>
+
 
 
 </resources>

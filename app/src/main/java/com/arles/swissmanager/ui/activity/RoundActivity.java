@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Match;
@@ -110,8 +111,8 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
     }
 
     @Override
-    public void setBtn() {
-
+    public void setEnabled(View view, boolean enabled) {
+        view.setEnabled(enabled);
     }
 
     private void setRecyclerView() {
@@ -133,10 +134,8 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
     private MatchesAdapter.OnViewClickListener onViewClickListener =
             new MatchesAdapter.OnViewClickListener() {
                 @Override
-                public void onButtonClicked(Match match, Points resPlayer1, Points resPlayer2) {
-                    if (mPresenter != null && match != null) {
-                        mPresenter.onMatchClicked(match, resPlayer1, resPlayer2);
-                    }
+                public void onButtonClicked(View view, Match match, Points resPlayer1, Points resPlayer2) {
+                    mPresenter.onMatchClicked(view, match, resPlayer1, resPlayer2);
                 }
             };
 }
