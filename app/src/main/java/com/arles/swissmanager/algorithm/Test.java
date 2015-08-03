@@ -16,7 +16,7 @@ public class Test {
 
         Tournament tournament = Tournament.getInstance();
         tournament.setPlayers(players);
-        int roundNumber = tournament.calculateRoundsNumber();
+        int roundNumber = tournament.calculateRoundsNumber(tournament.getPlayersCount());
         for (int i = 0; i < roundNumber; ++i) {
             Round currRound = tournament.startRound();
             currRound.state = State.RUNNING;

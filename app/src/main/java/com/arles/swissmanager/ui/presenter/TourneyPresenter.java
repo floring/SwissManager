@@ -55,7 +55,7 @@ public class TourneyPresenter extends Presenter {
     }
 
     public void getTotalRoundNumber() {
-        int number = mTournament.calculateRoundsNumber();
+        int number = mTournament.calculateRoundsNumber(mTournament.getPlayersCount());
         mView.showDialog(mContext.getString(R.string.result_total_rounds_number).concat(Integer.toString(number)));
     }
 

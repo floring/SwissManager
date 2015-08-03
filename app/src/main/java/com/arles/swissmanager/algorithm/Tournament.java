@@ -31,21 +31,14 @@ public class Tournament {
     }
 
     public void setPlayers(List<Player> players) {
-        mPlayers = players;
+        if(players != null) {
+            mPlayers = players;
+        }
     }
 
-    public int calculateRoundsNumber() {
-        return (int) (Math.ceil(Math.log(mPlayers.size())) +
-                Math.ceil(Math.log(Math.min(2.0, mPlayers.size() - 1))));
-    }
-
-    public void createPlayer(String name) {
-        Player player = new Player(name);
-        mPlayers.add(player);
-    }
-
-    public void removePlayer(int position) {
-        mPlayers.remove(position);
+    public int calculateRoundsNumber(int playersSize) {
+        return (playersSize > 1) ? (int) (Math.ceil(Math.log(playersSize)) +
+                Math.ceil(Math.log(Math.min(2.0, playersSize - 1)))) : 0;
     }
 
     public Round startRound() {
@@ -66,7 +59,7 @@ public class Tournament {
     }
 
     private boolean isRoundsNumberNotOver() {
-        return (mRoundNumber < calculateRoundsNumber());
+        return (mRoundNumber < calculateRoundsNumber(getPlayersCount()));
     }
 
     private boolean isAllRoundsCompleted() {
@@ -100,10 +93,6 @@ public class Tournament {
         }
     }
 
-    public int getCurrentRoundNumber() {
-        return mRoundNumber;
-    }
-
     public Player defineWinner() {
         Player winner = null;
         if (!isRoundsNumberNotOver()) {
@@ -124,5 +113,9 @@ public class Tournament {
 
     public List<Player> getPlayerCollection() {
         return mPlayers;
+    }
+
+    public int getPlayersCount() {
+        return (mPlayers != null) ? mPlayers.size() : 0;
     }
 }
