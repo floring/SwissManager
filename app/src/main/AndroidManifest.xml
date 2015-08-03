@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.arles.swissmanager" >
+    package="com.arles.swissmanager">
 
     <application
         android:name=".SwissManagerApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".ui.activity.MainActivity"
-            android:label="@string/app_name" />
+            android:label="@string/app_name">
+
+        </activity>
         <activity
             android:name=".ui.activity.NewPlayerActivity"
             android:label="@string/title_activity_new_player" />
         <activity
             android:name=".ui.activity.TourneyActivity"
-            android:label="@string/title_activity_tourney" >
+            android:label="@string/title_activity_tourney">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,15 +28,14 @@
         <activity
             android:name=".ui.activity.RoundActivity"
             android:label="@string/title_activity_round"
-            android:parentActivityName=".ui.activity.TourneyActivity" >
+            android:parentActivityName=".ui.activity.TourneyActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.activity.TourneyActivity" />
         </activity>
         <activity
             android:name=".ui.activity.PlayerDataActivity"
-            android:label="@string/title_activity_player_data" >
-        </activity>
+            android:label="@string/title_activity_player_data"></activity>
     </application>
 
 </manifest>

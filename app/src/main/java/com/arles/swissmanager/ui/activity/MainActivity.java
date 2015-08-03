@@ -15,6 +15,7 @@ import android.view.View;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.SwissManagerApplication;
+import com.arles.swissmanager.algorithm.Tournament;
 import com.arles.swissmanager.ui.adapter.PlayersAdapter;
 import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
 import com.arles.swissmanager.ui.presenter.MainPresenter;
@@ -52,6 +53,9 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, A
         injectViews();
         mMainPresenter.setView(this);
         mMainPresenter.initializeViewComponent();
+
+        Tournament tournament = Tournament.getInstance();
+        tournament.setPlayers(SwissManagerApplication.getTestPlayersData());
     }
 
     @Override

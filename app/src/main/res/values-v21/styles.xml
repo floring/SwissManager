@@ -11,6 +11,7 @@
         <item name="android:textColorSecondary">@color/secondaryTextColor</item>
         <item name="android:icon">@color/secondaryAccentColor</item>
         <item name="android:divider">@color/dividerColor</item>
+        <item name="android:windowActionModeOverlay">true</item>
     </style>
 
 </resources>

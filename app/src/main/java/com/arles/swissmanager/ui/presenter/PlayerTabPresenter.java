@@ -61,6 +61,10 @@ public class PlayerTabPresenter extends Presenter {
         }
     }
 
+    public void remove() {
+        mView.removeRecyclerItem();
+    }
+
     public void onPlayerItemClick(int position) {
         mNavigator.startPlayerDataActivity(position);
     }
@@ -68,5 +72,7 @@ public class PlayerTabPresenter extends Presenter {
     public interface IView {
         void setViewComponent();
         void addToAdapter(ArrayList<String> namesList);
+
+        void removeRecyclerItem();
     }
 }

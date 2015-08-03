@@ -31,7 +31,6 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
 
     private List<Player> mPlayers = new ArrayList<>();
     private SparseBooleanArray mSelectedItems = new SparseBooleanArray();
-    private OnItemClickListener mListener;
 
     public PlayersAdapter(List<Player> list) {
         mPlayers = list;
@@ -61,10 +60,6 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
     @Override
     public int getItemCount() {
         return mPlayers.size();
-    }
-
-    public void setOnItemClickListener (OnItemClickListener listener) {
-        mListener = listener;
     }
 
     private void addPlayer(final String playerName) {
@@ -146,13 +141,6 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
         public ViewHolder(View view) {
             super(view);
             ButterKnife.inject(this, view);
-        }
-
-        @OnClick(R.id.layout_item_player)
-        public void itemClick(View view) {
-            if(mListener != null) {
-                mListener.onItemClicked(view, getPosition());
-            }
         }
 
         public void setImageDrawable(String imageContent) {
