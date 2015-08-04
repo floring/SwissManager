@@ -1,19 +1,16 @@
 package com.arles.swissmanager.test.algorithm;
 
 import com.arles.swissmanager.algorithm.Match;
+import com.arles.swissmanager.algorithm.Player;
 import com.arles.swissmanager.algorithm.Points;
 import com.arles.swissmanager.algorithm.Round;
 import com.arles.swissmanager.algorithm.State;
 import com.arles.swissmanager.algorithm.Tournament;
-import com.arles.swissmanager.ui.model.Player;
-
-import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;

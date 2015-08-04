@@ -9,7 +9,6 @@ import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.algorithm.Points;
 import com.arles.swissmanager.algorithm.Report;
 import com.arles.swissmanager.algorithm.Round;
-import com.arles.swissmanager.algorithm.State;
 import com.arles.swissmanager.algorithm.Tournament;
 import com.arles.swissmanager.utils.KeyExtra;
 

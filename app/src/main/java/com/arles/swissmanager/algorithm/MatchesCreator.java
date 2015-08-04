@@ -1,7 +1,5 @@
 package com.arles.swissmanager.algorithm;
 
-import com.arles.swissmanager.ui.model.Player;
-
 import java.util.ArrayList;
 import java.util.List;
 

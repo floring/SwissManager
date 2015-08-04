@@ -1,8 +1,8 @@
 package com.arles.swissmanager.ui.presenter;
 
 import com.arles.swissmanager.algorithm.MatchesCreator;
+import com.arles.swissmanager.algorithm.Player;
 import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
-import com.arles.swissmanager.ui.model.Player;
 
 import java.util.List;
 

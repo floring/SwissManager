@@ -3,9 +3,8 @@ package com.arles.swissmanager;
 import android.app.Application;
 
 import com.arles.swissmanager.algorithm.Match;
-import com.arles.swissmanager.algorithm.Test;
+import com.arles.swissmanager.algorithm.Player;
 import com.arles.swissmanager.di.RootModule;
-import com.arles.swissmanager.ui.model.Player;
 
 import java.util.ArrayList;
 import java.util.List;

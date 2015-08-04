@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.ui.model.Player;
+import com.arles.swissmanager.algorithm.Player;
 import com.arles.swissmanager.utils.CircleIconDrawable;
 import com.arles.swissmanager.utils.CollectionValidator;
 import com.arles.swissmanager.utils.ColorGenerator;
@@ -20,7 +20,6 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
 
 /**
  * PlayersAdapter manages Players data model and adapts it to RecyclerView, which is in PlayerTabFragment.

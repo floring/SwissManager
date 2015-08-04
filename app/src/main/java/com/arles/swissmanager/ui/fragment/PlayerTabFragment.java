@@ -14,11 +14,9 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.arles.swissmanager.R;
+import com.arles.swissmanager.algorithm.Player;
 import com.arles.swissmanager.ui.activity.NewPlayerActivity;
-import com.arles.swissmanager.ui.activity.TourneyActivity;
-import com.arles.swissmanager.ui.adapter.OnItemClickListener;
 import com.arles.swissmanager.ui.adapter.PlayersAdapter;
-import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.ui.presenter.PlayerTabPresenter;
 import com.arles.swissmanager.utils.DividerItemDecoration;
 

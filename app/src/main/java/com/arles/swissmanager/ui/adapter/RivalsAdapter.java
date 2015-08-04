@@ -7,11 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.ui.model.Player;
+import com.arles.swissmanager.algorithm.Player;
 import com.arles.swissmanager.utils.CollectionValidator;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import butterknife.ButterKnife;

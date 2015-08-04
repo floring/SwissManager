@@ -2,10 +2,9 @@ package com.arles.swissmanager.test.algorithm;
 
 import com.arles.swissmanager.algorithm.Match;
 import com.arles.swissmanager.algorithm.MatchResult;
+import com.arles.swissmanager.algorithm.Player;
 import com.arles.swissmanager.algorithm.Points;
 import com.arles.swissmanager.algorithm.Report;
-import com.arles.swissmanager.algorithm.Tournament;
-import com.arles.swissmanager.ui.model.Player;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +13,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
 
 /**
  * Created by Admin on 04.08.2015.

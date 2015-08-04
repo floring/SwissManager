@@ -1,13 +1,8 @@
-package com.arles.swissmanager.ui.model;
+package com.arles.swissmanager.algorithm;
 
 import android.support.annotation.NonNull;
 
-import com.arles.swissmanager.algorithm.Points;
-
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 

@@ -1,7 +1,5 @@
 package com.arles.swissmanager.algorithm;
 
-import com.arles.swissmanager.ui.model.Player;
-
 /**
  * Match class represents Match entity in game.
  * Created by Admin on 27.03.2015.

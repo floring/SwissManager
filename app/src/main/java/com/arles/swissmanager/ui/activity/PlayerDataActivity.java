@@ -3,23 +3,17 @@ package com.arles.swissmanager.ui.activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewStub;
 import android.widget.TextView;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.algorithm.Match;
-import com.arles.swissmanager.ui.adapter.MatchesAdapter;
+import com.arles.swissmanager.algorithm.Player;
 import com.arles.swissmanager.ui.adapter.RivalsAdapter;
-import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.ui.presenter.PlayerDataPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;
-import com.arles.swissmanager.utils.DividerBoldItemDecoration;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;

@@ -1,14 +1,12 @@
 package com.arles.swissmanager.ui.presenter;
 
 import android.content.Intent;
-import android.view.textservice.TextInfo;
 
+import com.arles.swissmanager.algorithm.Player;
 import com.arles.swissmanager.algorithm.Tournament;
-import com.arles.swissmanager.ui.model.Player;
 import com.arles.swissmanager.utils.KeyExtra;
 import com.arles.swissmanager.utils.TextUtil;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.inject.Inject;
