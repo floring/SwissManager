@@ -1,7 +1,83 @@
 package com.arles.swissmanager.test.algorithm;
 
+import com.arles.swissmanager.algorithm.Match;
+import com.arles.swissmanager.algorithm.MatchResult;
+import com.arles.swissmanager.algorithm.Points;
+import com.arles.swissmanager.algorithm.Report;
+import com.arles.swissmanager.algorithm.Tournament;
+import com.arles.swissmanager.ui.model.Player;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
+
 /**
  * Created by Admin on 04.08.2015.
  */
 public class MatchTest {
+
+    private Match mMatch;
+
+    @Before
+    public void setUp() {
+        Player player1 = new Player("Player 1");
+        Player player2 = new Player("Player 2");
+        mMatch = new Match(player1, player2);
+    }
+
+    /**
+     * Tests method returns report "invalid" when we try to pass invalid match result combination.
+     */
+    @Test
+    public void testReportResult_ReturnInvalid() {
+        Set<MatchResult> invalidResults = setInvalidResultsCombination();
+        for(MatchResult result : invalidResults) {
+            Report report = mMatch.reportResult(result.getPlayer1score(), result.getPlayer2score());
+            assertEquals("Report must be Invalid", Report.INVALID_RESULT, report);
+        }
+    }
+
+    /**
+     * Tests method returns report "ok" when we try to pass correct match result combination.
+     */
+    @Test
+    public void testReportResult_ReturnOk() {
+        Set<MatchResult> correctResults = setCorrectResultsCombination();
+        for(MatchResult result : correctResults) {
+            Report report = mMatch.reportResult(result.getPlayer1score(), result.getPlayer2score());
+            assertEquals("Report must be Ok", Report.OK, report);
+        }
+    }
+
+
+    /**
+     * Set invalid results combination for test.
+     * For example, players can not both be winners etc.
+     */
+    private Set<MatchResult> setInvalidResultsCombination() {
+        return new HashSet<MatchResult>() {{
+            add(new MatchResult(Points.WIN, Points.WIN));
+            add(new MatchResult(Points.WIN, Points.DRAW));
+            add(new MatchResult(Points.DRAW, Points.WIN));
+        }};
+    }
+
+    /**
+     * Set valid results combination for test.
+     */
+    private Set<MatchResult> setCorrectResultsCombination() {
+        return new HashSet<MatchResult>() {{
+            add(new MatchResult(Points.WIN, Points.LOSE));
+            add(new MatchResult(Points.LOSE, Points.WIN));
+            add(new MatchResult(Points.DRAW, Points.DRAW));
+            add(new MatchResult(Points.LOSE, Points.LOSE));
+            add(new MatchResult(Points.DRAW, Points.LOSE));
+            add(new MatchResult(Points.LOSE, Points.DRAW));
+        }};
+    }
 }
