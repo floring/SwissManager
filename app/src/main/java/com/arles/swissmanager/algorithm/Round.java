@@ -37,12 +37,20 @@ public class Round {
     }
 
     public void startRound() {
-        mState = State.RUNNING;
+        // We can start the round only if the round had just created
+        // Unable to start the already ended round
+        if(mState == State.CREATED) {
+            mState = State.RUNNING;
+        }
     }
 
     public void endRound() {
-        setUnplayedMatchAsLost(mMatches);
-        mState = State.COMPLETED;
+        // We can't end up already completed round
+        // We can end the round only if its state is not completed.
+        if(mState != State.COMPLETED) {
+            setUnplayedMatchAsLost(mMatches);
+            mState = State.COMPLETED;
+        }
     }
 
     private void setUnplayedMatchAsLost(List<Match> matches) {
