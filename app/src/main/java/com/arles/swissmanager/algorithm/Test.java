@@ -3,6 +3,7 @@ package com.arles.swissmanager.algorithm;
 import com.arles.swissmanager.SwissManagerApplication;
 import com.arles.swissmanager.ui.model.Player;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
@@ -18,15 +19,14 @@ public class Test {
         tournament.setPlayers(players);
         int roundNumber = tournament.calculateRoundsNumber(tournament.getPlayersCount());
         for (int i = 0; i < roundNumber; ++i) {
-            Round currRound = tournament.startRound();
-            currRound.state = State.RUNNING;
+            Round currRound = tournament.createNewRound();
+            currRound.startRound();
 
             randomiseResults(currRound.getMatches());
-            tournament.endRound(currRound);
-            currRound.state = State.COMPLETED;
-        }
-        Player p = tournament.defineWinner();
 
+            currRound.endRound();
+        }
+        Collection sortedPlayers = tournament.sortPlayersByPrestige();
     }
 
     private static void randomiseResults(List<Match> matches) {

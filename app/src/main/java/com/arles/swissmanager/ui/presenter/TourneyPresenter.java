@@ -1,17 +1,10 @@
 package com.arles.swissmanager.ui.presenter;
 
 import android.content.Context;
-import android.view.MenuItem;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.algorithm.Round;
-import com.arles.swissmanager.algorithm.Sorter;
 import com.arles.swissmanager.algorithm.Tournament;
-import com.arles.swissmanager.ui.model.Player;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -51,7 +44,7 @@ public class TourneyPresenter extends Presenter {
     }
 
     private Round createRound() {
-        return mTournament.startRound();
+        return mTournament.createNewRound();
     }
 
     public void getTotalRoundNumber() {

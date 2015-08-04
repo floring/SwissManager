@@ -41,13 +41,13 @@ public class Tournament {
                 Math.ceil(Math.log(Math.min(2.0, playersSize - 1)))) : 0;
     }
 
-    public Round startRound() {
+    public Round createNewRound() {
         Round round = null;
         if (isGameCorrect()) {
             nextRound();
             MatchesCreator creator = new MatchesCreator();
             List<Match> matches = creator.createMatchList(mPlayers);
-            round = createRound(matches);
+            round = createRoundInstance(mRoundNumber, matches);
         } else {
             // notifyAboutError();
         }
@@ -64,7 +64,7 @@ public class Tournament {
 
     private boolean isAllRoundsCompleted() {
         for (Round round : mRounds) {
-            if(round.state != State.COMPLETED) {
+            if(round.getState() != State.COMPLETED) {
                 return false;
             }
         }
@@ -75,31 +75,11 @@ public class Tournament {
         mRoundNumber++;
     }
 
-    private Round createRound(List<Match> matches) {
-        Round round = new Round(mRoundNumber, matches);
+    private Round createRoundInstance(int roundNumber, List<Match> matches) {
+        Round round = new Round(roundNumber, matches);
+        round.setCreatedState();
         mRounds.add(round);
         return round;
-    }
-
-    public void endRound(Round round) {
-        setUnplayedMatchAsLost(round.getMatches());
-    }
-
-    private void setUnplayedMatchAsLost(List<Match> matches) {
-        for (Match match : matches) {
-            if (match.getResult() == null) {
-                match.reportResult(Points.LOSE, Points.LOSE);
-            }
-        }
-    }
-
-    public Player defineWinner() {
-        Player winner = null;
-        if (!isRoundsNumberNotOver()) {
-            Sorter.sortByPrestige(mPlayers);
-            winner = mPlayers.get(0);
-        }
-        return winner;
     }
 
     public Collection sortPlayersByPrestige() {
