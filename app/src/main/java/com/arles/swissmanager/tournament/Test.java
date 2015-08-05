@@ -1,4 +1,4 @@
-package com.arles.swissmanager.algorithm;
+package com.arles.swissmanager.tournament;
 
 import com.arles.swissmanager.SwissManagerApplication;
 

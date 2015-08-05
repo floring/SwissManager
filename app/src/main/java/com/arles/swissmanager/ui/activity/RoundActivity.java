@@ -10,8 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.algorithm.Match;
-import com.arles.swissmanager.algorithm.Points;
+import com.arles.swissmanager.tournament.Match;
+import com.arles.swissmanager.tournament.Points;
 import com.arles.swissmanager.ui.adapter.MatchesAdapter;
 import com.arles.swissmanager.ui.presenter.RoundPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;

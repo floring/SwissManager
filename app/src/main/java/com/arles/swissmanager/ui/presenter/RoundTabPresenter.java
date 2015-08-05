@@ -1,7 +1,7 @@
 package com.arles.swissmanager.ui.presenter;
 
-import com.arles.swissmanager.algorithm.Round;
-import com.arles.swissmanager.algorithm.Tournament;
+import com.arles.swissmanager.tournament.Round;
+import com.arles.swissmanager.tournament.Tournament;
 import com.arles.swissmanager.ui.activity.Navigator;
 
 import java.util.List;

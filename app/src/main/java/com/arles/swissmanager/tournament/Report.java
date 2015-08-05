@@ -1,4 +1,4 @@
-package com.arles.swissmanager.algorithm;
+package com.arles.swissmanager.tournament;
 
 /**
  * Report consists enum represent constants of operation result.

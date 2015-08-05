@@ -3,8 +3,8 @@ package com.arles.swissmanager.ui.presenter;
 import android.content.Context;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.algorithm.Round;
-import com.arles.swissmanager.algorithm.Tournament;
+import com.arles.swissmanager.tournament.Round;
+import com.arles.swissmanager.tournament.Tournament;
 
 import javax.inject.Inject;
 

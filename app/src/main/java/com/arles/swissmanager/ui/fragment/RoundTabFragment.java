@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.algorithm.Round;
+import com.arles.swissmanager.tournament.Round;
 import com.arles.swissmanager.ui.adapter.OnItemClickListener;
 import com.arles.swissmanager.ui.adapter.RoundsAdapter;
 import com.arles.swissmanager.ui.presenter.RoundTabPresenter;

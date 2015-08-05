@@ -1,7 +1,7 @@
 package com.arles.swissmanager.ui.presenter;
 
-import com.arles.swissmanager.algorithm.MatchesCreator;
-import com.arles.swissmanager.algorithm.Player;
+import com.arles.swissmanager.tournament.MatchesCreator;
+import com.arles.swissmanager.tournament.Player;
 import com.arles.swissmanager.ui.fragment.NavigationDrawerFragment;
 
 import java.util.List;

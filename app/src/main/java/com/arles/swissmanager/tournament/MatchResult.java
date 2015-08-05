@@ -1,4 +1,4 @@
-package com.arles.swissmanager.algorithm;
+package com.arles.swissmanager.tournament;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;

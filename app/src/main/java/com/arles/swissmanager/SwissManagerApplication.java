@@ -2,8 +2,8 @@ package com.arles.swissmanager;
 
 import android.app.Application;
 
-import com.arles.swissmanager.algorithm.Match;
-import com.arles.swissmanager.algorithm.Player;
+import com.arles.swissmanager.tournament.Match;
+import com.arles.swissmanager.tournament.Player;
 import com.arles.swissmanager.di.RootModule;
 
 import java.util.ArrayList;

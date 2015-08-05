@@ -1,4 +1,4 @@
-package com.arles.swissmanager.algorithm.exception;
+package com.arles.swissmanager.tournament.exception;
 
 /**
  * Exception throw by the application when a tournament went in wrong way.

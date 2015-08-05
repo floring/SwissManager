@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.algorithm.Round;
+import com.arles.swissmanager.tournament.Round;
 import com.arles.swissmanager.utils.CollectionValidator;
 
 import java.util.List;

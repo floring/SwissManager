@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.view.View;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.algorithm.Match;
-import com.arles.swissmanager.algorithm.Points;
-import com.arles.swissmanager.algorithm.Report;
-import com.arles.swissmanager.algorithm.Round;
-import com.arles.swissmanager.algorithm.Tournament;
+import com.arles.swissmanager.tournament.Match;
+import com.arles.swissmanager.tournament.Points;
+import com.arles.swissmanager.tournament.Report;
+import com.arles.swissmanager.tournament.Round;
+import com.arles.swissmanager.tournament.Tournament;
 import com.arles.swissmanager.utils.KeyExtra;
 
 import java.util.List;

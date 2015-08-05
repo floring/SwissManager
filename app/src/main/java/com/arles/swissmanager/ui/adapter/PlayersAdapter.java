@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.algorithm.Player;
+import com.arles.swissmanager.tournament.Player;
 import com.arles.swissmanager.utils.CircleIconDrawable;
 import com.arles.swissmanager.utils.CollectionValidator;
 import com.arles.swissmanager.utils.ColorGenerator;

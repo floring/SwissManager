@@ -9,7 +9,7 @@ import android.view.ViewStub;
 import android.widget.TextView;
 
 import com.arles.swissmanager.R;
-import com.arles.swissmanager.algorithm.Player;
+import com.arles.swissmanager.tournament.Player;
 import com.arles.swissmanager.ui.adapter.RivalsAdapter;
 import com.arles.swissmanager.ui.presenter.PlayerDataPresenter;
 import com.arles.swissmanager.ui.presenter.UIModule;

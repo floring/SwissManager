@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.SwissManagerApplication;
-import com.arles.swissmanager.algorithm.Tournament;
+import com.arles.swissmanager.tournament.Tournament;
 import com.arles.swissmanager.ui.adapter.ViewPagerAdapter;
 import com.arles.swissmanager.ui.fragment.FragmentParentClickListener;
 import com.arles.swissmanager.ui.presenter.TourneyPresenter;

@@ -1,10 +1,10 @@
-package com.arles.swissmanager.test.algorithm;
+package com.arles.swissmanager.test.tournament;
 
-import com.arles.swissmanager.algorithm.Match;
-import com.arles.swissmanager.algorithm.MatchResult;
-import com.arles.swissmanager.algorithm.Player;
-import com.arles.swissmanager.algorithm.Points;
-import com.arles.swissmanager.algorithm.Report;
+import com.arles.swissmanager.tournament.Match;
+import com.arles.swissmanager.tournament.MatchResult;
+import com.arles.swissmanager.tournament.Player;
+import com.arles.swissmanager.tournament.Points;
+import com.arles.swissmanager.tournament.Report;
 
 import org.junit.Before;
 import org.junit.Test;
