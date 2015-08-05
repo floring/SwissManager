@@ -75,7 +75,6 @@ public class Tournament {
 
     private Round createRoundInstance(int roundNumber, List<Match> matches) {
         Round round = new Round(roundNumber, matches);
-        round.setCreatedState();
         mRounds.add(round);
         return round;
     }

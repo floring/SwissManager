@@ -53,21 +53,27 @@ public class TournamentTest {
     @Test
     public void testCalculateRoundNumber() {
         // key - player size, value - expected value
-        Map roundNumberData = new HashMap();
-        roundNumberData.put(0, 0);
-        roundNumberData.put(1, 0);
-        roundNumberData.put(2, 1);
-        roundNumberData.put(3, 3);
-        roundNumberData.put(7, 3);
-        roundNumberData.put(8, 4);
-        roundNumberData.put(20, 4);
-        roundNumberData.put(21, 5);
-        for (Iterator iterator = roundNumberData.keySet().iterator(); iterator.hasNext(); ) {
-            final int testData = (int) iterator.next();
-            final int expected = (int) roundNumberData.get(testData);
+        Map<Integer, Integer> roundNumDependsOnPlayerNum = new HashMap<>();
+        roundNumDependsOnPlayerNum.put(0, 0);
+        roundNumDependsOnPlayerNum.put(1, 0);
+        roundNumDependsOnPlayerNum.put(2, 1);
+        roundNumDependsOnPlayerNum.put(3, 3);
+        roundNumDependsOnPlayerNum.put(7, 3);
+        roundNumDependsOnPlayerNum.put(8, 4);
+        roundNumDependsOnPlayerNum.put(20, 4);
+        roundNumDependsOnPlayerNum.put(21, 5);
+        for(Map.Entry<Integer, Integer> entry : roundNumDependsOnPlayerNum.entrySet()) {
+            final int testData = entry.getKey();
+            final int expected = entry.getValue();
             final int actual = mTournament.calculateRoundsNumber(testData);
             assertEquals(expected, actual);
         }
+//        for (Iterator iterator = roundNumDependsOnPlayerNum.keySet().iterator(); iterator.hasNext(); ) {
+//            final int testData = (int) iterator.next();
+//            final int expected = (int) roundNumDependsOnPlayerNum.get(testData);
+//            final int actual = mTournament.calculateRoundsNumber(testData);
+//            assertEquals(expected, actual);
+//        }
     }
 
     /**

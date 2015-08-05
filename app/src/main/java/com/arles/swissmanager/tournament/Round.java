@@ -18,6 +18,7 @@ public class Round {
         if(list != null) {
             mMatches = list;
         }
+        mState = State.CREATED;
     }
 
     public List<Match> getMatches() {
@@ -30,10 +31,6 @@ public class Round {
 
     public State getState() {
         return mState;
-    }
-
-    public void setCreatedState() {
-        mState = State.CREATED;
     }
 
     public void startRound() {
