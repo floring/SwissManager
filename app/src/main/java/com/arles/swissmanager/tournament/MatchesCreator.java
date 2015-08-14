@@ -1,6 +1,7 @@
 package com.arles.swissmanager.tournament;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -9,24 +10,107 @@ import java.util.List;
  */
 public class MatchesCreator {
 
-    public List<Match> createMatchList(List<Player> players) {
-        int[] playersOrder = Sorter.sortBySwissSystem(players);
-        List<Match> matches = makeMatches(players, playersOrder);
-        return matches;
+    private List<PlayersPair> mPairs;
+    private Player mByePlayer;
+
+    public List<Match> createMatchList(List<Player> playerList) {
+        List<PlayersPair> playersPairs = getMatching(playerList);
+
+        List<Match> matchList = makeMatches(playersPairs);
+        setByePlayer();
+        return matchList;
     }
 
-    private List<Match> makeMatches(List<Player> players, int[] order) {
-        Player byePlayer;
-        List<Match> matches = new ArrayList<>();
+    private List<PlayersPair> getMatching(List<Player> playerList) {
+        Player currentPlayer = peekPlayerWithMaxPrestige(playerList);
 
-        for (int i = 0; i < players.size() / 2; i++) {
-            matches.add(new Match(players.get(order[i * 2]), players.get(order[i * 2 + 1])));
-            matches.add(new Match(players.get(order[i * 2 + 1]), players.get(order[i * 2])));
+        if (playerList.isEmpty()) {
+            if (currentPlayer.hadBye()) {
+                playerList.add(0, currentPlayer);
+                return null;
+            } else {
+                mByePlayer = currentPlayer;
+                mPairs = new ArrayList<>();
+                return mPairs;
+            }
         }
-        if (players.size() % 2 != 0) {
-            byePlayer = players.get(order[players.size() - 1]);
-            byePlayer.bye();
+
+        for (int i = 0; i < playerList.size(); ++i) {
+            Player currentRival = playerList.get(i);
+            if (currentPlayer.hadPlayed(currentRival)) {
+                continue;
+            }
+            playerList.remove(i);
+
+            if (playerList.isEmpty()) {
+                mPairs = new ArrayList<>();
+                mPairs.add(new PlayersPair(currentPlayer, currentRival));
+                return mPairs;
+            }
+
+            mPairs = getMatching(playerList);
+            if (mPairs == null) {
+                playerList.add(i, currentRival);
+            } else {
+                mPairs.add(new PlayersPair(currentPlayer, currentRival));
+                return mPairs;
+            }
         }
-        return matches;
+        if (currentPlayer != null) {
+            playerList.add(0, currentPlayer);
+        }
+
+        return null;
+    }
+
+    private Player peekPlayerWithMaxPrestige(List<Player> playerList) {
+        Collections.sort(playerList);
+        if (playerList.isEmpty()) {
+            return null;
+        }
+        Player playerWithMaxPrestige = playerList.get(0);
+        playerList.remove(playerWithMaxPrestige);
+        return playerWithMaxPrestige;
+    }
+
+    private Player getByePlayer() {
+        return mByePlayer;
+    }
+
+    private List<Match> makeMatches(List<PlayersPair> playersPairs) {
+        List<Match> matchList = new ArrayList<>();
+        for(PlayersPair pair : playersPairs) {
+            matchList.add(new Match(pair.getPlayer1(), pair.getPlayer2()));
+            matchList.add(new Match(pair.getPlayer2(), pair.getPlayer1()));
+        }
+        return matchList;
+    }
+
+    private void setByePlayer() {
+        if(mByePlayer != null) {
+            mByePlayer.bye();
+        }
+    }
+
+    /**
+     * Inner class that represents players pair, e.g. for matches
+     * Created to simplify code structure.
+     */
+    protected class PlayersPair {
+        private Player mPlayer1;
+        private Player mPlayer2;
+
+        public PlayersPair(Player player1, Player player2) {
+            mPlayer1 = player1;
+            mPlayer2 = player2;
+        }
+
+        public Player getPlayer1() {
+            return mPlayer1;
+        }
+
+        public Player getPlayer2() {
+            return mPlayer2;
+        }
     }
 }

@@ -12,12 +12,14 @@ public class Round {
     private int mNumber;
     private List<Match> mMatches = new ArrayList<>();
     private State mState;
+    private Player mByePlayer;
 
-    public Round(int number, List<Match> list) {
+    public Round(int number, List<Match> list, Player byePlayer) {
         mNumber = number;
         if(list != null) {
             mMatches = list;
         }
+        mByePlayer = byePlayer;
         mState = State.CREATED;
     }
 
