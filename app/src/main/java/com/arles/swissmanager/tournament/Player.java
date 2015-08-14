@@ -18,7 +18,6 @@ public class Player implements Comparable<Player> {
     private boolean mHasBye;
     private Set<Player> mRivals = new HashSet<>();
 
-    private int mSheduledForRound = 1;
     private int mGamesFor;
     private int mGamesAgainst;
 
@@ -73,7 +72,6 @@ public class Player implements Comparable<Player> {
     }
 
     public void bye() {
-        mSheduledForRound++;
         mHasBye = true;
         mPrestige += Points.BYE.get();
     }
@@ -94,13 +92,19 @@ public class Player implements Comparable<Player> {
     }
 
     public void playWith(Player player) {
-        mSheduledForRound++;
         mRivals.add(player);
     }
 
     @Override
     public int compareTo(@NonNull Player another) {
         return (mPrestige == another.getPrestige()) ? (another.getGamesFor() - mGamesFor) : (another.getPrestige() - mPrestige);
+    }
+
+    @Override
+    public String toString() {
+        return new StringBuilder()
+                .append(mName)
+                .toString();
     }
 }
 

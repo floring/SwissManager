@@ -97,5 +97,14 @@ public class Match {
             mResult = new MatchResult(Points.LOSE, Points.LOSE);
         }
     }
+
+    @Override
+    public String toString() {
+        return new StringBuilder()
+                .append(mPlayer1.getName())
+                .append('-')
+                .append(mPlayer2.getName())
+                .toString();
+    }
 }
 

@@ -2,6 +2,8 @@ package com.arles.swissmanager.tournament;
 
 import com.arles.swissmanager.SwissManagerApplication;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
@@ -27,6 +29,7 @@ public class Test {
         }
         Collection sortedPlayers = tournament.sortPlayersByPrestige();
     }
+
 
     private static void randomiseResults(List<Match> matches) {
         for(Match m : matches) {

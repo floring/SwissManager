@@ -5,6 +5,7 @@ import android.app.Application;
 import com.arles.swissmanager.tournament.Match;
 import com.arles.swissmanager.tournament.Player;
 import com.arles.swissmanager.di.RootModule;
+import com.arles.swissmanager.tournament.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class SwissManagerApplication extends Application {
         initializeDependencyInjector();
 
         setTestData();
-        //Test.main();
+        Test.main();
     }
 
     /**
