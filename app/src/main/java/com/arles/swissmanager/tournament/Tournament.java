@@ -2,6 +2,7 @@ package com.arles.swissmanager.tournament;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -45,7 +46,8 @@ public class Tournament {
             nextRound();
             MatchesCreator creator = new MatchesCreator();
             List<Match> matches = creator.createMatchList(mPlayers);
-            round = createRoundInstance(mRoundNumber, matches);
+            Player byePlayer = creator.getByePlayer();
+            round = createRoundInstance(mRoundNumber, matches, byePlayer);
         } else {
             // notifyAboutError();
         }
@@ -73,14 +75,14 @@ public class Tournament {
         mRoundNumber++;
     }
 
-    private Round createRoundInstance(int roundNumber, List<Match> matches) {
-        Round round = new Round(roundNumber, matches);
+    private Round createRoundInstance(int roundNumber, List<Match> matches, Player byePlayer) {
+        Round round = new Round(roundNumber, matches, byePlayer);
         mRounds.add(round);
         return round;
     }
 
     public Collection sortPlayersByPrestige() {
-        Sorter.sortByPrestige(mPlayers);
+        Collections.sort(mPlayers);
         return mPlayers;
     }
 

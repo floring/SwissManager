@@ -73,7 +73,7 @@ public class MatchesCreator {
         return playerWithMaxPrestige;
     }
 
-    private Player getByePlayer() {
+    public Player getByePlayer() {
         return mByePlayer;
     }
 
