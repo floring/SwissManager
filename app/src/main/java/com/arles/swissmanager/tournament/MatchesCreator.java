@@ -16,8 +16,13 @@ public class MatchesCreator {
     public List<Match> createMatchList(List<Player> playerList) {
         List<PlayersPair> playersPairs = getMatching(playerList);
 
-        List<Match> matchList = makeMatches(playersPairs);
-        setByePlayer();
+        List<Match> matchList = new ArrayList<>();
+        if(playersPairs != null) {
+            matchList = makeMatches(playersPairs);
+            if(!matchList.isEmpty()) {
+                setByePlayer();
+            }
+        }
         return matchList;
     }
 
@@ -79,7 +84,7 @@ public class MatchesCreator {
 
     private List<Match> makeMatches(List<PlayersPair> playersPairs) {
         List<Match> matchList = new ArrayList<>();
-        for(PlayersPair pair : playersPairs) {
+        for (PlayersPair pair : playersPairs) {
             matchList.add(new Match(pair.getPlayer1(), pair.getPlayer2()));
             matchList.add(new Match(pair.getPlayer2(), pair.getPlayer1()));
         }
@@ -87,7 +92,7 @@ public class MatchesCreator {
     }
 
     private void setByePlayer() {
-        if(mByePlayer != null) {
+        if (mByePlayer != null) {
             mByePlayer.bye();
         }
     }

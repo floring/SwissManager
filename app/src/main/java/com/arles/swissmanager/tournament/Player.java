@@ -1,6 +1,7 @@
 package com.arles.swissmanager.tournament;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -25,6 +26,14 @@ public class Player implements Comparable<Player> {
         mUuid = UUID.randomUUID();
         mName = name;
         mPrestige = 0;
+    }
+
+    @VisibleForTesting
+    public Player(String name, int prestige, boolean hasBye) {
+        mUuid = UUID.randomUUID();
+        mName = name;
+        mPrestige = prestige;
+        mHasBye = hasBye;
     }
 
     public UUID getUuid() {

@@ -45,7 +45,7 @@ public class Tournament {
         if (isGameCorrect()) {
             nextRound();
             MatchesCreator creator = new MatchesCreator();
-            List<Match> matches = creator.createMatchList(mPlayers);
+            List<Match> matches = creator.createMatchList(new ArrayList<>(mPlayers));
             Player byePlayer = creator.getByePlayer();
             round = createRoundInstance(mRoundNumber, matches, byePlayer);
         } else {
