@@ -18,7 +18,6 @@ public class Player implements Comparable<Player> {
     private int mPrestige;
     private boolean mHasBye;
     private Set<Player> mRivals = new HashSet<>();
-
     private int mGamesFor;
     private int mGamesAgainst;
 
