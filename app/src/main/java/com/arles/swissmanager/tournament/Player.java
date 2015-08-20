@@ -35,6 +35,11 @@ public class Player implements Comparable<Player> {
         mHasBye = hasBye;
     }
 
+    @VisibleForTesting
+    public void setRival(Set<Player> rivals) {
+        mRivals.addAll(rivals);
+    }
+
     public UUID getUuid() {
         return mUuid;
     }
