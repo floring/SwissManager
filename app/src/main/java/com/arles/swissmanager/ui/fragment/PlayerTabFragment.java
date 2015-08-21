@@ -19,6 +19,7 @@ import com.arles.swissmanager.ui.activity.NewPlayerActivity;
 import com.arles.swissmanager.ui.adapter.PlayersAdapter;
 import com.arles.swissmanager.ui.presenter.PlayerTabPresenter;
 import com.arles.swissmanager.utils.DividerItemDecoration;
+import com.arles.swissmanager.utils.ExtendedRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +36,8 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
 
     private static final int REQUEST_CODE_START_ACTIVITY = 16;
 
-    @InjectView(R.id.recycler_view_players)
-    RecyclerView mRecyclerView;
+    @InjectView(android.R.id.list)
+    ExtendedRecyclerView mRecyclerView;
     @InjectView(R.id.fab_add)
     ImageButton mFloatingButton;
     @Inject
@@ -102,6 +103,7 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext()));
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.addOnItemTouchListener(this);
+        mRecyclerView.setEmptyView(getActivity().findViewById(android.R.id.empty));
         mAdapter = new PlayersAdapter(new ArrayList<Player>());
         mAdapter.setData(mPresenter.getPlayerList());
         mRecyclerView.setAdapter(mAdapter);

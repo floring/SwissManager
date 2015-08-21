@@ -23,6 +23,10 @@
         <item>@string/tab_round</item>
     </string-array>
 
+    // Text an empty lists of tabs
+    <string name="empty_players_list">No players</string>
+    <string name="empty_rounds_list">No rounds. Add players to create round, and then select menu option 'New round'</string>
+
     // Action name
     <string name="action_settings">Settings</string>
     <string name="action_start_round">Start round</string>
@@ -50,7 +54,6 @@
     <string name="result_warning_round_ended">You should start the round</string>
     <string name="result_cant_start_new_round">Can\'t start new round. Some rounds may running or rounds number is over</string>
     <string name="result_total_rounds_number">The total number of rounds is </string>
-
 
 
 </resources>
