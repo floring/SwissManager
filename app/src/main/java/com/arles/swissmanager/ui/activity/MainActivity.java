@@ -55,7 +55,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.IView, A
         mMainPresenter.initializeViewComponent();
 
         Tournament tournament = Tournament.getInstance();
-        tournament.setPlayers(SwissManagerApplication.getTestPlayersData());
+        tournament.setPlayerCollection(SwissManagerApplication.getTestPlayersData());
     }
 
     @Override

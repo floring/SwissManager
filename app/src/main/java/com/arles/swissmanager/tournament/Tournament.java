@@ -29,10 +29,18 @@ public class Tournament {
         return tournament;
     }
 
-    public void setPlayers(List<Player> players) {
+    public void setPlayerCollection(List<Player> players) {
         if(players != null) {
             mPlayers = players;
         }
+    }
+
+    public void removePlayer(int position) {
+        mPlayers.remove(position);
+    }
+
+    public void addPlayer(String name) {
+        mPlayers.add(new Player(name));
     }
 
     public int calculateRoundsNumber(int playersSize) {

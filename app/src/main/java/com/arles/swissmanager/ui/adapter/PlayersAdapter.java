@@ -26,7 +26,6 @@ import butterknife.InjectView;
  * Created by Admin on 21.05.2015.
  */
 public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHolder> {
-    private final int NOTIFY_DELAY = 500;
 
     private List<Player> mPlayers = new ArrayList<>();
     private SparseBooleanArray mSelectedItems = new SparseBooleanArray();
@@ -58,51 +57,11 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return mPlayers.size();
+        return (mPlayers != null) ? mPlayers.size() : 0;
     }
 
-    private void addPlayer(final String playerName) {
-        final Player player = new Player(playerName);
-
-        // notify of the insertion with a delay, so there is a brief pause after returning
-        // from the new book screen; this makes the animation more noticeable
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mPlayers.add(player);
-                // position == position of last item
-                notifyItemInserted(mPlayers.size() - 1);
-            }
-        }, NOTIFY_DELAY);
-    }
-
-    private void removePlayer(final int position) {
-        mPlayers.remove(position);
-
-        // notify of the removal with a delay so there is a brief pause after returning
-        // from the book details screen; this makes the animation more noticeable
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                notifyItemRemoved(position);
-            }
-        }, NOTIFY_DELAY);
-    }
-
-    public List<Player> getPlayers() {
+    public List<Player> getData() {
         return mPlayers;
-    }
-
-    public void setPlayers(List<Player> playersList) {
-        mPlayers = playersList;
-    }
-
-    public void addNewPlayers(ArrayList<String> nameList) {
-        for(int i = 0; i < nameList.size(); ++i) {
-            addPlayer(nameList.get(i));
-        }
     }
 
     public void toggleSelection(int position) {

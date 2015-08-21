@@ -2,8 +2,6 @@ package com.arles.swissmanager.tournament;
 
 import com.arles.swissmanager.SwissManagerApplication;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
@@ -17,7 +15,7 @@ public class Test {
         List<Player> players = SwissManagerApplication.getTestPlayersData();
 
         Tournament tournament = Tournament.getInstance();
-        tournament.setPlayers(players);
+        tournament.setPlayerCollection(players);
         int roundNumber = tournament.calculateRoundsNumber(tournament.getPlayersCount());
         for (int i = 0; i < roundNumber; ++i) {
             Round currRound = tournament.createNewRound();

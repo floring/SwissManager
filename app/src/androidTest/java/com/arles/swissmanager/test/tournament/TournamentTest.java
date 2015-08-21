@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -40,10 +39,10 @@ public class TournamentTest {
     @Test
     public void testSetPlayers() {
         List<Player> emptyPlayerList = new ArrayList<>();
-        mTournament.setPlayers(emptyPlayerList);
+        mTournament.setPlayerCollection(emptyPlayerList);
         assertTrue("Players list must be empty", mTournament.getPlayerCollection().size() == 0);
 
-        mTournament.setPlayers(null);
+        mTournament.setPlayerCollection(null);
         assertTrue("Players list is not null", mTournament.getPlayerCollection().size() == 0);
     }
 
@@ -82,7 +81,7 @@ public class TournamentTest {
     @Test
     public void testGameProcess() {
         // set test player data
-        mTournament.setPlayers(getTestPlayersData());
+        mTournament.setPlayerCollection(getTestPlayersData());
 
         int roundNumber = mTournament.calculateRoundsNumber(mTournament.getPlayersCount());
         for (int i = 0; i < roundNumber; ++i) {

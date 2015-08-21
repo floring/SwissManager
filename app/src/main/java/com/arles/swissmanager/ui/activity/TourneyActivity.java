@@ -46,9 +46,6 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
         injectViews();
         mPresenter.setView(this);
         mPresenter.initializeViewComponent();
-
-        Tournament tournament = Tournament.getInstance();
-        tournament.setPlayers(SwissManagerApplication.getTestPlayersData());
     }
 
     @Override

@@ -64,18 +64,8 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
     }
 
     @Override
-    public void addToAdapter(ArrayList<String> namesList) {
-        mAdapter.addNewPlayers(namesList);
-    }
-
-    @Override
-    public void removeRecyclerItem() {
-        List<Integer> selectedItemPositions = mAdapter.getSelectedItems();
-        int currPos;
-        for (int i = selectedItemPositions.size() - 1; i >= 0; i--) {
-            currPos = selectedItemPositions.get(i);
-            //mAdapter.removePlayer(currPos);
-        }
+    public List<Integer> getSelectedInActionModeItemPositions() {
+        return mAdapter.getSelectedItems();
     }
 
     @OnClick(R.id.fab_add)
@@ -104,7 +94,7 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
     @Override
     public void onPause() {
         super.onPause();
-        mPresenter.setPlayerList(mAdapter.getPlayers());
+        mPresenter.setPlayerList(mAdapter.getData());
     }
 
     private void setRecyclerView() {

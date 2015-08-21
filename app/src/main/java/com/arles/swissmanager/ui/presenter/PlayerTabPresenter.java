@@ -38,30 +38,39 @@ public class PlayerTabPresenter extends Presenter {
         mView.setViewComponent();
     }
 
-    public void launchActivity(int requestCode) {
-
-    }
-
     public List<Player> getPlayerList() {
         return mTournament.getPlayerCollection();
     }
 
     public void setPlayerList(List<Player> playerList) {
-        mTournament.setPlayers(playerList);
+        mTournament.setPlayerCollection(playerList);
     }
 
     public void parseActivityResult(Intent data) {
         Bundle bundle = data.getExtras();
         if (bundle != null) {
             ArrayList<String> namesList = bundle.getStringArrayList(KeyExtra.KEY_BUFFER_PLAYERS_NAME_LIST);
-            if(namesList != null) {
-                mView.addToAdapter(namesList);
+            if (namesList != null) {
+                for (String name : namesList) {
+                    addPlayer(name);
+                }
             }
         }
     }
 
+    private void addPlayer(String playerName) {
+        mTournament.addPlayer(playerName);
+    }
+
     public void remove() {
-        mView.removeRecyclerItem();
+        List<Integer> selectedItemPositions = mView.getSelectedInActionModeItemPositions();
+        int currPos;
+        for (int i = selectedItemPositions.size() - 1; i >= 0; i--) {
+            currPos = selectedItemPositions.get(i);
+            // PlayerAdapter contains reference to players collection.
+            // Therefore when player is removed from Tournament, it means it removed from adapter.
+            mTournament.removePlayer(currPos);
+        }
     }
 
     public void onPlayerItemClick(int position) {
@@ -70,8 +79,6 @@ public class PlayerTabPresenter extends Presenter {
 
     public interface IView {
         void setViewComponent();
-        void addToAdapter(ArrayList<String> namesList);
-
-        void removeRecyclerItem();
+        List<Integer> getSelectedInActionModeItemPositions();
     }
 }
