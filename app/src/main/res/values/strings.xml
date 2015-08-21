@@ -25,7 +25,7 @@
 
     // Text an empty lists of tabs
     <string name="empty_players_list">No players</string>
-    <string name="empty_rounds_list">No rounds. Add players to create round, and then select menu option 'New round'</string>
+    <string name="empty_rounds_list">No rounds</string>
 
     // Action name
     <string name="action_settings">Settings</string>

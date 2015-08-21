@@ -11,4 +11,5 @@
     <color name="activatedColorDark">#757575</color>
     <color name="activatedColor">#ececec</color>
     <color name="dividerBoldColor">#CBCACA</color>
+    <color name="circleLogoColor">#A9B1E9</color>
 </resources>

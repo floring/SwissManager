@@ -51,7 +51,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         Player playerItem = mPlayers.get(position);
         holder.mTextView.setText(playerItem.getName());
-        holder.setImageDrawable(Integer.toString(playerItem.getPrestige()));
+        holder.mLogoView.setText(Integer.toString(playerItem.getPrestige()));
         holder.itemView.setActivated(mSelectedItems.get(position, false));
     }
 
@@ -93,30 +93,11 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         @InjectView(R.id.text_view_player_name_item) TextView mTextView;
-        @InjectView(R.id.image_view_player_item) ImageView mImageView;
-        private Integer mColor = null;
+        @InjectView(R.id.text_view_player_logo) TextView mLogoView;
 
         public ViewHolder(View view) {
             super(view);
             ButterKnife.inject(this, view);
-        }
-
-        public void setImageDrawable(String imageContent) {
-            final int imgSize = 24;
-            if(mColor == null) {
-                mColor = ColorGenerator.MATERIAL.getRandomColor();
-            }
-            CircleIconDrawable drawable = CircleIconDrawable.builder()
-                    .startConfiguration()
-                    .width(imgSize)
-                    .height(imgSize)
-                    .endConfiguration()
-                    .buildRound(imageContent, mColor);
-            mImageView.setImageDrawable(drawable);
-        }
-
-        private String getIconTitle() {
-            return String.valueOf(mTextView.getText().charAt(0));
         }
     }
 }
