@@ -15,6 +15,7 @@ import com.arles.swissmanager.ui.adapter.OnItemClickListener;
 import com.arles.swissmanager.ui.adapter.RoundsAdapter;
 import com.arles.swissmanager.ui.presenter.RoundTabPresenter;
 import com.arles.swissmanager.utils.DividerItemDecoration;
+import com.arles.swissmanager.utils.ExtendedRecyclerView;
 
 import java.util.ArrayList;
 
@@ -24,8 +25,8 @@ import butterknife.InjectView;
 
 public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.IView, FragmentParentClickListener {
 
-    @InjectView(R.id.recycler_view_rounds)
-    RecyclerView mRecyclerView;
+    @InjectView(android.R.id.list)
+    ExtendedRecyclerView mRecyclerView;
     @Inject
     RoundTabPresenter mPresenter;
     private RoundsAdapter mAdapter;
@@ -57,6 +58,7 @@ public class RoundTabFragment extends BaseFragment implements RoundTabPresenter.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext()));
         mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setEmptyView(getView().findViewById(android.R.id.empty));
         mAdapter = new RoundsAdapter(new ArrayList<Round>());
         mAdapter.setData(mPresenter.getRoundList());
         mAdapter.setOnItemClickListener(onItemClickListener);

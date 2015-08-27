@@ -3,20 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@android:id/empty"
-        android:text="@string/empty_players_list"
-        style="?android:attr/textAppearanceMedium"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center" />
+        android:layout_height="match_parent">
 
-    <com.arles.swissmanager.utils.ExtendedRecyclerView
-        android:id="@android:id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical" />
+        <com.arles.swissmanager.utils.ExtendedRecyclerView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
+
+        <TextView
+            android:id="@android:id/empty"
+            style="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="@string/empty_players_list" />
+    </LinearLayout>
 
     <include
         android:id="@+id/fab_add"

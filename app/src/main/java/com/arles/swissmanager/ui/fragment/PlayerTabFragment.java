@@ -103,7 +103,7 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext()));
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.addOnItemTouchListener(this);
-        mRecyclerView.setEmptyView(getActivity().findViewById(android.R.id.empty));
+        mRecyclerView.setEmptyView(getView().findViewById(android.R.id.empty));
         mAdapter = new PlayersAdapter(new ArrayList<Player>());
         mAdapter.setData(mPresenter.getPlayerList());
         mRecyclerView.setAdapter(mAdapter);
