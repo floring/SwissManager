@@ -12,4 +12,7 @@
     <color name="activatedColor">#ececec</color>
     <color name="dividerBoldColor">#CBCACA</color>
     <color name="circleLogoColor">#A9B1E9</color>
+
+    <color name="buttonTextNormalColor">#2196f3</color>
+    <color name="buttonTextDisabledColor">#402196f3</color>
 </resources>
