@@ -13,6 +13,10 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="fab_elevation">8dp</dimen>
 
-    <!-- RecyclerView item icon -->
-    <dimen name="recview_icon_size">40dp</dimen>
+    <!-- Flat button measurements, per the Android Design guidelines. -->
+    <dimen name="btn_flat_corner_radius">1dp</dimen>
+    <dimen name="btn_flat_min_width">88dp</dimen>
+    <dimen name="btn_flat_min_height">36dp</dimen>
+    <dimen name="btn_flat_padding">8dp</dimen>
+    <dimen name="btn_flat_margin">4dp</dimen>
 </resources>
