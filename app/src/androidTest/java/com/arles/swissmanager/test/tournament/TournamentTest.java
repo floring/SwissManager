@@ -122,22 +122,22 @@ public class TournamentTest {
             int r = new Random().nextInt(6);
             switch (r) {
                 case 0:
-                    m.reportResult(Points.WIN, Points.LOSE);
+                    m.reportResult(Points.Win, Points.Lose);
                     break;
                 case 1:
-                    m.reportResult(Points.LOSE, Points.WIN);
+                    m.reportResult(Points.Lose, Points.Win);
                     break;
                 case 2:
-                    m.reportResult(Points.DRAW, Points.DRAW);
+                    m.reportResult(Points.Draw, Points.Draw);
                     break;
                 case 3:
-                    m.reportResult(Points.LOSE, Points.LOSE);
+                    m.reportResult(Points.Lose, Points.Lose);
                     break;
                 case 4:
-                    m.reportResult(Points.DRAW, Points.LOSE);
+                    m.reportResult(Points.Draw, Points.Lose);
                     break;
                 case 5:
-                    m.reportResult(Points.LOSE, Points.DRAW);
+                    m.reportResult(Points.Lose, Points.Draw);
                     break;
             }
         }

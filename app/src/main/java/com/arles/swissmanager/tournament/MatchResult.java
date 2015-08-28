@@ -26,12 +26,12 @@ public class MatchResult {
 
     static {
         Set<MatchResult> set = new HashSet<>();
-        set.add(new MatchResult(Points.WIN, Points.LOSE));
-        set.add(new MatchResult(Points.LOSE, Points.WIN));
-        set.add(new MatchResult(Points.DRAW, Points.DRAW));
-        set.add(new MatchResult(Points.LOSE, Points.LOSE));
-        set.add(new MatchResult(Points.DRAW, Points.LOSE));
-        set.add(new MatchResult(Points.LOSE, Points.DRAW));
+        set.add(new MatchResult(Points.Win, Points.Lose));
+        set.add(new MatchResult(Points.Lose, Points.Win));
+        set.add(new MatchResult(Points.Draw, Points.Draw));
+        set.add(new MatchResult(Points.Lose, Points.Lose));
+        set.add(new MatchResult(Points.Draw, Points.Lose));
+        set.add(new MatchResult(Points.Lose, Points.Draw));
         mSet = Collections.unmodifiableSet(set);
     }
 

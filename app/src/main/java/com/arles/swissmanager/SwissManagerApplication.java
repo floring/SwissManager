@@ -34,8 +34,8 @@ public class SwissManagerApplication extends Application {
         super.onCreate();
         initializeDependencyInjector();
 
-        //setTestData();
-        //Test.main();
+        setTestData();
+        Test.main();
     }
 
     /**

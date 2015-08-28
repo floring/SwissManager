@@ -3,9 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:paddingBottom="16dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingTop="16dp">
 
     <LinearLayout
+        android:background="@android:color/holo_blue_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -16,23 +20,26 @@
             android:id="@+id/text_view_match_player_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="left"
+            android:paddingLeft="8dp"
             android:text="John"
-            android:textSize="24sp" />
+            android:textColor="@color/primaryTextColor"
+            android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/spinner_match_result_player_1"
             style="@style/Widget.MyApp.HeaderBar.Spinner"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right" />
+            android:layout_gravity="left" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:background="@android:color/holo_green_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="1.2"
         android:orientation="vertical">
 
         <Button
@@ -40,12 +47,12 @@
             style="@style/Widget.MyApp.Button.Flat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:enabled="true"
-            android:text="SEND" />
+            android:layout_gravity="left"
+            android:text="@string/btn_send_match_result" />
     </LinearLayout>
 
     <LinearLayout
+        android:background="@android:color/holo_orange_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -57,15 +64,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
+            android:paddingLeft="8dp"
             android:text="Andrea"
-            android:textSize="24sp" />
+            android:textColor="@color/primaryTextColor"
+            android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/spinner_match_result_player_2"
             style="@style/Widget.MyApp.HeaderBar.Spinner"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="left" />
+            android:layout_gravity="left" />
     </LinearLayout>
 
 </LinearLayout>

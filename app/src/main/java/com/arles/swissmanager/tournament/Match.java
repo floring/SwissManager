@@ -61,10 +61,10 @@ public class Match {
     private void morePoints(int score) {
         if (score > 1) {
             mPlayer1.won();
-            mResult = new MatchResult(Points.WIN, Points.LOSE);
+            mResult = new MatchResult(Points.Win, Points.Lose);
         } else {
             mPlayer1.draw();
-            mResult = new MatchResult(Points.DRAW, Points.LOSE);
+            mResult = new MatchResult(Points.Draw, Points.Lose);
         }
         mPlayer2.lost();
     }
@@ -75,10 +75,10 @@ public class Match {
     private void lessPoints(int score) {
         if (score < -1) {
             mPlayer2.won();
-            mResult = new MatchResult(Points.LOSE, Points.WIN);
+            mResult = new MatchResult(Points.Lose, Points.Win);
         } else {
             mPlayer2.draw();
-            mResult = new MatchResult(Points.LOSE, Points.DRAW);
+            mResult = new MatchResult(Points.Lose, Points.Draw);
         }
         mPlayer1.lost();
     }
@@ -90,11 +90,11 @@ public class Match {
         if (score > 0) {
             mPlayer1.draw();
             mPlayer2.draw();
-            mResult = new MatchResult(Points.DRAW, Points.DRAW);
+            mResult = new MatchResult(Points.Draw, Points.Draw);
         } else {
             mPlayer1.lost();
             mPlayer2.lost();
-            mResult = new MatchResult(Points.LOSE, Points.LOSE);
+            mResult = new MatchResult(Points.Lose, Points.Lose);
         }
     }
 

@@ -59,9 +59,9 @@ public class MatchTest {
      */
     private Set<MatchResult> setInvalidResultsCombination() {
         return new HashSet<MatchResult>() {{
-            add(new MatchResult(Points.WIN, Points.WIN));
-            add(new MatchResult(Points.WIN, Points.DRAW));
-            add(new MatchResult(Points.DRAW, Points.WIN));
+            add(new MatchResult(Points.Win, Points.Win));
+            add(new MatchResult(Points.Win, Points.Draw));
+            add(new MatchResult(Points.Draw, Points.Win));
         }};
     }
 
@@ -70,12 +70,12 @@ public class MatchTest {
      */
     private Set<MatchResult> setCorrectResultsCombination() {
         return new HashSet<MatchResult>() {{
-            add(new MatchResult(Points.WIN, Points.LOSE));
-            add(new MatchResult(Points.LOSE, Points.WIN));
-            add(new MatchResult(Points.DRAW, Points.DRAW));
-            add(new MatchResult(Points.LOSE, Points.LOSE));
-            add(new MatchResult(Points.DRAW, Points.LOSE));
-            add(new MatchResult(Points.LOSE, Points.DRAW));
+            add(new MatchResult(Points.Win, Points.Lose));
+            add(new MatchResult(Points.Lose, Points.Win));
+            add(new MatchResult(Points.Draw, Points.Draw));
+            add(new MatchResult(Points.Lose, Points.Lose));
+            add(new MatchResult(Points.Draw, Points.Lose));
+            add(new MatchResult(Points.Lose, Points.Draw));
         }};
     }
 }

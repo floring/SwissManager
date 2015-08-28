@@ -55,7 +55,7 @@ public class Round {
     private void setUnplayedMatchAsLost(List<Match> matches) {
         for (Match match : matches) {
             if (match.getResult() == null) {
-                match.reportResult(Points.LOSE, Points.LOSE);
+                match.reportResult(Points.Lose, Points.Lose);
             }
         }
     }

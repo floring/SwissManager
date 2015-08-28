@@ -8,10 +8,10 @@ import java.util.List;
  * Created by Admin on 30.06.2015.
  */
 public enum Points {
-    WIN(2),
-    DRAW(1),
-    BYE(4),
-    LOSE(0);
+    Win(2),
+    Draw(1),
+    Bye(4),
+    Lose(0);
 
     private final int value;
     Points(int point) {
@@ -24,9 +24,9 @@ public enum Points {
 
     public static List<Points> getPointsNames() {
         List<Points> list = new ArrayList<>();
-        list.add(Points.LOSE);
-        list.add(Points.WIN);
-        list.add(Points.DRAW);
+        list.add(Points.Lose);
+        list.add(Points.Win);
+        list.add(Points.Draw);
         return list;
     }
 }
