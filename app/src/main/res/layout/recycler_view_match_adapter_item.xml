@@ -1,93 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:padding="16dp">
 
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp">
-
-    <TextView
-        android:id="@+id/text_view_match_player_1"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="John" />
-
-    <Spinner
-        android:id="@+id/spinner_match_result_player_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
-
-    <Spinner
-        android:id="@+id/spinner_match_result_player_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
-
-    <TextView
-        android:id="@+id/text_view_match_player_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:text="Andrea" />
-
-    <Button
-        android:id="@+id/button_send_match_result"
-        android:layout_margin="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SEND"
-        android:textSize="12sp"
-        android:background="@color/primaryColor"
-         />
-</LinearLayout>
-
-    <!--
-    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:columnCount="3"
-        android:rowCount="2"
-        android:orientation="horizontal"
-        android:useDefaultMargins="true">
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingRight="10dp">
 
         <TextView
             android:id="@+id/text_view_match_player_1"
             android:layout_width="match_parent"
-            android:layout_gravity="right"
             android:layout_height="wrap_content"
-            android:text="John" />
+            android:gravity="right"
+            android:text="John"
+            android:textSize="24sp" />
 
+        <Spinner
+            android:id="@+id/spinner_match_result_player_1"
+            style="@style/Widget.MyApp.HeaderBar.Spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button_send_match_result"
+            style="@style/Widget.MyApp.Button.Flat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:enabled="true"
+            android:text="SEND" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
 
         <TextView
             android:id="@+id/text_view_match_player_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="Andrea" />
-
-        <Button
-            android:id="@+id/button_send_match_result"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="fill"
-            android:layout_rowSpan="2"
-            android:text="V" />
-
-        <Spinner
-            style="@style/Widget.MyApp.HeaderBar.Spinner"
-            android:id="@+id/spinner_match_result_player_1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            />
+            android:gravity="left"
+            android:text="Andrea"
+            android:textSize="24sp" />
 
         <Spinner
             android:id="@+id/spinner_match_result_player_2"
             style="@style/Widget.MyApp.HeaderBar.Spinner"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-    </GridLayout>
-        -->
+            android:layout_height="wrap_content"
+            android:gravity="left" />
+    </LinearLayout>
+
+</LinearLayout>
