@@ -41,7 +41,7 @@
         android:text="SEND"
         android:textSize="12sp"
         android:background="@color/primaryColor"
-        android:textColor="@drawable/button_enabled_text_color" />
+         />
 </LinearLayout>
 
     <!--
