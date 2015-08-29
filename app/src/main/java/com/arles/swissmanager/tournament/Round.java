@@ -16,7 +16,7 @@ public class Round {
 
     public Round(int number, List<Match> list, Player byePlayer) {
         mNumber = number;
-        if(list != null) {
+        if (list != null) {
             mMatches = list;
         }
         mByePlayer = byePlayer;
@@ -28,11 +28,15 @@ public class Round {
     }
 
     public int getNumber() {
-        return  mNumber;
+        return mNumber;
     }
 
     public State getState() {
         return mState;
+    }
+
+    public Player getByePlayer() {
+        return mByePlayer;
     }
 
     public void startRound() {
@@ -59,6 +63,4 @@ public class Round {
             }
         }
     }
-
-
 }

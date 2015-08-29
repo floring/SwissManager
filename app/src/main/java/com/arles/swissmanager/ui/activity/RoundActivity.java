@@ -1,6 +1,7 @@
 package com.arles.swissmanager.ui.activity;
 
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.app.NavUtils;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.tournament.Match;
@@ -95,7 +98,7 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
 
     @Override
     public void setViewComponent() {
-        setRecyclerView();
+        //setRecyclerView();
         setToolbar();
     }
 
@@ -113,6 +116,20 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
     @Override
     public void setEnabled(View view, boolean enabled) {
         view.setEnabled(enabled);
+    }
+
+    @Override
+    public void inflateByePlayerView(String name) {
+        ViewStub stub = (ViewStub) findViewById(R.id.view_stub_bye_player);
+        View inflated = stub.inflate();
+
+        TextView txtTitle = (TextView) inflated.findViewById(R.id.text_view_bye_player_name);
+        txtTitle.setText(name);
+
+
+        //       View view = ((ViewStub) findViewById(R.id.view_stub_bye_player)).inflate();
+//        TextView tv = (TextView) view.findViewById(R.id.text_view_bye_player_name);
+//        tv.setText(name);
     }
 
     private void setRecyclerView() {

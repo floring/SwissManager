@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.tournament.Match;
+import com.arles.swissmanager.tournament.Player;
 import com.arles.swissmanager.tournament.Points;
 import com.arles.swissmanager.tournament.Report;
 import com.arles.swissmanager.tournament.Round;
@@ -40,6 +41,7 @@ public class RoundPresenter extends Presenter {
     @Override
     public void initializeViewComponent() {
         mView.setViewComponent();
+        isByePlayerExists();
     }
 
     public int getRoundNumber() {
@@ -77,6 +79,13 @@ public class RoundPresenter extends Presenter {
         mView.showRoundMessage(mContext.getString(R.string.result_round_ended));
     }
 
+    public void isByePlayerExists() {
+        Player byePlayer = mRound.getByePlayer();
+        if(byePlayer != null) {
+            mView.inflateByePlayerView(byePlayer.getName());
+        }
+    }
+
     public interface IView {
         void setViewComponent();
 
@@ -85,5 +94,7 @@ public class RoundPresenter extends Presenter {
         void showRoundMessage(String msg);
 
         void setEnabled(View view, boolean enabled);
+
+        void inflateByePlayerView(String name);
     }
 }

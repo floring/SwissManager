@@ -37,7 +37,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="72dp"
         android:text="0"
-        android:textSize="12sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="wrap_content"
