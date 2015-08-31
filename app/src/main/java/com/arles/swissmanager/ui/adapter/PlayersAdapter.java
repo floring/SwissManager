@@ -1,19 +1,15 @@
 package com.arles.swissmanager.ui.adapter;
 
-import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.tournament.Player;
-import com.arles.swissmanager.utils.CircleIconDrawable;
 import com.arles.swissmanager.utils.CollectionValidator;
-import com.arles.swissmanager.utils.ColorGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

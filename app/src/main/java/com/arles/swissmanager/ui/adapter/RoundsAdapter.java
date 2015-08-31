@@ -47,8 +47,10 @@ public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(RoundsAdapter.ViewHolder holder, int position) {
-        int number = mList.get(position).getNumber();
+        Round round = mList.get(position);
+        int number = round.getNumber();
         holder.mRoundName.setText("Round ".concat(Integer.toString(number)));
+        holder.mRoundState.setText(round.getState().toString().toLowerCase());
     }
 
     @Override
@@ -56,7 +58,7 @@ public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder
         return (mList != null) ? mList.size() : 0;
     }
 
-    public void setOnItemClickListener (OnItemClickListener listener) {
+    public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
 
@@ -64,18 +66,19 @@ public class RoundsAdapter extends RecyclerView.Adapter<RoundsAdapter.ViewHolder
 
         @InjectView(R.id.text_view_round_name)
         TextView mRoundName;
+        @InjectView(R.id.text_view_round_state)
+        TextView mRoundState;
 
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.inject(this, itemView);
         }
 
-        @OnClick(R.id.text_view_round_name)
+        @OnClick(R.id.round_layout)
         public void itemClick(View view) {
-            if(mListener != null) {
+            if (mListener != null) {
                 mListener.onItemClicked(view, getPosition());
             }
         }
-
     }
 }

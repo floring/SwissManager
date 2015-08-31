@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/text_view_round_name"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="72dp"
-    android:gravity="center|left"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:text="Round 1"
-    android:textSize="20sp"
     android:background="@drawable/ripple_view"
     android:clickable="true"
-    android:textColor="@color/primaryTextColor"
-    />
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:id="@+id/round_layout"
+    android:paddingRight="16dp">
+
+    <TextView
+        android:id="@+id/text_view_round_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Round 1"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/text_view_round_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_round_name"
+        android:text="state"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="10sp" />
+
+</RelativeLayout>

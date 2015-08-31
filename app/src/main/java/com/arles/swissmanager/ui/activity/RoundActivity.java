@@ -1,7 +1,6 @@
 package com.arles.swissmanager.ui.activity;
 
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.support.v4.app.NavUtils;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,8 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewStub;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.arles.swissmanager.R;
