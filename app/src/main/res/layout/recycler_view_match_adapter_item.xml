@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@android:color/white"
     android:orientation="horizontal"
     android:paddingBottom="16dp"
     android:paddingLeft="24dp"
@@ -9,7 +10,6 @@
     android:paddingTop="16dp">
 
     <LinearLayout
-        android:background="@android:color/holo_blue_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -20,6 +20,8 @@
             android:id="@+id/text_view_match_player_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:elegantTextHeight="false"
+            android:enabled="false"
             android:gravity="left"
             android:paddingLeft="8dp"
             android:text="John"
@@ -36,7 +38,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:background="@android:color/holo_green_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1.2"
@@ -52,7 +53,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:background="@android:color/holo_orange_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"

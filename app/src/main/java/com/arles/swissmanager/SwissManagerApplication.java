@@ -26,7 +26,7 @@ public class SwissManagerApplication extends Application {
     private ObjectGraph objectGraph;
 
     private static List<Player> mDataList;
-       //private static final String[] NAMES_LIST = new String[] {"John", "Alex", "David", "Martin", "Brian", "Harry"};
+    //   private static final String[] NAMES_LIST = new String[] {"John", "Alex", "David", "Martin", "Brian", "Harry"};
     private static final String[] NAMES_LIST = new String[]{"John", "Alex", "David",};
 
     @Override

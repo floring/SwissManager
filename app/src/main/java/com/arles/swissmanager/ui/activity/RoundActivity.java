@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.arles.swissmanager.R;
@@ -56,6 +57,7 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
         super.onResume();
         // get matches from algorithm class and set it to adapter
         mAdapter.setData(mPresenter.getMatchesData());
+
     }
 
     @Override
@@ -98,7 +100,7 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
 
     @Override
     public void setViewComponent() {
-        //setRecyclerView();
+        setRecyclerView();
         setToolbar();
     }
 
@@ -120,16 +122,11 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
 
     @Override
     public void inflateByePlayerView(String name) {
-        ViewStub stub = (ViewStub) findViewById(R.id.view_stub_bye_player);
-        View inflated = stub.inflate();
-
-        TextView txtTitle = (TextView) inflated.findViewById(R.id.text_view_bye_player_name);
-        txtTitle.setText(name);
-
-
-        //       View view = ((ViewStub) findViewById(R.id.view_stub_bye_player)).inflate();
-//        TextView tv = (TextView) view.findViewById(R.id.text_view_bye_player_name);
-//        tv.setText(name);
+        TextView view = (TextView) findViewById(R.id.text_view_bye_player_name);
+        view.setText(name);
+        view.setVisibility(View.VISIBLE);
+        view = (TextView) findViewById(R.id.text_view_bye_player_title);
+        view.setVisibility(View.VISIBLE);
     }
 
     private void setRecyclerView() {

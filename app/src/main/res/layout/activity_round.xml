@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@android:color/white"
     tools:context=".RoundActivity">
 
     <include
@@ -13,14 +14,30 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_matches"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <ViewStub
-        android:id="@+id/view_stub_bye_player"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inflatedId="@+id/view_stub_bye_player"
-        android:layout="@layout/stub_layout_bye_player" />
+        android:layout_weight="1.0" />
+
+    <TextView
+        android:id="@+id/text_view_bye_player_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="32dp"
+        android:text="Bye"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_view_bye_player_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingBottom="16dp"
+        android:paddingLeft="32dp"
+        android:text="player 1"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="20sp" />
+
+
 
 </LinearLayout>
 
