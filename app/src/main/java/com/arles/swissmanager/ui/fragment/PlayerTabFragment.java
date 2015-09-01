@@ -119,6 +119,7 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
         mode.getMenuInflater().inflate(R.menu.menu_main_action_mode, menu);
         mFloatingButton.setVisibility(View.GONE);
+        getActivity().findViewById(R.id.tabs).setVisibility(View.GONE);
         return true;
     }
 
@@ -144,6 +145,7 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
         mActionMode = null;
         mAdapter.clearSelection();
         mFloatingButton.setVisibility(View.VISIBLE);
+        getActivity().findViewById(R.id.tabs).setVisibility(View.VISIBLE);
     }
 
     @Override
