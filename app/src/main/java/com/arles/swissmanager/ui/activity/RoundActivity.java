@@ -1,5 +1,8 @@
 package com.arles.swissmanager.ui.activity;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.widget.LinearLayoutManager;
@@ -81,10 +84,10 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_start_round:
-                mPresenter.startRoundAction();
+                mPresenter.startRoundAction(item);
                 break;
             case R.id.action_end_round:
-                mPresenter.endRoundAction();
+                mPresenter.endRoundAction(item);
                 break;
             case R.id.action_settings:
                 return true;
@@ -115,6 +118,13 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
     @Override
     public void setEnabled(View view, boolean enabled) {
         view.setEnabled(enabled);
+    }
+
+    @Override
+    public void setColorFilter(MenuItem item) {
+        item.setEnabled(false);
+        Drawable icon = item.getIcon();
+        icon.setAlpha(64);
     }
 
     @Override

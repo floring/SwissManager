@@ -2,6 +2,7 @@ package com.arles.swissmanager.ui.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.arles.swissmanager.R;
@@ -69,21 +70,27 @@ public class RoundPresenter extends Presenter {
         }
     }
 
-    public void startRoundAction() {
+    public void startRoundAction(MenuItem item) {
         mRound.startRound();
+        setMenuView(item);
         mView.showRoundMessage(mContext.getString(R.string.result_round_started));
     }
 
-    public void endRoundAction() {
+    public void endRoundAction(MenuItem item) {
         mRound.endRound();
+        setMenuView(item);
         mView.showRoundMessage(mContext.getString(R.string.result_round_ended));
     }
 
-    public void isByePlayerExists() {
+    private void isByePlayerExists() {
         Player byePlayer = mRound.getByePlayer();
         if(byePlayer != null) {
             mView.inflateByePlayerView(byePlayer.getName());
         }
+    }
+
+    private void setMenuView(MenuItem item) {
+        mView.setColorFilter(item);
     }
 
     public interface IView {
@@ -94,6 +101,8 @@ public class RoundPresenter extends Presenter {
         void showRoundMessage(String msg);
 
         void setEnabled(View view, boolean enabled);
+
+        void setColorFilter(MenuItem item);
 
         void inflateByePlayerView(String name);
     }

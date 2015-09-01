@@ -5,13 +5,15 @@
     <item
         android:id="@+id/action_start_round"
         android:orderInCategory="100"
+        android:icon="@drawable/ic_menu_play"
         android:title="@string/action_start_round"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_end_round"
         android:orderInCategory="100"
+        android:icon="@drawable/ic_menu_stop"
         android:title="@string/action_end_round"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
