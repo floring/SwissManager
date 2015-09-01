@@ -72,14 +72,39 @@ public class RoundPresenter extends Presenter {
 
     public void startRoundAction(MenuItem item) {
         mRound.startRound();
-        setMenuView(item);
         mView.showRoundMessage(mContext.getString(R.string.result_round_started));
     }
 
     public void endRoundAction(MenuItem item) {
         mRound.endRound();
-        setMenuView(item);
         mView.showRoundMessage(mContext.getString(R.string.result_round_ended));
+    }
+
+    public void setActionRoundView(MenuItem startActionItem, MenuItem endActionItem) {
+        final int opacityWhenEnabled = 255;
+        final int opacityWhenDisabled = 64;
+        switch (mRound.getState()) {
+            case CREATED:
+                startActionItem.setEnabled(true);
+                endActionItem.setEnabled(true);
+                mView.setMenuItemOpacity(startActionItem, opacityWhenEnabled);
+                mView.setMenuItemOpacity(endActionItem, opacityWhenEnabled);
+                break;
+            case RUNNING:
+                startActionItem.setEnabled(false);
+                endActionItem.setEnabled(true);
+                mView.setMenuItemOpacity(startActionItem, opacityWhenDisabled);
+                mView.setMenuItemOpacity(endActionItem, opacityWhenEnabled);
+                break;
+            case COMPLETED:
+                startActionItem.setEnabled(false);
+                endActionItem.setEnabled(false);
+                mView.setMenuItemOpacity(startActionItem, opacityWhenDisabled);
+                mView.setMenuItemOpacity(endActionItem, opacityWhenDisabled);
+                break;
+            default:
+                break;
+        }
     }
 
     private void isByePlayerExists() {
@@ -87,10 +112,6 @@ public class RoundPresenter extends Presenter {
         if(byePlayer != null) {
             mView.inflateByePlayerView(byePlayer.getName());
         }
-    }
-
-    private void setMenuView(MenuItem item) {
-        mView.setColorFilter(item);
     }
 
     public interface IView {
@@ -102,7 +123,7 @@ public class RoundPresenter extends Presenter {
 
         void setEnabled(View view, boolean enabled);
 
-        void setColorFilter(MenuItem item);
+        void setMenuItemOpacity(MenuItem item, int alpha);
 
         void inflateByePlayerView(String name);
     }

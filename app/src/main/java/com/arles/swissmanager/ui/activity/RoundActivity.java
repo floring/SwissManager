@@ -40,6 +40,7 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
     @Inject
     RoundPresenter mPresenter;
     private MatchesAdapter mAdapter;
+    private Menu mMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,6 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
         super.onResume();
         // get matches from algorithm class and set it to adapter
         mAdapter.setData(mPresenter.getMatchesData());
-
     }
 
     @Override
@@ -77,6 +77,8 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_round, menu);
+        mMenu = menu;
+        mPresenter.setActionRoundView(mMenu.findItem(R.id.action_start_round), mMenu.findItem(R.id.action_end_round));
         return true;
     }
 
@@ -95,6 +97,7 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
         }
+        mPresenter.setActionRoundView(mMenu.findItem(R.id.action_start_round), mMenu.findItem(R.id.action_end_round));
         return super.onOptionsItemSelected(item);
     }
 
@@ -121,10 +124,9 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
     }
 
     @Override
-    public void setColorFilter(MenuItem item) {
-        item.setEnabled(false);
+    public void setMenuItemOpacity(MenuItem item, int alpha) {
         Drawable icon = item.getIcon();
-        icon.setAlpha(64);
+        icon.setAlpha(alpha);
     }
 
     @Override

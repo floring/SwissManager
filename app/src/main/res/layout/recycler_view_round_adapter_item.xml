@@ -25,6 +25,6 @@
         android:layout_below="@id/text_view_round_name"
         android:text="state"
         android:textColor="@color/secondaryTextColor"
-        android:textSize="10sp" />
+        android:textSize="12sp" />
 
 </RelativeLayout>
