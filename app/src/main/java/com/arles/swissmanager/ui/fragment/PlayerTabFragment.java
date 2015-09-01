@@ -179,8 +179,10 @@ public class PlayerTabFragment extends BaseFragment implements PlayerTabPresente
         @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
             View view = mRecyclerView.findChildViewUnder(e.getX(), e.getY());
-            int position = mRecyclerView.getChildPosition(view);
-            onRecyclerItemTap(view, position);
+            if(view != null) {
+                int position = mRecyclerView.getChildPosition(view);
+                onRecyclerItemTap(view, position);
+            }
             return super.onSingleTapConfirmed(e);
         }
 
