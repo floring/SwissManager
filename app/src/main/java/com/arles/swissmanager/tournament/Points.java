@@ -13,13 +13,17 @@ public enum Points {
     Bye(4),
     Lose(0);
 
-    private final int value;
+    private int value;
     Points(int point) {
         value = point;
     }
 
     public int get() {
         return value;
+    }
+
+    public void set(int point) {
+        value = point;
     }
 
     public static List<Points> getPointsNames() {

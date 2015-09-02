@@ -1,6 +1,7 @@
 package com.arles.swissmanager.ui.activity;
 
 import android.app.AlertDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.SwissManagerApplication;
+import com.arles.swissmanager.tournament.Points;
 import com.arles.swissmanager.tournament.Tournament;
 import com.arles.swissmanager.ui.adapter.ViewPagerAdapter;
 import com.arles.swissmanager.ui.fragment.FragmentParentClickListener;
@@ -53,6 +55,8 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
         tour.setPlayerCollection(SwissManagerApplication.getTestPlayersData());
 
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+//        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+//        sp.edit().clear().apply();
     }
 
     @Override
