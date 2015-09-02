@@ -91,8 +91,6 @@ public class RoundActivity extends BaseActivity implements RoundPresenter.IView 
             case R.id.action_end_round:
                 mPresenter.endRoundAction(item);
                 break;
-            case R.id.action_settings:
-                return true;
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
