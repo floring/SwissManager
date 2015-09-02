@@ -37,6 +37,11 @@ public class Navigator {
         mActivityContext.startActivity(intent);
     }
 
+    public void startPreferencesActivity() {
+        Intent intent = getLaunchIntent(AppPreferencesActivity.class);
+        mActivityContext.startActivity(intent);
+    }
+
     public void startNewPlayerActivityForResult(int requestCode) {
         Intent intent = getLaunchIntent(NewPlayerActivity.class);
         mActivityContext.startActivityForResult(intent, requestCode);
@@ -46,8 +51,7 @@ public class Navigator {
      * Generates the intent needed by the client code to launch this activity.
      */
     private Intent getLaunchIntent(Class activityClass) {
-        Intent intent = new Intent(mActivityContext, activityClass);
-        return intent;
+        return new Intent(mActivityContext, activityClass);
     }
 
 }

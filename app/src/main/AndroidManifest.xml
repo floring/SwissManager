@@ -35,7 +35,10 @@
         </activity>
         <activity
             android:name=".ui.activity.PlayerDataActivity"
-            android:label="@string/title_activity_player_data"></activity>
+            android:label="@string/title_activity_player_data" />
+        <activity
+            android:name=".ui.activity.AppPreferencesActivity"
+            android:label="Settings" />
     </application>
 
 </manifest>

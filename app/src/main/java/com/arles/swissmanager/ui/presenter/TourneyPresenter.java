@@ -5,6 +5,7 @@ import android.content.Context;
 import com.arles.swissmanager.R;
 import com.arles.swissmanager.tournament.Round;
 import com.arles.swissmanager.tournament.Tournament;
+import com.arles.swissmanager.ui.activity.Navigator;
 
 import javax.inject.Inject;
 
@@ -17,11 +18,13 @@ public class TourneyPresenter extends Presenter {
     private IView mView;
     private Tournament mTournament;
     private Context mContext;
+    private Navigator mNavigator;
 
     @Inject
-    public TourneyPresenter(Context context) {
+    public TourneyPresenter(Context context, Navigator navigator) {
         mTournament = Tournament.getInstance();
         mContext = context;
+        mNavigator = navigator;
     }
 
     public void setView(IView view) {
@@ -55,6 +58,10 @@ public class TourneyPresenter extends Presenter {
     public void sortByPrestige() {
         mTournament.sortPlayersByPrestige();
         mView.refreshFragmentData(mView.getPagerAdapterPlayerTabPosition());
+    }
+
+    public void openPreferences() {
+        mNavigator.startPreferencesActivity();
     }
 
     public interface IView {

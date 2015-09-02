@@ -2,6 +2,7 @@ package com.arles.swissmanager.ui.activity;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -25,6 +26,7 @@ import javax.inject.Inject;
 import butterknife.InjectView;
 
 /**
+ * Main activity for application.
  * Created by Admin on 02.07.2015.
  */
 public class TourneyActivity extends BaseActivity implements TourneyPresenter.IView {
@@ -49,6 +51,8 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
 
         Tournament tour = Tournament.getInstance();
         tour.setPlayerCollection(SwissManagerApplication.getTestPlayersData());
+
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
     }
 
     @Override
@@ -72,6 +76,7 @@ public class TourneyActivity extends BaseActivity implements TourneyPresenter.IV
                 mPresenter.createNewRoundAction();
                 break;
             case R.id.action_settings:
+                mPresenter.openPreferences();
                 break;
             case R.id.action_total_round_number:
                 mPresenter.getTotalRoundNumber();
