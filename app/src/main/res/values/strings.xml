@@ -56,6 +56,6 @@
     <string name="result_round_ended">Round ended</string>
     <string name="result_warning_round_ended">You should start the round</string>
     <string name="result_cant_start_new_round">Can\'t start new round. Some rounds may running or rounds number is over</string>
-    <string name="result_total_rounds_number">The total number of rounds is </string>
+    <string name="result_total_rounds_number">"The total number of rounds is "</string>
 
 </resources>
