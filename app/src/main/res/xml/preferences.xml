@@ -7,25 +7,25 @@
         android:title="Points">
 
         <com.arles.swissmanager.utils.NumberPickerPreference
-            android:key="pref_key_point_win"
+            android:key="@string/pref_key_point_win"
             android:summary="Given to the winner of the match"
             android:title="Win point"
             app:default_value="2" />
 
         <com.arles.swissmanager.utils.NumberPickerPreference
-            android:key="pref_key_point_lose"
+            android:key="@string/pref_key_point_lose"
             android:summary="Given to the loser of the match"
             android:title="Lose point"
             app:default_value="0" />
 
         <com.arles.swissmanager.utils.NumberPickerPreference
-            android:key="pref_key_point_draw"
+            android:key="@string/pref_key_point_draw"
             android:summary="Given when the match a draw"
             android:title="Draw point"
             app:default_value="1" />
 
         <com.arles.swissmanager.utils.NumberPickerPreference
-            android:key="pref_key_point_bye"
+            android:key="@string/pref_key_point_bye"
             android:summary="Given to the bye player"
             android:title="Bye point"
             app:default_value="4" />

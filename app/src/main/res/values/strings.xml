@@ -58,4 +58,10 @@
     <string name="result_cant_start_new_round">Can\'t start new round. Some rounds may running or rounds number is over</string>
     <string name="result_total_rounds_number">"The total number of rounds is "</string>
 
+    // Preferences keys
+    <string name="pref_key_point_win">pref_key_point_win</string>
+    <string name="pref_key_point_lose">pref_key_point_lose</string>
+    <string name="pref_key_point_draw">pref_key_point_draw</string>
+    <string name="pref_key_point_bye">pref_key_point_bye</string>
+
 </resources>

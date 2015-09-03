@@ -56,8 +56,6 @@ public class Tournament {
             List<Match> matches = creator.createMatchList(new ArrayList<>(mPlayers));
             Player byePlayer = creator.getByePlayer();
             round = createRoundInstance(mRoundNumber, matches, byePlayer);
-        } else {
-            // notifyAboutError();
         }
         return round;
     }
@@ -104,5 +102,12 @@ public class Tournament {
 
     public int getPlayersCount() {
         return (mPlayers != null) ? mPlayers.size() : 0;
+    }
+
+    public void setPointsValue(int winPoint, int losePoint, int drawPoint, int byePoint) {
+        Points.Win.set(winPoint);
+        Points.Lose.set(losePoint);
+        Points.Draw.set((drawPoint));
+        Points.Bye.set(byePoint);
     }
 }
