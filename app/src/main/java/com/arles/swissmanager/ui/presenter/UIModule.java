@@ -1,7 +1,7 @@
 package com.arles.swissmanager.ui.presenter;
 
 /**
- * Dagger module created to provide TvShows UI dependencies like RendererBuilders or presenters.
+ * Dagger module created to provide UI dependencies like presenters.
  *
  * Created by Admin on 15.05.2015.
  */
