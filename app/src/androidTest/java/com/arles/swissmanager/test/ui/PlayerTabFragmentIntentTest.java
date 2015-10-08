@@ -1,3 +1,4 @@
+
 package com.arles.swissmanager.test.ui;
 
 import android.app.Activity;
@@ -70,7 +71,7 @@ public class PlayerTabFragmentIntentTest {
     @Test
     public void testRetrievedData_AddToRecyclerView() {
         // check that recycler view have not contained yet item with given name
-        onView(withId(R.id.recycler_view_players)).check(matches(hasDescendant(not(withText(PLAYERS_NAMES.get(0))))));
+        onView(withId(android.R.id.list)).check(matches(hasDescendant(not(withText(PLAYERS_NAMES.get(0))))));
         // Stub all Intents to NewPlayerActivity to return PLAYERS_NAMES
         intending(hasComponent(hasShortClassName(SHORT_CLASS_NAME))).respondWith(
                 new ActivityResult(Activity.RESULT_OK, NewPlayerActivity.createResultData(PLAYERS_NAMES)));
@@ -79,6 +80,6 @@ public class PlayerTabFragmentIntentTest {
 
         Sleep.sleepThread();
         //check that recycler view now contains player name
-        onView(withId(R.id.recycler_view_players)).check(matches(hasDescendant((withText(PLAYERS_NAMES.get(0))))));
+        onView(withId(android.R.id.list)).check(matches(hasDescendant((withText(PLAYERS_NAMES.get(0))))));
     }
 }
